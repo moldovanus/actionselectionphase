@@ -1,0 +1,24 @@
+<html>
+<head><title>OWL List Wizard</title>
+</head>
+<body>
+<h1>Pattern - OWL List</h1>
+<p>This wizard creates an OWL list.
+<p>OWL lists can be useful to retain order, and retain semantics and therefore
+can be reasoned with. It is possible to create several "styles" of list.
+<p>eg. An OWL list could be used to describe processes that must follow a particular
+order.
+<p><b>WARNING 1 - Creating large lists (&gt;200 elements) can be very slow and possibly crash Protege.
+Start Protege with a greater java stack size and memory before attempting this.</b>
+<p>WARNING 2 - this wizard imports the CO-ODE meta ontology - this can only be undone
+using the standard mechanism on the metadata tab.
+
+<p>The wizard will create a class that restricts the classes of a sequence of individuals, matching a particular pattern:<ul>
+<li>Members must start with a given series of elements</li>
+<li>Members must end with a given series of elements</li>
+<li>Members must contain a given series of elements</li>
+<li>Members must exactly match a given series of elements</li>
+</ul>
+
+</body>
+</html>

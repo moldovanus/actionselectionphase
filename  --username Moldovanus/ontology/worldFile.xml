@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context-elements>     
+	<context-element ontology-class-name="actor" ontology-individual-name="Actor2">
+		<data-property data-name="has-position-X" data-value="51 m"/>
+		<data-property data-name="has-position-Y" data-value="24 m"/>
+	</context-element> 
+
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Temperature simulation">
+		<data-property data-name="has-position-X" data-value="0 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="0 m"/>
+		<data-property data-name="has-influence-Radius" data-value="5 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="0 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/RandomTemperatureSensorWS.asmx/GetSensorValue"/>
+	</context-element>
+		<!--
+    
+ 	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Temperature actuator">
+		<data-property data-name="has-position-X" data-value="0 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="0 m"/>
+		<data-property data-name="has-influence-Radius" data-value="5 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="0 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/RandomTemperatureSensorWS.asmx/SetSensorValue"/>
+	</context-element>
+	
+    
+
+		<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Random senzor 1">
+		<data-property data-name="has-position-X" data-value="-5 m"/>
+		<data-property data-name="has-position-Y" data-value="3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Random Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/RandomWS.asmx/GetSensorValue"/>
+	</context-element>
+	
+	
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Orientation Sensor 1">
+		<data-property data-name="has-position-X" data-value="5 m"/>
+		<data-property data-name="has-position-Y" data-value="3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2056/TurnSensorWS.asmx"/>
+	</context-element>
+    
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Orientation Sensor 3">
+		<data-property data-name="has-position-X" data-value="-5 m"/>
+		<data-property data-name="has-position-Y" data-value="-3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Orientation Sensor 4">
+		<data-property data-name="has-position-X" data-value="5 m"/>
+		<data-property data-name="has-position-Y" data-value="-3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="RFID Reader">
+		<data-property data-name="has-position-X" data-value="-5 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="2.3 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Loud Sensor">
+		<data-property data-name="has-position-X" data-value="0 m"/>
+		<data-property data-name="has-position-Y" data-value="3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Noise Level Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Far Reach Sensor">
+		<data-property data-name="has-position-X" data-value="0 m"/>
+		<data-property data-name="has-position-Y" data-value="-3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Hot&amp;Humidity Sensor 1">
+		<data-property data-name="has-position-X" data-value="-3 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="0.8 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Hot&amp;Humidity Sensor 2">
+		<data-property data-name="has-position-X" data-value="3 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="0.8 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
+		<data-property data-name="has-value-of-service" data-value="50 degrees"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>
+
+	<context-element ontology-class-name="humidity-sensor" ontology-individual-name="Humidity Sensor 1">
+		<data-property data-name="has-position-X" data-value="-1 m"/>
+		<data-property data-name="has-position-Y" data-value="-0.5 m"/>
+		<data-property data-name="has-position-Z" data-value="0 m"/>
+		<data-property data-name="has-influence-Radius" data-value="0 m"/>
+		<data-property data-name="has-type-of-service" data-value="Humidity Detection"/>
+		<data-property data-name="has-value-of-service" data-value="54 percent"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:8080/RandomSensorWS/RandomSensorWSService"/>
+	</context-element>-->
+</context-elements>

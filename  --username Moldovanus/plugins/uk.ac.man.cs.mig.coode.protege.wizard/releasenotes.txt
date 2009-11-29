@@ -1,0 +1,76 @@
+2008-06-03 (Tania Tudorache)
+
+- Updated code to work with Protege 3.4 build 500
+
+2008-04-22 (Tania Tudorache)
+
+- The basic wizards work now also with the XML Backend
+
+v1.0b build14, Release for Protege3.2 beta build318
+
+- fix - creating instances of non OWL classes
+- fix - dialogs for java1.6
+- stacktrace now shows in results window
+
+-----------------------------------------------------------------------------
+
+v1.0b build12, Release for Protege3.2 beta build301
+
+- patterns no longer need to import the meta ontology
+- properties moved to the Project->Configure menu
+- OWLLists overhauled (and reasonably well tested) and several bugs removed
+
+-----------------------------------------------------------------------------
+
+v1.0b build11, Release for Protege3.2 beta build237
+
+-----------------------------------------------------------------------------
+
+v1.0b build10, Release for Protege3.2 beta build236
+
+- fix - Annotations wizard property combo renderer
+- fix - indentation in add superclasses wizard works better with spaces
+- fix - stack overflow when create many individuals
+- fix - recursive disjoints on creating multiple classes
+
+-----------------------------------------------------------------------------
+
+v1.0b build09, Release for Protege3.2 beta build233
+
+- fix - java.lang.NoSuchMethodError: edu.stanford.smi.protegex.owl.ui.widget.OWLUI.selectResource(Ledu/stanford/smi/protegex/owl/model/RDFResource;)V
+
+-----------------------------------------------------------------------------
+
+v1.0b build08, Release for Protege3.2 beta
+
+- meta properties and classes are now hidden - subclasses now have 2 parents
+- test for existing subclasses of the patterns classes and prompt to make visible
+- override/additional properties for wizard plugins now possible using plugin.properties file
+
+-----------------------------------------------------------------------------
+v1.0b build07, Release for Protege3.2 beta
+
+- updates required for meta import - because of API changes
+- protein sequence wizard class expression now use current class parser (internal release only)
+- Added amino acid sequence fingerprint (internal release only)
+- disabling UNDO now available for all list wizards
+- tidied up options dialog code
+
+- fix - when meta.owl is imported by an import it is not found by pattern wizards
+- fix - remember when an alternative pattern superclass is set
+- fix - cannot disable UNDO twice for lists
+
+-----------------------------------------------------------------------------
+Release for Protege3.1.1 b216
+
+- Wizards code more cleanly separated from Protege GUI
+- Wizard steps list now clearer to read - not disabled
+- Added OWL List Wizard
+- ValuePartitions values are always disjoint. The wizard now allows you to define whether the associated property is functional
+- ValuePartitions do not have to be defined classes if their values are subclasses - corrected
+- standard properties (like those used for patterns) are now imported instead of created
+- Started putting together the resources for making the interface translatable
+- Added simple ProteinSequence wizard (internal release only)
+
+- fix - where possible, wizards should pick up the selected class from the interface
+- fix - create subclasses not working when alternative browser slot set

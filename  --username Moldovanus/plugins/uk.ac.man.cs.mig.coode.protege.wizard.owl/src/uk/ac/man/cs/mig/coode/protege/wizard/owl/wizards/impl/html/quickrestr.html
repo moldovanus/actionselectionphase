@@ -1,0 +1,22 @@
+<html>
+<head><title>Quick Restriction Wizard</title>
+</head>
+<body>
+<h1>Quick Restriction Wizard</h1>
+<p>Add sets of Existential (SomeValuesFrom) restrictions along a given property (or properties)
+to a number of classes easily using a matrix.
+<ul>
+<li>Only <b>Necessary &amp; Sufficient</b> Restrictions are created</li>
+<li>The matrix can only add fillers that are Named OWL Classes</li>
+<li>Only values from the range of the property are allowed</li>
+<li>Only single values can be added for functional properties</li>
+<li>Where multiple classes are entered, the effect is an intersection of multiple restrictions
+that are created (matching the conditions widget semantics)</li>
+</ul>
+<p>Closure can be managed for all properties chosen in the matrix - ie a closure axiom will
+be created if none exists or updated if one can be found that matches the original fillers.
+<p>A closure axiom is in the form of a Universal (AllValuesFrom) restriction that acts along
+ the given property. It has a filler of the union of all the Existential restriction fillers
+ along the same property.
+</body>
+</html>

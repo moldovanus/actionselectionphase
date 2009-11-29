@@ -1,0 +1,25 @@
+<html>
+<head><title>N-ary Relation Wizard</title>
+</head>
+<body>
+<h1>Pattern - N-ary Relation</h1>
+<p>This wizard creates a pattern known as an "N-ary Relation".
+<p>In OWL, properties can be used to create binary relationships between individuals.
+<p>However, sometimes we want to say things about the relationship itself:
+<em>
+<p>eg property <b>hasTemperature</b> may relate <b>Patient</b>s to
+<b>TemperatureValue</b> but we also might want to state that the temperature
+has a trend from <b>TemperatureTrend</b> which can be either <b>TempRising</b>,
+<b>TempConstant</b> or <b>TempFalling</b>
+</em>
+
+<p>The wizard will create:<ul>
+<li>An n-ary relation class</li>
+<li>A property with the relation class set as its range</li>
+<li>A set of properties that are attached to the relation class</li>
+<li>Placeholder classes for the range of these properties (if they do not already exist)</li>
+</ul>
+
+<p>You can find the new N-ary Relation under the <b>Pattern</b> class
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head><title>RDF List Wizard</title>
+</head>
+<body>
+<h1>Pattern - RDF List</h1>
+<p>This wizard creates an RDF list whose elements are restricted to individuals of a
+given class.
+<p>RDF lists can be useful to retain order, but have no semantics in OWL and therefore
+cannot be reasoned with.
+<p>eg. An RDF list could be used to describe processes that must follow a particular
+order. Remember, the list cannot be reasoned with using DL reasoners.
+
+<p>The wizard will create:<ul>
+<li>A subclass of RDF list that can only contain individuals from a certain class</li>
+<li>A property that can be used to create restrictions with this list</li>
+<li>Optionally, a restriction on a given class using this list</li>
+</ul>
+
+</body>
+</html>

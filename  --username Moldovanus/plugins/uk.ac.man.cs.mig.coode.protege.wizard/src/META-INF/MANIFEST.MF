@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+
+Name: uk/ac/man/cs/mig/coode/protege/wizard/basic/BasicWizardsLibraryPlugin.class
+Project-Plugin: True
+
+
+
+

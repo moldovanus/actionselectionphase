@@ -1,0 +1,29 @@
+<html>
+<head><title>Value Partition Wizard</title>
+</head>
+<body>
+<h1>Pattern - Value Partition</h1>
+<p>This wizard creates a pattern known as a "Value Partition" (VP).
+<p>This pattern describes a set of values that can hold for a particular property and are
+ used in a restriction to describe a particular feature of a class.
+<p>In a VP, the possible values are represented by a set of disjoint classes
+that may form their own tree.
+<p>If a hierarchy is not required an alternative pattern to use is the Enumeration.
+<p>The set of individuals described by the VP is split between its subclasses.
+<p>There can be no individual instance of the VP that is not an instance of one of its
+subclasses.
+<em>
+<p>eg Value Partition <b>Spiciness</b> has subclasses <b>SpicinessHot</b> and <b>SpicinessMild</b>
+<p>or "All references to spiciness must be hot or mild"
+</em>
+
+<em><p>This wizard will import the CO-ODE meta ontology if not already imported</em>
+
+<p>The wizard will create:<ul>
+<li>A ValuePartition class</li>
+<li>A set (or tree) of subclasses representing the "values" of the ValuePartition</li>
+<li>A property that has this VP as its range</li>
+</ul>
+
+</body>
+</html>

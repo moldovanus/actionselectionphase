@@ -1,0 +1,28 @@
+<html>
+<head><title>Enumeration Wizard</title>
+</head>
+<body>
+<h1>Pattern - Enumeration</h1>
+<p>This wizard creates a pattern known as an "Enumeration".
+<p>This pattern describes a set of values that can hold for a particular property and are
+ used in a restriction to describe a particular feature of a class.
+<p>This is an alternative representation of the Value Partition pattern, but in an
+ enumeration, the possible values are represented by a set of individuals, so no sub-partitioning
+ is possible.
+<p>The property created should only be used in restrictions that have a filler of
+one of the individuals in the Enumeration.
+
+<em>
+<p>eg Enumeration <b>Spiciness</b> has subclasses <b>spiciness-hot</b> and <b>spiciness-mild</b>
+<p>or "All references to spiciness must be hot or mild"
+</em>
+
+<p>The wizard will create:<ul>
+<li>An Enumeration class</li>
+<li>A set of individuals representing the "values" of the Enumeration</li>
+<li>A property that has this Enumeration as its range</li>
+</ul>
+
+<p>You can find the new Enumeration under the <b>Pattern</b> class
+</body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="context-elements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="context-element" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="data-property" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="data-name" type="xs:string" use="required" />
+									<xs:attribute name="data-value" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="ontology-class-name" type="xs:string" use="required" />
+						<xs:attribute name="ontology-individual-name" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
