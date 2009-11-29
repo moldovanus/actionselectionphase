@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Created-By: 1.4.2_05 (Sun Microsystems Inc.)
+
+Name: uk/ac/man/cs/mig/coode/protege/wizard/basic/BasicWizardsLibraryPlugin.class
+Project-Plugin: True
+

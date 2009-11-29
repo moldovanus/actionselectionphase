@@ -1,0 +1,1 @@
+TemperatureSensor ICubeXTemperatureSensor1 typeOfService=numeric nameOfService=Temperature_Sensor_#1 influenceRadius=100 webServiceURI=localhost:8080/RandomSensorWS/RandomSensorWS x=3 y=1

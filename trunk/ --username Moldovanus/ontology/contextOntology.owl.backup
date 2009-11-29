@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://www.owl-ontologies.com/Ontology1240758175.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.owl-ontologies.com/Ontology1240758175.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="movement-sensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="sensor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="actor-resource">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="resource"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="temperature-sensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#sensor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="context-element"/>
+  <owl:Class rdf:ID="physical-resource">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#resource"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="actor">
+    <rdfs:subClassOf rdf:resource="#context-element"/>
+  </owl:Class>
+  <owl:Class rdf:ID="actuator">
+    <rdfs:subClassOf rdf:resource="#physical-resource"/>
+  </owl:Class>
+  <owl:Class rdf:ID="humidity-sensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#sensor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#resource">
+    <rdfs:subClassOf rdf:resource="#context-element"/>
+  </owl:Class>
+  <owl:Class rdf:ID="policy">
+    <rdfs:subClassOf rdf:resource="#context-element"/>
+  </owl:Class>
+  <owl:Class rdf:about="#sensor">
+    <rdfs:subClassOf rdf:resource="#physical-resource"/>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:ID="has-web-service-URI"/>
+  <owl:DatatypeProperty rdf:ID="has-influence-Radius"/>
+  <owl:DatatypeProperty rdf:ID="has-type-of-service"/>
+  <owl:DatatypeProperty rdf:ID="has-position-Y"/>
+  <owl:DatatypeProperty rdf:ID="has-value-of-service"/>
+  <owl:DatatypeProperty rdf:ID="has-policy-string"/>
+  <owl:DatatypeProperty rdf:ID="has-position-X"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
