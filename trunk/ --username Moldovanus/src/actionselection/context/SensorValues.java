@@ -41,7 +41,6 @@ public class SensorValues {
                     nameF += name1[i].substring(0, 1).toUpperCase() + name1[i].substring(1, name1[i].length());
                 }
                 Individual res = model.getIndividual(base + "#" + nameF + "I").asIndividual();
-                System.out.println("Name to get " + nameF + "I");
                 Property resValue = model.getDatatypeProperty(base + "#has-value-of-service");
                 String init = res.getPropertyValue(resValue).toString();
                 try {

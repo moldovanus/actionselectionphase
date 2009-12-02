@@ -32,6 +32,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
@@ -47,7 +48,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     public static String base = "http://www.owl-ontologies.com/Ontology1230214892.owl";
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private JenaOWLModel owlModel;
-    private Queue<SensorValues> a;
+    private HashMap<SensorValues, SensorValues> checkCycles;
+
     public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel) {
         super(a, 1000);
         this.contextAwareModel = contextAwareModel;
@@ -123,11 +125,19 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     return context;
 
     }*/
-    public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue) {
+    public Boolean hasCycles(HashMap<SensorValues, SensorValues> contexts, SensorValues myContext) {
+        if (contexts.get(myContext) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) {
 
         ContextSnapshot context = queue.remove();
 
-        if (context.getActions().size() > 10) {
+        if (hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
 
             Boolean empty = false;
             ContextSnapshot c = queue.remove();
@@ -138,7 +148,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 c.executeActions();
                 if (min > computeEntropy(c).getFirst()) {
                     min = computeEntropy(c).getFirst();
-                    bestContext = c; 
+                    bestContext = c;
                 }
                 c.rewind();
                 if (queue.size() > 0) {
@@ -150,13 +160,14 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             }
             return bestContext;
         } else {
-            
+             SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
+             contexts.put(newContext, newContext);
             context.executeActions();
 
             Pair<Double, Individual> contextEvaluationResult = computeEntropy(context);
 
             if (contextEvaluationResult.getFirst() > 0) {
-                
+               
                 OntModel model = context.getPolicyConversionModel();
                 Individual brokenPolicy = contextEvaluationResult.getSecond();
 
@@ -174,6 +185,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
                 ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
                 queue.add(afterIncrement);
+
+
                 Double value1 = computeEntropy(afterIncrement).getFirst();
                 incrementCommand.rewind();
 
@@ -188,15 +201,19 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
                     Double value2 = computeEntropy(afterIncrement).getFirst();
                     queue.add(afterDecrement);
+                   
                     decrementCommand.rewind();
                     context.rewind();
 
                     if (value2 > 0) {
-                        context = reinforcementLearning(queue);
+
+                        context = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(contexts));
                     }
-                    
+
                 }
             }
+            
+             
         }
         return context;
 
@@ -244,7 +261,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         Queue<ContextSnapshot> queue = new LinkedList<ContextSnapshot>();
         ContextSnapshot initialContext = new ContextSnapshot(policyConversionModel, new LinkedList<Command>(), owlModel);
         queue.add(initialContext);
-        ContextSnapshot contextSnapshot = reinforcementLearning(queue);//, 0/*, new LinkedList<ContextSnapshot>()*/);
+        ContextSnapshot contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());//, 0/*, new LinkedList<ContextSnapshot>()*/);
         //JOptionPane.showMessageDialog(null, "Done");
         Queue<Command> bestActionsList = contextSnapshot.getActions();
         contextSnapshot.executeActions();
@@ -269,7 +286,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 } catch (ParseException ex) {
                     Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               // setValue(value);
+                // setValue(value);
                 // Resource res = resource.getProperty(associatedResource).getResource();
                 System.out.println("Value being set " + value);
                 System.err.println("===============================================================");
