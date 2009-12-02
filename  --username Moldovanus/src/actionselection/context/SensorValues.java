@@ -32,4 +32,9 @@ public class SensorValues {
         this.myMap = myMap;
     }
 
+    public boolean equals(SensorValues values) {
+        return myMap.equals(values.getMyMap());
+    }
+
+
 }
