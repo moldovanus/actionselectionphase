@@ -21,6 +21,7 @@ public class GlobalVars {
     public static final String CONTEXT_ELEMENT = "context-element";
     public static final String ONTOLOGY_FILE = "ontology/contextOntology.owl";
     public static final String POLICIES_FILE = "ontology/TestPolicies.xml";
+    public static final String MEMORY_FILE = "memory/memory.dat";
     public static final int INDIVIDUAL_DELETED = 0;
     public static final int INDIVIDUAL_CREATED = 1;
     public static final int INDIVIDUAL_MODIFIED = 2;
