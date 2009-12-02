@@ -9,6 +9,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
+import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Collection;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Administrator
  */
-public class SensorValues {
+public class SensorValues implements Serializable{
 
     private Map<String, Double> myMap;
 

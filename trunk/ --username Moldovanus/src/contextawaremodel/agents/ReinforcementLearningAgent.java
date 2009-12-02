@@ -7,9 +7,9 @@ package contextawaremodel.agents;
 import actionselection.context.Memory;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import contextawaremodel.GlobalVars;
+import contextawaremodel.agents.behaviours.ContextDisturbingBehaviour;
 import contextawaremodel.agents.behaviours.ReinforcementLearningBasicBehaviour;
 
-import contextawaremodel.agents.behaviours.StoreMemoryBehaviour;
 import edu.stanford.smi.protegex.owl.ProtegeOWL;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.List;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 import policyconversioncore.PoliciesHandler;
 
@@ -50,12 +48,10 @@ public class ReinforcementLearningAgent extends Agent {
                 ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
                 memory = (Memory) inputStream.readObject();
             } catch (FileNotFoundException ex) {
-                System.err.println("No memory file found.Creating new memory(not new file :P) ");
                 memory = new Memory();
             } catch (IOException ex) {
-                Logger.getLogger(ReinforcementLearningAgent.class.getName()).log(Level.SEVERE, null, ex);
+                memory = new Memory();
             } catch (ClassNotFoundException ex) {
-                System.err.println("Invalid memory file content.Creating new memory(not new file :P) ");
                 memory = new Memory();
             }
 
@@ -80,7 +76,8 @@ public class ReinforcementLearningAgent extends Agent {
                 policyConversionModel = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
                 policyConversionModel.add(jenaOwlModel.getJenaModel());
                 addBehaviour(new ReinforcementLearningBasicBehaviour(this, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
-                addBehaviour(new StoreMemoryBehaviour(this, 60000, memory));
+                addBehaviour(new ContextDisturbingBehaviour(this,10000,policyConversionModel));
+                //addBehaviour(new StoreMemoryBehaviour(this, 1000, memory));
 
             } catch (Exception e) {
                 e.printStackTrace();

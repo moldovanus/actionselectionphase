@@ -41,8 +41,6 @@ public class WSRequestBuilder {
                 "</soap12:Envelope>";
 
         try {
-
-
             //Parse URL and create socket
             String[] uriDetails = wsURL.split("[:/]+");
 
