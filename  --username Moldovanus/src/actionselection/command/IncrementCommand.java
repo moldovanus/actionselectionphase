@@ -39,6 +39,7 @@ public class IncrementCommand extends Command{
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
             float value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
+            System.out.println("======================"+rdfValue+"+++++++++++++++++++++++"+value);
             value += incrementValue;
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
                     targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));

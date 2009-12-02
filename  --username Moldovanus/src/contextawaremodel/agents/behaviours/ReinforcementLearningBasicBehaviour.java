@@ -136,9 +136,9 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) {
 
         ContextSnapshot context = queue.remove();
-
-        if (hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
-
+        context.executeActions();
+        if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
+         /*   context.rewind();
             Boolean empty = false;
             ContextSnapshot c = queue.remove();
 
@@ -159,10 +159,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
             }
             return bestContext;
-        } else {
+        } else {*/
+            HashMap<SensorValues,SensorValues> myContexts = new HashMap<SensorValues,SensorValues>(contexts);
              SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
-             contexts.put(newContext, newContext);
-            context.executeActions();
+             myContexts.put(newContext, newContext);
+            
 
             Pair<Double, Individual> contextEvaluationResult = computeEntropy(context);
 
@@ -207,7 +208,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
                     if (value2 > 0) {
 
-                        context = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(contexts));
+                        context = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(myContexts));
                     }
 
                 }
