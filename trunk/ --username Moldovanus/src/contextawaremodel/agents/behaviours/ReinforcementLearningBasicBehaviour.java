@@ -136,7 +136,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 c.executeActions();
                 if (min > computeEntropy(c).getFirst()) {
                     min = computeEntropy(c).getFirst();
-                    bestContext = c; // ? ce-i cu asta?
+                    bestContext = c; 
                 }
                 c.rewind();
                 if (queue.size() > 0) {
@@ -146,11 +146,15 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 }
 
             }
-            return bestContext; // de ce? k nu avem numar maxim de pasi in alg nostru
+            return bestContext;
         } else {
+            
             context.executeActions();
+
             Pair<Double, Individual> contextEvaluationResult = computeEntropy(context);
+
             if (contextEvaluationResult.getFirst() > 0) {
+                
                 OntModel model = context.getPolicyConversionModel();
                 Individual brokenPolicy = contextEvaluationResult.getSecond();
 
@@ -159,24 +163,19 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 Resource res = brokenPolicy.getProperty(associatedResource).getResource();
                 Individual sensor = model.getIndividual(res.toString()).asIndividual();
                 Property sensorValue = model.getDatatypeProperty(base + "#has-value-of-service");
-                System.out.println("value: " + sensor.getPropertyValue(sensorValue).toString() + "  " + brokenPolicy);
-                //String init = sensor.getPropertyValue(sensorValue).toString();
 
-                //max++;
                 IncrementCommand incrementCommand = new IncrementCommand(sensor, sensorValue, model);
                 Queue<Command> incrementQueue = new LinkedList(context.getActions());
                 incrementCommand.execute();
                 incrementQueue.add(incrementCommand);
 
-                //String a = sensor.getPropertyValue(sensorValue).toString();
 
                 ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
                 queue.add(afterIncrement);
                 Double value1 = computeEntropy(afterIncrement).getFirst();
                 incrementCommand.rewind();
-                if (value1 > 0) { // de ce? ce era gresit inainte?
 
-                    //String b = sensor.getPropertyValue(sensorValue).toString();
+                if (value1 > 0) { // k sa stie k i ok cotextu sa nu o mai ia razna
 
                     Queue<Command> decrementQueue = new LinkedList(context.getActions());
                     DecrementCommand decrementCommand = new DecrementCommand(sensor, sensorValue, model);
@@ -184,18 +183,16 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     decrementQueue.add(decrementCommand);
 
 
-                    //String c = sensor.getPropertyValue(sensorValue).toString();
-
                     ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
                     Double value2 = computeEntropy(afterIncrement).getFirst();
                     queue.add(afterDecrement);
                     decrementCommand.rewind();
                     context.rewind();
-                    if (value2 > 0) { // de ce compari iar? nu i mai greu din starea asta sa transformam in ceva generic?
 
-                        //String d = sensor.getPropertyValue(sensorValue).toString();
+                    if (value2 > 0) {
                         context = reinforcementLearning(queue);
                     }
+                    
                 }
             }
         }

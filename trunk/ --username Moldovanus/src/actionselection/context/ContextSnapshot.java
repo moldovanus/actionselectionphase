@@ -24,10 +24,7 @@ public class ContextSnapshot {
         this.actions = actions;
         this.jenaOwlModel = owlModel;
     }
-
-    /* public ContextSnapshot(ContextSnapshot contextSnapshot) {
-    this.policyConversionModel = contextSnapshot.getPolicyConversionModel();
-    }*/
+ 
     public void executeActions() {
         for (Command command : actions) {
             command.execute();
