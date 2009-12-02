@@ -137,6 +137,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
         ContextSnapshot context = queue.remove();
         context.executeActions();
+        if (computeEntropy(context).getFirst()==0)
+            return context;
         if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
          /*   context.rewind();
             Boolean empty = false;
@@ -216,8 +218,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             
              
         }
-        return context;
-
+        return reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(contexts));
+       
     }
 
     public double evaluateResourceValue(double currentValue, double wantedValue) {

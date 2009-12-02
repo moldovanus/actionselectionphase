@@ -19,8 +19,8 @@
     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
   xml:base="http://www.owl-ontologies.com/Ontology1230214892.owl">
   <owl:Ontology rdf:about="">
-    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
     <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
   </owl:Ontology>
   <owl:Class rdf:ID="resource">
     <rdfs:subClassOf>
@@ -28,7 +28,6 @@
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="policy">
-    <rdfs:subClassOf rdf:resource="#context-element"/>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
@@ -39,6 +38,7 @@
         </owl:allValuesFrom>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#context-element"/>
   </owl:Class>
   <owl:Class rdf:ID="TemperaturePolicy">
     <rdfs:subClassOf rdf:resource="#policy"/>
@@ -71,16 +71,16 @@
     <rdfs:subClassOf rdf:resource="#resource"/>
   </owl:Class>
   <owl:Class rdf:ID="Policy">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:ID="EvaluatePolicyP"/>
         </owl:onProperty>
-        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >1</owl:maxCardinality>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </owl:Class>
   <owl:Class rdf:ID="humidity-sensor">
     <rdfs:subClassOf rdf:resource="#sensor"/>
@@ -113,21 +113,18 @@
   <swrl:Imp rdf:ID="Rule-2">
     <swrl:body>
       <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:argument1>
+              <swrl:Variable rdf:ID="HumRef"/>
+            </swrl:argument1>
+            <swrl:classPredicate rdf:resource="#context-element"/>
+          </swrl:ClassAtom>
+        </rdf:first>
         <rdf:rest>
           <swrl:AtomList>
             <rdf:rest>
               <swrl:AtomList>
-                <rdf:first>
-                  <swrl:DatavaluedPropertyAtom>
-                    <swrl:argument2>
-                      <swrl:Variable rdf:ID="elemPropValue0"/>
-                    </swrl:argument2>
-                    <swrl:argument1>
-                      <swrl:Variable rdf:ID="HumRef"/>
-                    </swrl:argument1>
-                    <swrl:propertyPredicate rdf:resource="#has-value-of-service"/>
-                  </swrl:DatavaluedPropertyAtom>
-                </rdf:first>
                 <rdf:rest>
                   <swrl:AtomList>
                     <rdf:first>
@@ -135,7 +132,9 @@
                         <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
                         <swrl:arguments>
                           <rdf:List>
-                            <rdf:first rdf:resource="#elemPropValue0"/>
+                            <rdf:first>
+                              <swrl:Variable rdf:ID="elemPropValue0"/>
+                            </rdf:first>
                             <rdf:rest>
                               <rdf:List>
                                 <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
@@ -150,6 +149,13 @@
                     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                   </swrl:AtomList>
                 </rdf:rest>
+                <rdf:first>
+                  <swrl:DatavaluedPropertyAtom>
+                    <swrl:propertyPredicate rdf:resource="#has-value-of-service"/>
+                    <swrl:argument2 rdf:resource="#elemPropValue0"/>
+                    <swrl:argument1 rdf:resource="#HumRef"/>
+                  </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
               </swrl:AtomList>
             </rdf:rest>
             <rdf:first>
@@ -160,18 +166,13 @@
             </rdf:first>
           </swrl:AtomList>
         </rdf:rest>
-        <rdf:first>
-          <swrl:ClassAtom>
-            <swrl:argument1 rdf:resource="#HumRef"/>
-            <swrl:classPredicate rdf:resource="#context-element"/>
-          </swrl:ClassAtom>
-        </rdf:first>
       </swrl:AtomList>
     </swrl:body>
     <swrl:head>
       <swrl:AtomList>
         <rdf:first>
           <swrl:DatavaluedPropertyAtom>
+            <swrl:propertyPredicate rdf:resource="#EvaluatePolicyP"/>
             <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
             >true</swrl:argument2>
             <swrl:argument1>
@@ -184,7 +185,6 @@
                 </associated-resource>
               </HumidityPolicy>
             </swrl:argument1>
-            <swrl:propertyPredicate rdf:resource="#EvaluatePolicyP"/>
           </swrl:DatavaluedPropertyAtom>
         </rdf:first>
         <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -196,24 +196,16 @@
       <swrl:AtomList>
         <rdf:rest>
           <swrl:AtomList>
-            <rdf:first>
-              <swrl:ClassAtom>
-                <swrl:argument1>
-                  <swrl:Variable rdf:ID="TempRef"/>
-                </swrl:argument1>
-                <swrl:classPredicate rdf:resource="#temperature-sensor"/>
-              </swrl:ClassAtom>
-            </rdf:first>
             <rdf:rest>
               <swrl:AtomList>
                 <rdf:rest>
                   <swrl:AtomList>
-                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                     <rdf:first>
                       <swrl:BuiltinAtom>
                         <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
                         <swrl:arguments>
                           <rdf:List>
+                            <rdf:first rdf:resource="#elemPropValue0"/>
                             <rdf:rest>
                               <rdf:List>
                                 <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -221,22 +213,51 @@
                                 >0.5</rdf:first>
                               </rdf:List>
                             </rdf:rest>
-                            <rdf:first rdf:resource="#elemPropValue0"/>
                           </rdf:List>
                         </swrl:arguments>
                       </swrl:BuiltinAtom>
                     </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:first>
+                          <swrl:BuiltinAtom>
+                            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                            <swrl:arguments>
+                              <rdf:List>
+                                <rdf:first rdf:resource="#elemPropValue0"/>
+                                <rdf:rest>
+                                  <rdf:List>
+                                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                                    >0.0</rdf:first>
+                                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                  </rdf:List>
+                                </rdf:rest>
+                              </rdf:List>
+                            </swrl:arguments>
+                          </swrl:BuiltinAtom>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                      </swrl:AtomList>
+                    </rdf:rest>
                   </swrl:AtomList>
                 </rdf:rest>
                 <rdf:first>
                   <swrl:DatavaluedPropertyAtom>
                     <swrl:propertyPredicate rdf:resource="#has-value-of-service"/>
-                    <swrl:argument1 rdf:resource="#TempRef"/>
                     <swrl:argument2 rdf:resource="#elemPropValue0"/>
+                    <swrl:argument1>
+                      <swrl:Variable rdf:ID="TempRef"/>
+                    </swrl:argument1>
                   </swrl:DatavaluedPropertyAtom>
                 </rdf:first>
               </swrl:AtomList>
             </rdf:rest>
+            <rdf:first>
+              <swrl:ClassAtom>
+                <swrl:argument1 rdf:resource="#TempRef"/>
+                <swrl:classPredicate rdf:resource="#temperature-sensor"/>
+              </swrl:ClassAtom>
+            </rdf:first>
           </swrl:AtomList>
         </rdf:rest>
         <rdf:first>
