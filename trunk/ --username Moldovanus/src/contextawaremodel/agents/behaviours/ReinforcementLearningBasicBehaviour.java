@@ -8,6 +8,7 @@ import actionselection.command.Command;
 import actionselection.command.DecrementCommand;
 import actionselection.command.IncrementCommand;
 import actionselection.context.ContextSnapshot;
+import actionselection.context.SensorValues;
 import actionselection.utils.Pair;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.ObjectProperty;
@@ -30,6 +31,7 @@ import java.net.Socket;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Level;
@@ -45,7 +47,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     public static String base = "http://www.owl-ontologies.com/Ontology1230214892.owl";
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private JenaOWLModel owlModel;
-
+    private Queue<SensorValues> a;
     public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel) {
         super(a, 1000);
         this.contextAwareModel = contextAwareModel;
@@ -267,7 +269,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 } catch (ParseException ex) {
                     Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                setValue(value);
+               // setValue(value);
                 // Resource res = resource.getProperty(associatedResource).getResource();
                 System.out.println("Value being set " + value);
                 System.err.println("===============================================================");

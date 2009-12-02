@@ -17,6 +17,9 @@ public class SensorValues {
     public SensorValues(){
         myMap = new HashMap<String,Double>();
     }
+    public SensorValues(com.hp.hpl.jena.ontology.OntModel policyConversionModel){
+       
+    }
     public Double getValue(String sensorName){
         return myMap.get(sensorName);
     }
@@ -31,7 +34,7 @@ public class SensorValues {
     public void setMyMap(Map<String, Double> myMap) {
         this.myMap = myMap;
     }
-
+    
     public boolean equals(SensorValues values) {
         return myMap.equals(values.getMyMap());
     }
