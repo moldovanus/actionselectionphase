@@ -24,23 +24,28 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
 
     public static final int ADD_SENSOR = 1000;
     public static final int SHUTDOWN_PLATFORM = 1001;
-
     private PropertyValueListener pvl = new PropertyValueAdapter() {
+
         @Override
         public synchronized void propertyValueChanged(final RDFResource resource, RDFProperty property, Collection oldValues) {
-            if (!resource.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) return;
-            if (!property.getName().equals("has-value-of-service")) return;
+            if (!resource.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
+                return;
+            }
+            if (!property.getName().equals("has-value-of-service")) {
+                return;
+            }
             final String newValue = resource.getPropertyValue(property).toString();
             try {
                 SwingUtilities.invokeLater(new Runnable() {
+
                     public void run() {
                         cvf.updateText(resource.getName(), newValue);
                     }
                 });
-            } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         }
     };
-
     private OWLModel owlModel;
     private ContextVisualizationFrame cvf;
     private MainWindow mainWindow;
@@ -48,10 +53,10 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
 
     @Override
     protected void setup() {
-        System.out.println( "[GUIAgent] Hello!");
+        System.out.println("[GUIAgent] Hello!");
 
         Object[] args = getArguments();
-        if (args != null && args.length > 0 ) {
+        if (args != null && args.length > 0) {
             owlModel = (OWLModel) args[0];
         } else {
             System.out.println("[GUIAgent] No OWLModel provided.");
@@ -59,13 +64,16 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
             return;
         }
 
+
         // Start the Swing GUI
         Runnable r = new Runnable() {
+
             public void run() {
                 try {
                     UIManager.setLookAndFeel(
                             UIManager.getSystemLookAndFeelClassName());
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
 
                 // Start the Main Window
                 GUIAgent.this.mainWindow = new MainWindow(GUIAgent.this, owlModel);
@@ -78,7 +86,7 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
                 cvf.setLocationRelativeTo(mainWindow);
                 cvf.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 cvf.setVisible(false);
-                
+
                 // Start the Memory Monitor window, but keep it hidden
                 final MemoryMonitor demo = new MemoryMonitor();
                 memoryMonitor = new JFrame("Memory Monitor");
@@ -88,9 +96,18 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
                 memoryMonitor.setSize(new Dimension(400, 500));
                 memoryMonitor.setVisible(false);
                 WindowListener l = new WindowAdapter() {
-                    public void windowClosing(WindowEvent e) {System.exit(0);}
-                    public void windowDeiconified(WindowEvent e) { demo.surf.start(); }
-                    public void windowIconified(WindowEvent e) { demo.surf.stop(); }
+
+                    public void windowClosing(WindowEvent e) {
+                        System.exit(0);
+                    }
+
+                    public void windowDeiconified(WindowEvent e) {
+                        demo.surf.start();
+                    }
+
+                    public void windowIconified(WindowEvent e) {
+                        demo.surf.stop();
+                    }
                 };
                 //memoryMonitor.addWindowListener(l);
                 demo.surf.start();
@@ -100,6 +117,7 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
 
         this.addBehaviour(new ReceiveChangesGUIBehaviour(this));
         owlModel.addPropertyValueListener(pvl);
+
     }
 
     public void shutdownPlatform() {
@@ -130,11 +148,13 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
         System.out.println("[GUIAgent] Starting a new RMA agent/JADE GUI.");
         try {
             this.getContainerController().createNewAgent("RMA", "jade.tools.rma.rma", null).start();
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+        }
     }
 
     public void addIndividual(final String name) {
         SwingUtilities.invokeLater(new Runnable() {
+
             public void run() {
                 mainWindow.addIndividual(name);
                 try {

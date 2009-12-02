@@ -7,7 +7,16 @@ package actionselection.context;
 import actionselection.command.Command;
 import com.hp.hpl.jena.ontology.OntModel;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,10 +33,22 @@ public class ContextSnapshot {
         this.actions = actions;
         this.jenaOwlModel = owlModel;
     }
+
+    public void addActions(Queue<Command> commands){
+        for(Command command:commands){
+            actions.add(command);
+        }
+    }
  
     public void executeActions() {
         for (Command command : actions) {
             command.execute();
+        }
+    }
+
+     public void executeActionsOnOWL() {
+        for (Command command : actions) {
+            command.setOWLValue();
         }
     }
 
@@ -60,6 +81,5 @@ public class ContextSnapshot {
     public void setPolicyConversionModel(OntModel policyConversionModel) {
         this.policyConversionModel = policyConversionModel;
     }
-
-    
+   
 }
