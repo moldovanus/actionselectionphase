@@ -90,8 +90,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         SensorValues values = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
         Queue<Command> actions = memory.getActions(values);
 
-
-        // exists
+        //exists
         if (actions != null) {
             context.addActions(actions);
             System.out.println("Remembered");
@@ -103,6 +102,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         if (computeEntropy(context).getFirst() == 0) {
             return context;
         }
+        
         if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
 
 
@@ -180,7 +180,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         Queue<Command> bestActionsList = contextSnapshot.getActions();
         System.err.println();
         System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.err.println(currentValues);
+        System.err.println("for " + currentValues);
         System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.err.println("===============================================================");
         for (Command command : bestActionsList) {
