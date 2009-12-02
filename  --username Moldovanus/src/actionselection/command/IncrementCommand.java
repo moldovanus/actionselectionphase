@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  */
 public class IncrementCommand extends Command {
 
-    private double incrementValue = 0.1;
+    private float incrementValue = 0.1f;
 
     public IncrementCommand(Individual targetIndividual, Property targetProperty, OntModel policyConversionModel) {
         super(targetIndividual, targetProperty, policyConversionModel);
@@ -36,7 +36,7 @@ public class IncrementCommand extends Command {
         return incrementValue;
     }
 
-    public void setIncrementValue(double incrementValue) {
+    public void setIncrementValue(float incrementValue) {
         this.incrementValue = incrementValue;
     }
 

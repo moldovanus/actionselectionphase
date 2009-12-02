@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  */
 public class DecrementCommand extends Command {
 
-    private double decrementValue = 0.1;
+    private float decrementValue = 0.1f;
 
     public double getDecrementValue() {
         return decrementValue;

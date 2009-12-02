@@ -100,9 +100,10 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         context.executeActions();
 
         if (computeEntropy(context).getFirst() == 0) {
+            context.rewind();
             return context;
         }
-        
+
         if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
 
 
@@ -141,24 +142,30 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
                 queue.add(afterDecrement);
                 decrementCommand.rewind();
-                context.rewind();
+
                 if (queue.peek() == null) {
                     System.err.println("EMPTY QUEUE");
+                    context.rewind();
                     return context;
                 } else {
+                    context.rewind();
                     return reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(myContexts));
                 }
             }
 
 
-        }
-        if (queue.peek() == null) {
-            System.err.println("EMPTY QUEUE");
-            return context;
         } else {
-            return reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(contexts));
+            if (queue.peek() == null) {
+                System.err.println("EMPTY QUEUE");
+                context.rewind();
+                return context;
+            } else {
+                context.rewind();
+                return reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(contexts));
+            }
         }
-
+        context.rewind();
+        return context;
     }
 
     public double evaluateResourceValue(double currentValue, double wantedValue) {
