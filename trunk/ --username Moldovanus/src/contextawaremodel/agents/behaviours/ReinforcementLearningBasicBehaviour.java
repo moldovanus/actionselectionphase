@@ -148,21 +148,17 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         }
         if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
 
-            
+
             HashMap<SensorValues, SensorValues> myContexts = new HashMap<SensorValues, SensorValues>(contexts);
             SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
             myContexts.put(newContext, newContext);
 
 
             Pair<Double, Individual> contextEvaluationResult = computeEntropy(context);
-            
+
             if (contextEvaluationResult.getFirst() > 0) {
-
-
                 OntModel model = context.getPolicyConversionModel();
                 Individual brokenPolicy = contextEvaluationResult.getSecond();
-
-
                 ObjectProperty associatedResource = model.getObjectProperty(base + "#associated-resource");
                 Resource res = brokenPolicy.getProperty(associatedResource).getResource();
                 Individual sensor = model.getIndividual(res.toString()).asIndividual();
@@ -172,36 +168,18 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 Queue<Command> incrementQueue = new LinkedList(context.getActions());
                 incrementCommand.execute();
                 incrementQueue.add(incrementCommand);
-
-
                 ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
                 queue.add(afterIncrement);
-
-
-                Double value1 = computeEntropy(afterIncrement).getFirst();
                 incrementCommand.rewind();
-
-                if (value1 > 0) { // k sa stie k i ok cotextu sa nu o mai ia razna
-
-                    Queue<Command> decrementQueue = new LinkedList(context.getActions());
-                    DecrementCommand decrementCommand = new DecrementCommand(sensor, sensorValue, model);
-                    decrementCommand.execute();
-                    decrementQueue.add(decrementCommand);
-
-
-                    ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
-                    Double value2 = computeEntropy(afterIncrement).getFirst();
-                    queue.add(afterDecrement);
-
-                    decrementCommand.rewind();
-                    context.rewind();
-
-                    if (value2 > 0) {
-
-                        context = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(myContexts));
-                    }
-
-                }
+                Queue<Command> decrementQueue = new LinkedList(context.getActions());
+                DecrementCommand decrementCommand = new DecrementCommand(sensor, sensorValue, model);
+                decrementCommand.execute();
+                decrementQueue.add(decrementCommand);
+                ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
+                queue.add(afterDecrement);
+                decrementCommand.rewind();
+                context.rewind();
+                return reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(myContexts));
             }
 
 
