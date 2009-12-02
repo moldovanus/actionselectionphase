@@ -60,4 +60,6 @@ public class ContextSnapshot {
     public void setPolicyConversionModel(OntModel policyConversionModel) {
         this.policyConversionModel = policyConversionModel;
     }
+
+    
 }

@@ -8,6 +8,7 @@ import actionselection.command.Command;
 import actionselection.command.DecrementCommand;
 import actionselection.command.IncrementCommand;
 import actionselection.context.ContextSnapshot;
+import actionselection.context.Memory;
 import actionselection.context.SensorValues;
 import actionselection.utils.Pair;
 import com.hp.hpl.jena.ontology.Individual;
@@ -28,15 +29,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -49,19 +45,20 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private JenaOWLModel owlModel;
     private HashMap<SensorValues, SensorValues> checkCycles;
+    private Memory memory;
 
-    public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel) {
+    public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
         super(a, 1000);
         this.contextAwareModel = contextAwareModel;
         this.policyConversionModel = policyConversionModel;
         this.owlModel = owlModel;
+        this.memory = memory;
     }
 
     private Pair<Double, Individual> computeEntropy(ContextSnapshot contextSnapshot) {
         Individual brokenPolicy = null;
         double entropy = 0.0;
         Collection<RDFResource> resources = contextSnapshot.getJenaOwlModel().getRDFResources();
-
 
         for (RDFResource resource : resources) {
 
@@ -136,41 +133,32 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) {
 
         ContextSnapshot context = queue.remove();
-        context.executeActions();
-        if (computeEntropy(context).getFirst()==0)
+        SensorValues values = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
+        Queue<Command> actions = memory.getActions(values);
+
+        // exists
+        if (actions != null) {
+            context.setActions(actions);
+            System.out.println("Remembered");
             return context;
+        }
+        context.executeActions();
+        if (computeEntropy(context).getFirst() == 0) {
+            return context;
+        }
         if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
-         /*   context.rewind();
-            Boolean empty = false;
-            ContextSnapshot c = queue.remove();
 
-            Double min = computeEntropy(c).getFirst();
-            ContextSnapshot bestContext = c;
-            while (!empty) {
-                c.executeActions();
-                if (min > computeEntropy(c).getFirst()) {
-                    min = computeEntropy(c).getFirst();
-                    bestContext = c;
-                }
-                c.rewind();
-                if (queue.size() > 0) {
-                    c = queue.remove();
-                } else {
-                    empty = true;
-                }
-
-            }
-            return bestContext;
-        } else {*/
-            HashMap<SensorValues,SensorValues> myContexts = new HashMap<SensorValues,SensorValues>(contexts);
-             SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
-             myContexts.put(newContext, newContext);
             
+            HashMap<SensorValues, SensorValues> myContexts = new HashMap<SensorValues, SensorValues>(contexts);
+            SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
+            myContexts.put(newContext, newContext);
+
 
             Pair<Double, Individual> contextEvaluationResult = computeEntropy(context);
-
+            
             if (contextEvaluationResult.getFirst() > 0) {
-               
+
+
                 OntModel model = context.getPolicyConversionModel();
                 Individual brokenPolicy = contextEvaluationResult.getSecond();
 
@@ -204,7 +192,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
                     Double value2 = computeEntropy(afterIncrement).getFirst();
                     queue.add(afterDecrement);
-                   
+
                     decrementCommand.rewind();
                     context.rewind();
 
@@ -215,11 +203,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
                 }
             }
-            
-             
+
+
         }
         return reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>(contexts));
-       
+
     }
 
     public double evaluateResourceValue(double currentValue, double wantedValue) {
@@ -232,71 +220,20 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
 
-
-        //Individual sensor = policyConversionModel.getIndividual(base + "#TemperatureSensorI").asIndividual();
-
-        //Property temperature = policyConversionModel.getDatatypeProperty(base + "#has-value-of-service");
-
-
-        /*RDFResource individual = contextAwareModel.getRDFResource("Temperature simulation");
-
-        if (individual.getProtegeType().getNamedSuperclasses(true).contains(contextAwareModel.getRDFSNamedClass("sensor"))) {
-
-        RDFProperty value = contextAwareModel.getRDFProperty("has-value-of-service");
-        float sensor_value = Float.parseFloat(individual.getPropertyValue(value).toString().split(" ")[0]);
-
-        System.out.println("Current temperature sensor value is " + sensor_value);
-
-
-        //Individual sensor = policyConversionModel.getIndividual(base + "#TemperatureSensorI").asIndividual();
-
-        // Property temperature = policyConversionModel.getDatatypeProperty(base + "#has-value-of-service");
-
-        //sensor.setPropertyValue(temperature, policyConversionModel.createLiteralStatement(
-        // sensor, temperature, sensor_value).getLiteral().as(RDFNode.class));
-
-
-        Individual policy1 = policyConversionModel.getIndividual(base + "#TemperaturePolicyI").asIndividual();
-        System.out.println("Policy1I.EvaluatePolicyP: " + getEvaluateProp(policy1));
-        // setValue();
-        }*/
-        //policyConversionModel,final Queue<Command> actions,final JenaOWLModel owlModel
         Queue<ContextSnapshot> queue = new LinkedList<ContextSnapshot>();
         ContextSnapshot initialContext = new ContextSnapshot(policyConversionModel, new LinkedList<Command>(), owlModel);
         queue.add(initialContext);
         ContextSnapshot contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());//, 0/*, new LinkedList<ContextSnapshot>()*/);
-        //JOptionPane.showMessageDialog(null, "Done");
+
         Queue<Command> bestActionsList = contextSnapshot.getActions();
-        contextSnapshot.executeActions();
-        OntModel model = contextSnapshot.getPolicyConversionModel();
-        Collection<RDFResource> resources = contextSnapshot.getJenaOwlModel().getRDFResources();
-        for (RDFResource resource : resources) {
-            if (resource.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
-                System.err.println("===============================================================");
-                String name = resource.getProtegeType().getName();
-                String name1[] = name.split("-");
-                String nameF = "";
-                for (int i = 0; i < name1.length; i++) {
-                    nameF += name1[i].substring(0, 1).toUpperCase() + name1[i].substring(1, name1[i].length());
-                }
-                Individual res = model.getIndividual(base + "#" + nameF + "I").asIndividual();
-                System.out.println("Name to get " + nameF + "I");
-                Property resValue = model.getDatatypeProperty(base + "#has-value-of-service");
-                String init = res.getPropertyValue(resValue).toString();
-                float value = 0;
-                try {
-                    value = (NumberFormat.getNumberInstance()).parse(init.split("\\^")[0]).floatValue();
-                } catch (ParseException ex) {
-                    Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                // setValue(value);
-                // Resource res = resource.getProperty(associatedResource).getResource();
-                System.out.println("Value being set " + value);
-                System.err.println("===============================================================");
-            }
-
+        SensorValues currentValues = new SensorValues(contextSnapshot.getPolicyConversionModel(), contextSnapshot.getJenaOwlModel(), base);
+        System.err.println("===============================================================");
+        for (Command command : bestActionsList) {
+            System.out.println(command);
         }
-
+        System.err.println("===============================================================");
+        memory.memorize(currentValues, bestActionsList);
+        contextSnapshot.executeActions();
 
 
     }

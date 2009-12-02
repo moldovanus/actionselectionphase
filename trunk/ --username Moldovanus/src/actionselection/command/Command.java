@@ -19,7 +19,7 @@ public abstract class Command {
     public Property getTargetProperty() {
         return targetProperty;
     }
-
+  
     public void setTargetProperty(Property targetProperty) {
         this.targetProperty = targetProperty;
     }

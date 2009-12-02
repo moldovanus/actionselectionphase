@@ -35,7 +35,7 @@ public class SensorValues {
         for (RDFResource resource : resources) {
             if (resource.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
                 String name = resource.getProtegeType().getName();
-                 String name1[] = name.split("-");
+                String name1[] = name.split("-");
                 String nameF = "";
                 for (int i = 0; i < name1.length; i++) {
                     nameF += name1[i].substring(0, 1).toUpperCase() + name1[i].substring(1, name1[i].length());
@@ -63,7 +63,7 @@ public class SensorValues {
             return false;
         }
         final SensorValues other = (SensorValues) obj;
-        return true;
+        return this.equals(other);
     }
 
     @Override
@@ -93,4 +93,15 @@ public class SensorValues {
     public boolean equals(SensorValues values) {
         return myMap.equals(values.getMyMap());
     }
+
+    @Override
+    public String toString() {
+        String stringValue = "";
+        for (String key : myMap.keySet()){
+            stringValue += "[ " + key + ": " + myMap.get(key) + "]  ";
+        }
+        return stringValue;
+    }
+
+
 }

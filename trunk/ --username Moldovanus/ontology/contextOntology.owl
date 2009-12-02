@@ -19,8 +19,6 @@
     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
   xml:base="http://www.owl-ontologies.com/Ontology1230214892.owl">
   <owl:Ontology rdf:about="">
-    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
-    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
   </owl:Ontology>
   <owl:Class rdf:ID="resource">
     <rdfs:subClassOf>
