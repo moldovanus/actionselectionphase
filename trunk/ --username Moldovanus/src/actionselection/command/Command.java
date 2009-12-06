@@ -15,21 +15,19 @@ import java.io.Serializable;
  */
 public abstract class Command implements Serializable {
 
-    protected Individual targetIndividual;
-    protected Property targetProperty;
-    protected com.hp.hpl.jena.ontology.OntModel policyConversionModel;
+    protected String targetIndividualName;
+    protected String targetPropertyName;
+    protected String hasWebServicePropertyName;
+    protected transient com.hp.hpl.jena.ontology.OntModel policyConversionModel;
 
-    public Property getTargetProperty() {
-        return targetProperty;
+    public Command(String targetIndividual, String targetProperty, String hasWebService, OntModel policyConversionModel) {
+        this.targetIndividualName = targetIndividual;
+        this.targetPropertyName = targetProperty;
+        this.hasWebServicePropertyName = hasWebService;
+        this.policyConversionModel = policyConversionModel;
     }
 
-    public void setTargetProperty(Property targetProperty) {
-        this.targetProperty = targetProperty;
-    }
-
-    public Command(Individual targetIndividual, Property targetProperty, OntModel policyConversionModel) {
-        this.targetIndividual = targetIndividual;
-        this.targetProperty = targetProperty;
+    public final void setPolicyConversionModel(OntModel policyConversionModel) {
         this.policyConversionModel = policyConversionModel;
     }
 

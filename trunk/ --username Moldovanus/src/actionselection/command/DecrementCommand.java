@@ -8,10 +8,8 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -36,12 +34,16 @@ public class DecrementCommand extends Command {
         this.decrementValue = decrementValue;
     }
 
-    public DecrementCommand(Individual targetIndividual, Property targetProperty, OntModel policyConversionModel) {
-        super(targetIndividual, targetProperty, policyConversionModel);
+    public DecrementCommand(String targetIndividualName, String targetPropertyName, String hasWebServicePropertyName, OntModel policyConversionModel, float decrementValue) {
+        super(targetIndividualName, targetPropertyName, hasWebServicePropertyName, policyConversionModel);
+        this.decrementValue = decrementValue;
     }
 
     @Override
     public void execute() {
+        Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
+        Property targetProperty = policyConversionModel.getProperty(targetPropertyName);
+
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
             float value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
@@ -55,6 +57,10 @@ public class DecrementCommand extends Command {
 
     @Override
     public void rewind() {
+
+        Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
+        Property targetProperty = policyConversionModel.getProperty(targetPropertyName);
+
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
             float value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
@@ -68,11 +74,16 @@ public class DecrementCommand extends Command {
 
     @Override
     public String toString() {
-        return "Decrement " + targetIndividual + " by " + decrementValue;
+        return "Decrement " + targetIndividualName + " by " + decrementValue;
     }
 
     @Override
     public void setOWLValue() {
+
+        Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
+        Property targetProperty = policyConversionModel.getProperty(targetPropertyName);
+        Property hasWebServiceProperty = policyConversionModel.getProperty(hasWebServicePropertyName);
+
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
 
@@ -93,46 +104,50 @@ public class DecrementCommand extends Command {
 
         try {
 
-            String wsURL = "http://localhost:2591/RandomTemperatureSensorWS.asmx";
-            //Parse URL and create socket
-            String[] uriDetails = wsURL.split("[:/]+");
+            RDFNode sensorWSUrl = targetIndividual.getPropertyValue(hasWebServiceProperty);
+            if (sensorWSUrl != null) {
+                String wsURL = sensorWSUrl.toString().split("\\^")[0];
+                wsURL = wsURL.substring(0, wsURL.lastIndexOf("/"));
+                //Parse URL and create socket
+                String[] uriDetails = wsURL.split("[:/]+");
 
-            String hostname = uriDetails[1];
-            int port = Integer.valueOf(uriDetails[2]);
+                String hostname = uriDetails[1];
+                int port = Integer.valueOf(uriDetails[2]);
 
-            InetAddress addr = InetAddress.getByName(hostname);
-            Socket sock = new Socket(addr, port);
-            String path = uriDetails[3];
-            for (int i = 4; i < uriDetails.length; i++) {
-                path += "/" + uriDetails[i];
+                InetAddress addr = InetAddress.getByName(hostname);
+                Socket sock = new Socket(addr, port);
+                String path = uriDetails[3];
+                for (int i = 4; i < uriDetails.length; i++) {
+                    path += "/" + uriDetails[i];
+                }
+
+
+                //Send header
+                BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream(), "utf-8"));
+                wr.write("POST /" + path + " HTTP/1.1\r\n");
+                wr.write("Host: " + hostname + "\r\n");
+                wr.write("Content-Type: text/xml; charset=\"utf-8 \" \r\n");
+                wr.write("Content-Length: " + xmldata.length() + "\r\n");
+                wr.write("SOAPAction: http://tempuri.org/SetSensorValue \r\n");
+                wr.write("\r\n");
+
+                //Send data
+                wr.write(xmldata);// System.out.println(xmldata);
+                wr.flush();
+                /*BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                // Response
+                String line;
+                while ((line = rd.readLine()) != null) {
+                System.out.println(line);
+                }*/
+
+
+                sock.close();
             }
-
-
-            //Send header
-            BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream(), "utf-8"));
-            wr.write("POST /" + path + " HTTP/1.1\r\n");
-            wr.write("Host: " + hostname + "\r\n");
-            wr.write("Content-Type: text/xml; charset=\"utf-8 \" \r\n");
-            wr.write("Content-Length: " + xmldata.length() + "\r\n");
-            wr.write("SOAPAction: http://tempuri.org/SetSensorValue \r\n");
-            wr.write("\r\n");
-
-            //Send data
-            wr.write(xmldata);// System.out.println(xmldata);
-            wr.flush();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-            // Response
-            //String line;
-            /*while ((line = rd.readLine()) != null) {
-            // System.out.println(line);
-            }*/
-
-
-            sock.close();
-
         } catch (IOException ex) {
             ex.printStackTrace();
 
         }
+
     }
 }

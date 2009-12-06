@@ -5,6 +5,7 @@
 package actionselection.context;
 
 import actionselection.command.Command;
+import com.hp.hpl.jena.ontology.OntModel;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,4 +34,14 @@ public class Memory implements Serializable {
     public void forgetAll() {
         map.clear();
     }
+
+    public void restoreOwlModel(OntModel model){
+        for(Queue<Command> queue : map.values()){
+            for(Command command : queue){
+                command.setPolicyConversionModel(model);
+            }
+        }
+    }
+
+
 }

@@ -3,6 +3,7 @@ package contextawaremodel;
 public class GlobalVars {
 
     public static final String CONTEXT_INSTANCE_MODIFIED = "Context instance modified";
+    public static final String base = "http://www.owl-ontologies.com/Ontology1230214892.owl";
     public static final String CIAGENT_NAME = "CIAgent";
     public static final String CMAGENT_NAME = "CMAgent";
     public static final String RPAGENT_NAME = "RPAgent";
@@ -25,4 +26,5 @@ public class GlobalVars {
     public static final int INDIVIDUAL_DELETED = 0;
     public static final int INDIVIDUAL_CREATED = 1;
     public static final int INDIVIDUAL_MODIFIED = 2;
+    
 }

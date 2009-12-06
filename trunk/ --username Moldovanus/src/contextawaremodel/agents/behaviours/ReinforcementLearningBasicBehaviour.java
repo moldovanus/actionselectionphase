@@ -17,6 +17,8 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
+import contextawaremodel.GlobalVars;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
@@ -29,10 +31,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,11 +48,12 @@ import java.util.Queue;
 public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
     private OWLModel contextAwareModel;
-    public static String base = "http://www.owl-ontologies.com/Ontology1230214892.owl";
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private JenaOWLModel owlModel;
     private HashMap<SensorValues, SensorValues> checkCycles;
     private Memory memory;
+    private Property evaluatePolicyProperty;
+    private Property hasWebServiceProperty;
 
     public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
         super(a, 1000);
@@ -53,6 +61,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         this.policyConversionModel = policyConversionModel;
         this.owlModel = owlModel;
         this.memory = memory;
+        evaluatePolicyProperty = policyConversionModel.getDatatypeProperty(GlobalVars.base + "#EvaluatePolicyP");
+        hasWebServiceProperty = policyConversionModel.getDatatypeProperty(GlobalVars.base + "#has-web-service-URI");
     }
 
     private Pair<Double, Individual> computeEntropy(ContextSnapshot contextSnapshot) {
@@ -63,7 +73,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         for (RDFResource resource : resources) {
 
             if (resource.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("policy"))) {
-                Individual policy = policyConversionModel.getIndividual(base + "#" + resource.getProtegeType().getName() + "I").asIndividual();
+                Individual policy = policyConversionModel.getIndividual(GlobalVars.base + "#" + resource.getProtegeType().getName() + "I").asIndividual();
                 if (!getEvaluateProp(policy)) {
                     if (brokenPolicy == null) {
                         brokenPolicy = policy;
@@ -72,7 +82,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 }
             }
         }
-
+        System.err.println("!!!!!! Entropy : " + entropy + " Broken " + brokenPolicy);
         return new Pair<Double, Individual>(entropy, brokenPolicy);
     }
 
@@ -87,7 +97,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) {
 
         ContextSnapshot context = queue.remove();
-        SensorValues values = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
+        SensorValues values = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), GlobalVars.base);
         Queue<Command> actions = memory.getActions(values);
 
         //exists
@@ -104,11 +114,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             return context;
         }
 
-        if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base))) {
+        if (!hasCycles(contexts, new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), GlobalVars.base))) {
 
 
             HashMap<SensorValues, SensorValues> myContexts = new HashMap<SensorValues, SensorValues>(contexts);
-            SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), base);
+            SensorValues newContext = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), GlobalVars.base);
             myContexts.put(newContext, newContext);
 
 
@@ -118,30 +128,115 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 OntModel model = context.getPolicyConversionModel();
                 Individual brokenPolicy = contextEvaluationResult.getSecond();
 
-                ObjectProperty associatedResource = model.getObjectProperty(base + "#associated-resource");
-                Resource res = brokenPolicy.getProperty(associatedResource).getResource();
+                ObjectProperty associatedResource = model.getObjectProperty(GlobalVars.base + "#associated-resource");
+                ObjectProperty associatedActuatorProperty = model.getObjectProperty(GlobalVars.base + "#has-actuator");
+                ObjectProperty associatedActionProperty = model.getObjectProperty(GlobalVars.base + "#associated-action");
+                Property actionEffect = model.getProperty(GlobalVars.base + "#effect");
+                Property sensorValueProperty = model.getDatatypeProperty(GlobalVars.base + "#has-value-of-service");
+                //System.out.println(model);
 
-                Individual sensor = model.getIndividual(res.toString()).asIndividual();
-                Property sensorValue = model.getDatatypeProperty(base + "#has-value-of-service");
+                //Resource res = brokenPolicy.getProperty(associatedResource).getResource();
+
+                //list associated resources
+                StmtIterator iterator = brokenPolicy.listProperties(associatedResource);
+                //System.err.println("##########################");
+                //System.err.println(brokenPolicy);
+                while (iterator.hasNext()) {
+                    //get associated resource name
+                    Resource attachedResource = iterator.nextStatement().getResource();
+
+                    //get the resource as individual from the global model such that getPropertyValue can be called on it
+                    Individual sensor = model.getIndividual(attachedResource.toString());
+
+                    System.err.println("Sensor : " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
+
+                    //get all actuators associated to the current sensor
+                    StmtIterator associatedActuators = sensor.listProperties(associatedActuatorProperty);
+
+                    //transfer to array list because if i iterate over and execute actions ConcurrentmodificationException is thrown by iterator
+                    ArrayList<Resource> actuatorsList = new ArrayList<Resource>(10);
+                    while (associatedActuators.hasNext()) {
+                        actuatorsList.add(associatedActuators.nextStatement().getResource());
+                    }
+                    for (Resource attachedActuatorResource : actuatorsList) {
+                        //Resource attachedActuatorResource =
+                        Individual actuator = model.getIndividual(attachedActuatorResource.toString());
+
+                        //System.err.println("Actuator:" + actuator);
+
+                        StmtIterator actuatorActions = actuator.listProperties(associatedActionProperty);
+
+                        //get all actions possible on this 
+                        ArrayList<Resource> list = new ArrayList<Resource>(10);
+                        while (actuatorActions.hasNext()) {
+                            list.add(actuatorActions.nextStatement().getResource());
+                        }
+                        for (Resource attachedActionResource : list) {
+                            //Resource attachedActionResource = actuatorActions.nextStatement().getResource();
+                            Individual action = model.getIndividual(attachedActionResource.toString());
+                            String effect = action.getPropertyValue(actionEffect).toString().split("\\^")[0];
+                            //System.err.println("Action:" + action + " Effect: " + effect);
+                            if (effect.trim().charAt(0) == '+') {
+                                try {
+                                    String numberString = effect.substring(1, effect.length());
+                                    float value = NumberFormat.getNumberInstance().parse(numberString).floatValue();
+                                    IncrementCommand incrementCommand = new IncrementCommand(sensor.toString(), sensorValueProperty.toString(), hasWebServiceProperty.toString(), model, value);
+                                    Queue<Command> incrementQueue = new LinkedList(context.getActions());
+                                    incrementCommand.execute();
+                                    incrementQueue.add(incrementCommand);
+
+                                    ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
+                                    queue.add(afterIncrement);
+                                    incrementCommand.rewind();
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+                            } else if (effect.trim().charAt(0) == '-') {
+                                try {
+                                    String numberString = effect.substring(1, effect.length());
+                                    float value = NumberFormat.getNumberInstance().parse(numberString).floatValue();
+                                    Queue<Command> decrementQueue = new LinkedList(context.getActions());
+                                    DecrementCommand decrementCommand = new DecrementCommand(sensor.toString(), sensorValueProperty.toString(), hasWebServiceProperty.toString(), model, value);
+                                    decrementCommand.execute();
+                                    decrementQueue.add(decrementCommand);
+
+                                    ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
+                                    queue.add(afterDecrement);
+                                    decrementCommand.rewind();
+
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                            //System.err.println("\n \n \n ");
+                        }
+                        //System.err.println("\n \n \n ");
+                    }
+
+                    //Individual sensor = model.getIndividual(associatedResource).asIndividual();
+                    /*Property sensorValue = model.getDatatypeProperty(base + "#has-value-of-service");
 
 
-                IncrementCommand incrementCommand = new IncrementCommand(sensor, sensorValue, model);
-                Queue<Command> incrementQueue = new LinkedList(context.getActions());
-                incrementCommand.execute();
-                incrementQueue.add(incrementCommand);
+                    IncrementCommand incrementCommand = new IncrementCommand(sensor, sensorValue, model);
+                    Queue<Command> incrementQueue = new LinkedList(context.getActions());
+                    incrementCommand.execute();
+                    incrementQueue.add(incrementCommand);
 
-                ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
-                queue.add(afterIncrement);
-                incrementCommand.rewind();
+                    ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
+                    queue.add(afterIncrement);
+                    incrementCommand.rewind();
 
-                Queue<Command> decrementQueue = new LinkedList(context.getActions());
-                DecrementCommand decrementCommand = new DecrementCommand(sensor, sensorValue, model);
-                decrementCommand.execute();
-                decrementQueue.add(decrementCommand);
+                    Queue<Command> decrementQueue = new LinkedList(context.getActions());
+                    DecrementCommand decrementCommand = new DecrementCommand(sensor, sensorValue, model);
+                    decrementCommand.execute();
+                    decrementQueue.add(decrementCommand);
 
-                ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
-                queue.add(afterDecrement);
-                decrementCommand.rewind();
+                    ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
+                    queue.add(afterDecrement);
+                    decrementCommand.rewind();*/
+                    // System.err.println("\n \n \n ");
+                }
 
                 if (queue.peek() == null) {
                     System.err.println("EMPTY QUEUE");
@@ -180,7 +275,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
         Queue<ContextSnapshot> queue = new LinkedList<ContextSnapshot>();
         ContextSnapshot initialContext = new ContextSnapshot(policyConversionModel, new LinkedList<Command>(), owlModel);
-        SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, base);
+        SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         queue.add(initialContext);
         ContextSnapshot contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());//, 0/*, new LinkedList<ContextSnapshot>()*/);
 
@@ -259,7 +354,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
     public boolean getEvaluateProp(Individual policy) {
         //System.out.println(base + "#EvaluatePolicyP");
-        Statement property = policy.getProperty(policyConversionModel.getDatatypeProperty(base + "#EvaluatePolicyP"));
+        Statement property = policy.getProperty(evaluatePolicyProperty);
 
         if (property == null) {
             return false;
