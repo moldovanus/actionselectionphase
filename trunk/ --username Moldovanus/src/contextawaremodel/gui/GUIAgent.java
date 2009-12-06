@@ -11,19 +11,31 @@ import jade.core.AID;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.lang.acl.ACLMessage;
+
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Queue;
+
+import java.util.TimerTask;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 
 public class GUIAgent extends GuiAgent implements GUIAgentExternal {
 
+    Boolean alternate = true;
+    Boolean broken = true;
+    Timer timer ;
     public static final int ADD_SENSOR = 1000;
     public static final int SHUTDOWN_PLATFORM = 1001;
+    ArrayList<String> brokenResources= new ArrayList<String>();
     private PropertyValueListener pvl = new PropertyValueAdapter() {
 
         @Override
@@ -39,9 +51,16 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
                 SwingUtilities.invokeLater(new Runnable() {
 
                     public void run() {
+
                         cvf.updateText(resource.getName(), newValue);
                     }
                 });
+
+               if (broken)
+               {
+                   brokenResources.add(resource.getName());
+               }
+              
             } catch (Exception e) {
             }
         }
@@ -109,6 +128,7 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
                         demo.surf.stop();
                     }
                 };
+                   
                 //memoryMonitor.addWindowListener(l);
                 demo.surf.start();
             }
@@ -137,6 +157,7 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
     public void showContextVisualizationWindow() {
         System.out.println("[GUIAgent] Showing the Context Visualization Window.");
         this.cvf.setVisible(true);
+        startBlinking();
     }
 
     public void showMemoryMonitor() {
@@ -150,6 +171,7 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
             this.getContainerController().createNewAgent("RMA", "jade.tools.rma.rma", null).start();
         } catch (Exception ex) {
         }
+        
     }
 
     public void addIndividual(final String name) {
@@ -179,7 +201,24 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
         });
     }
 
+    public void startBlinking(){
+    ActionListener timerTask = new ActionListener(){
+         public void actionPerformed(ActionEvent e){
+              alternate = !alternate;
+                    for ( int i = 0 ;  i< brokenResources.size();i++ )
+                    {
+                        cvf.setColor(brokenResources.get(i), alternate);
+                    }
+         }
+         };
+         timer = new Timer(700, timerTask);
+
+         timer.start();
+        
+      
+     }
     public void startRealTimePlot(long interval) {
         this.addBehaviour(new LiveGraphGUIBehaviour(this, owlModel, interval));
+      
     }
 }
