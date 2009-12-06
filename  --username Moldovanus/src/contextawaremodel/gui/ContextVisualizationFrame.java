@@ -8,6 +8,15 @@ import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.geometry.Text2D;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.awt.BorderLayout;
+import com.sun.j3d.utils.universe.SimpleUniverse;
+import com.sun.j3d.utils.geometry.Sphere;
+import javax.media.j3d.BranchGroup;
+import javax.vecmath.Color3f;
+import javax.media.j3d.Appearance;
+import javax.media.j3d.Material;
+import javax.media.j3d.DirectionalLight;
+
+
 import java.awt.Color;
 import java.awt.GraphicsConfiguration;
 import java.util.Hashtable;
@@ -45,7 +54,7 @@ public class ContextVisualizationFrame extends JFrame {
     private Appearance influenceVolumeAppereance;
     private Appearance sensorAppereance;
     private Hashtable<String, Text2D> textObjects;
-
+    private Hashtable<String, Sphere> sensorObjects;
     public ContextVisualizationFrame(GUIAgent guia) {
 
         setSize(800, 500);
@@ -67,6 +76,7 @@ public class ContextVisualizationFrame extends JFrame {
 
         simpleUniverse = new SimpleUniverse(canvas3d);
         textObjects = new Hashtable<String, Text2D>();
+        sensorObjects = new Hashtable<String, Sphere>();
         scene = new BranchGroup();
 
         TransformGroup vpTrans = simpleUniverse.getViewingPlatform().getViewPlatformTransform();
@@ -180,14 +190,14 @@ public class ContextVisualizationFrame extends JFrame {
 
         contextObjects.addChild(ambientLight);
         contextObjects.addChild(directionalLight);
-
+        
         return contextObjects;
     }
 
     public synchronized void addSensor(String name, float x, float y, float z, float radius) {
         // Create the two spheres representing the sensor 
         TransformGroup newNode = new TransformGroup();
-        Sphere s1 = new Sphere(0.05f, getSensorAppereance());
+        Sphere s1 = new Sphere(0.05f,Sphere.ENABLE_APPEARANCE_MODIFY | Sphere.ALLOW_LOCAL_TO_VWORLD_READ | Sphere.ALLOW_CHILDREN_WRITE | Sphere.ALLOW_CHILDREN_READ | Sphere.ALLOW_CHILDREN_EXTEND |Sphere.ALLOW_LOCALE_READ, getSensorAppereance());
         Sphere s2 = new Sphere(radius, getInfluenceVolumeAppereance());
 
         // Add a node to invert the rotation tranform applied to the world,
@@ -206,6 +216,8 @@ public class ContextVisualizationFrame extends JFrame {
         text.getAppearance().setCapability(Appearance.ALLOW_TEXTURE_WRITE);
         text.setCapability(Text2D.ALLOW_GEOMETRY_WRITE);
         text.setCapability(Text2D.ALLOW_GEOMETRY_READ);
+        text.setCapability(Text2D.ALLOW_APPEARANCE_OVERRIDE_WRITE);
+        text.setCapability(Text2D.ALLOW_GEOMETRY_WRITE);
         //text.setCapability(Text2D.ALLOW_APPEARANCE_WRITE);
         invertRotation.addChild(text);
 
@@ -224,6 +236,7 @@ public class ContextVisualizationFrame extends JFrame {
         newBranch.compile();
         contextObjects.addChild(newBranch);
         textObjects.put(name, text);
+        sensorObjects.put(name, s1);
     }
 
     private Appearance getInfluenceVolumeAppereance() {
@@ -244,6 +257,10 @@ public class ContextVisualizationFrame extends JFrame {
             return sensorAppereance;
         }
         sensorAppereance = new Appearance();
+        sensorAppereance.setCapability(Appearance.ALLOW_COLORING_ATTRIBUTES_READ);
+        sensorAppereance.setCapability(Appearance.ALLOW_COLORING_ATTRIBUTES_WRITE);
+        sensorAppereance.setCapability(Appearance.ALLOW_MATERIAL_WRITE);
+        sensorAppereance.setCapability(Appearance.ALLOW_TEXGEN_WRITE);
         Material m = new Material();
         m.setDiffuseColor(0.0f, 0.0f, 1.0f);
         m.setAmbientColor(0.0f, 0.0f, 1.0f);
@@ -260,11 +277,41 @@ public class ContextVisualizationFrame extends JFrame {
         float f = text.getRectangleScaleFactor();
         try {
             text.setString(name + ": " + newValue);
-            text.setRectangleScaleFactor(f);
-        } catch (Exception e) {}
+             text.setRectangleScaleFactor(f);
+        } catch (Exception e) {
+        System.out.println(e.getCause());
+        }
     }
 
+    public void setColor(String name, Boolean alternate)
+    {
+           if ( !this.isActive() ) return;
+        if ( !textObjects.containsKey(name) ) return;
+           try{
+      Sphere s1= sensorObjects.get(name);
+      if (alternate)
+      {
 
+        Material m = new Material();
+        m.setDiffuseColor(1.0f, 0.0f, 0.0f);
+        m.setAmbientColor(1.0f, 0.0f, 0.0f);
+        m.setShininess(10.0f);
+        m.setSpecularColor(1.0f, 0.0f, 0.0f);
+
+            s1.getAppearance().setMaterial(m);
+           }else
+            {
+
+        Material m = new Material();
+        m.setDiffuseColor(0.0f, 0.0f, 1.0f);
+        m.setAmbientColor(0.0f, 0.0f, 1.0f);
+        m.setShininess(20.0f);
+        m.setSpecularColor(1.0f, 1.0f, 1.0f);
+        s1.getAppearance().setMaterial(m);
+      }}catch(Exception e){
+          System.out.println(e.getCause());
+      }
+    }
 
     public static void main(String[] args) {
         (new ContextVisualizationFrame(null)).setVisible(true);
