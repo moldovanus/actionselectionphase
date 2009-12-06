@@ -29,6 +29,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     public void addIndividual(String name) {
         ((OntologyTreeModel) ontologyTree.getModel()).addIndividual(name);
+        
         ontologyTree.repaint();
     }
 

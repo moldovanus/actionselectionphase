@@ -96,6 +96,6 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
         float f = (new Random()).nextFloat() * 2;
-        setValue(3.0f);
+        setValue(1.0f);
     }
 }
