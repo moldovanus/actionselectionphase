@@ -71,7 +71,7 @@ public class LiveGraphGUIBehaviour extends TickerBehaviour {
                 RDFResource sensor = it.next();
                 String propertyValue = sensor.getPropertyValue(valueProperty).toString();
                 double sensorValue = Double.parseDouble(propertyValue.split(" ")[0]);
-                out.setDataValue(sensor.getName(), sensorValue);
+                out.setDataValue(sensor.getName(), sensorValue); 
             } catch ( Exception e) {
                 //out.setDataValue(" ");
             }

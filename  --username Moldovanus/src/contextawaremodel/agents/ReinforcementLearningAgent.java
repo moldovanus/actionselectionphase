@@ -8,8 +8,10 @@ import actionselection.context.Memory;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import contextawaremodel.GlobalVars;
 import contextawaremodel.agents.behaviours.ContextDisturbingBehaviour;
+import contextawaremodel.agents.behaviours.ReceiveMessageRLBehaviour;
 import contextawaremodel.agents.behaviours.ReinforcementLearningBasicBehaviour;
 
+import contextawaremodel.agents.behaviours.StoreMemoryBehaviour;
 import edu.stanford.smi.protegex.owl.ProtegeOWL;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
@@ -42,18 +44,7 @@ public class ReinforcementLearningAgent extends Agent {
         Object[] args = getArguments();
         if (args != null) {
 
-            File memoryFile = new File(GlobalVars.MEMORY_FILE);
-            try {
-                FileInputStream fileInputStream = new FileInputStream(memoryFile);
-                ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
-                memory = (Memory) inputStream.readObject();
-            } catch (FileNotFoundException ex) {
-                memory = new Memory();
-            } catch (IOException ex) {
-                memory = new Memory();
-            } catch (ClassNotFoundException ex) {
-                memory = new Memory();
-            }
+
 
             this.contextAwareModel = (OWLModel) args[0];
             try {
@@ -61,10 +52,12 @@ public class ReinforcementLearningAgent extends Agent {
                 File file = new File(GlobalVars.ONTOLOGY_FILE);
                 jenaOwlModel = ProtegeOWL.createJenaOWLModelFromURI(file.toURI().toString());
 
+
+
                 // politici
                 PoliciesHandler policiesHandler = new PoliciesHandler();
                 policiesHandler.loadPolicies(GlobalVars.POLICIES_FILE);
-                List<String> swrlCode = policiesHandler.getPoliciesConverter().convertAllPolicies();
+                //List<String> swrlCode = policiesHandler.getPoliciesConverter().convertAllPolicies();
 
                 // adaugare reguli in ontologie
                 /*SWRLFactory factory = new SWRLFactory(owlModel);
@@ -75,9 +68,29 @@ public class ReinforcementLearningAgent extends Agent {
 
                 policyConversionModel = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
                 policyConversionModel.add(jenaOwlModel.getJenaModel());
+
+
+                File memoryFile = new File(GlobalVars.MEMORY_FILE);
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(memoryFile);
+                    ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
+                    memory = (Memory) inputStream.readObject();
+                    memory.restoreOwlModel(policyConversionModel);
+                } catch (FileNotFoundException ex) {
+                    System.err.println(ex.getMessage());
+                    memory = new Memory();
+                } catch (IOException ex) {
+                    System.err.println(ex.getMessage());
+                    memory = new Memory();
+                } catch (ClassNotFoundException ex) {
+                    System.err.println(ex.getMessage());
+                    memory = new Memory();
+                }
+
                 addBehaviour(new ReinforcementLearningBasicBehaviour(this, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
-                addBehaviour(new ContextDisturbingBehaviour(this,10000,policyConversionModel));
-                //addBehaviour(new StoreMemoryBehaviour(this, 1000, memory));
+                addBehaviour(new ContextDisturbingBehaviour(this, 10000, policyConversionModel));
+                addBehaviour(new ReceiveMessageRLBehaviour(this, contextAwareModel, policyConversionModel));
+                addBehaviour(new StoreMemoryBehaviour(this, 1000, memory));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -88,5 +101,6 @@ public class ReinforcementLearningAgent extends Agent {
             this.policyConversionModel = null;
             System.out.println("[RL] RL Agent failed, owlModel arguments are null!");
         }
+
     }
 }

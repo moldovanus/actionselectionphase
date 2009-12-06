@@ -47,6 +47,25 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                             });
 
                     break;
+                case ACLMessage.INFORM_REF:
+                    String individualName_2 = (String) message.getContentObject();
+                    final RDFResource individual_2 = owlModel.getRDFResource(individualName_2);
+                    if (!individual_2.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
+                        return;
+                    }
+
+                    RDFProperty urlProperty_2 = owlModel.getRDFProperty("has-web-service-URI");
+                    final RDFProperty valueProperty_2 = owlModel.getRDFProperty("has-value-of-service");
+                    String url_2 = individual_2.getPropertyValue(urlProperty_2).toString();
+                    SensorAPI.addSensorListener(url_2,
+                            new SensorListener() {
+
+                                public void valueChanged(double newValue) {
+                                    individual_2.setPropertyValue(valueProperty_2, String.format("%1$2.2f", newValue));
+                                }
+                            });
+
+                    break;
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.err);
