@@ -1,5 +1,6 @@
 package contextawaremodel.sensorapi;
 
+import contextawaremodel.GlobalVars;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -115,13 +116,13 @@ class MyHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, org.xml.sax.Attributes attributes) throws SAXException {
-        if (localName.equals("double")) {
+        if (localName.equals(GlobalVars.XML_ELEMENT)) {
             inDouble = true;
         }
     }
 
     public void endElement(String namespaceURI, String localName, String qualifiedName) throws SAXException {
-        if (localName.equals("double")) {
+        if (localName.equals(GlobalVars.XML_ELEMENT)) {
             inDouble = false;
         }
     }

@@ -5,14 +5,14 @@
 		<data-property data-name="has-position-Y" data-value="24 m"/>
 	</context-element> 
 
-	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="TemperatureSensorI">
+	<!--<context-element ontology-class-name="temperature-sensor" ontology-individual-name="TemperatureSensorI">
 		<data-property data-name="has-position-X" data-value="0 m"/>
 		<data-property data-name="has-position-Y" data-value="0 m"/>
 		<data-property data-name="has-position-Z" data-value="0 m"/>
 		<data-property data-name="has-influence-Radius" data-value="5 m"/>
 		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
 		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/RandomTemperatureSensorWS.asmx/GetSensorValue"/>
-	</context-element>
+	</context-element> -->
 		<!--
     
  	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Temperature actuator">

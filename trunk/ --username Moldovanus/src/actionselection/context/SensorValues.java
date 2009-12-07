@@ -22,16 +22,16 @@ import java.util.logging.Logger;
  *
  * @author Administrator
  */
-public class SensorValues implements Serializable{
+public class SensorValues implements Serializable {
 
-    private Map<String, Double> myMap;
+    private Map<String, Integer> myMap;
 
     public SensorValues() {
-        myMap = new HashMap<String, Double>();
+        myMap = new HashMap<String, Integer>();
     }
 
-    public SensorValues(OntModel model,JenaOWLModel owlModel, String base) {
-        myMap = new HashMap<String,Double> ();
+    public SensorValues(OntModel model, JenaOWLModel owlModel, String base) {
+        myMap = new HashMap<String, Integer>();
         Collection<RDFResource> resources = owlModel.getRDFResources();
         for (RDFResource resource : resources) {
             if (resource.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
@@ -45,7 +45,7 @@ public class SensorValues implements Serializable{
                 Property resValue = model.getDatatypeProperty(base + "#has-value-of-service");
                 String init = res.getPropertyValue(resValue).toString();
                 try {
-                    myMap.put(name, new Double((NumberFormat.getNumberInstance()).parse(init.split("\\^")[0]).doubleValue()));
+                    myMap.put(name, new Integer((NumberFormat.getIntegerInstance()).parse(init.split("\\^")[0]).intValue()));
                 } catch (ParseException ex) {
                     Logger.getLogger(SensorValues.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -53,7 +53,6 @@ public class SensorValues implements Serializable{
             }
         }
     }
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -73,21 +72,20 @@ public class SensorValues implements Serializable{
         hash = 53 * hash + (this.myMap != null ? this.myMap.hashCode() : 0);
         return hash;
     }
-    public
 
-     Double getValue(String sensorName) {
+    public Integer getValue(String sensorName) {
         return myMap.get(sensorName);
     }
 
-    public void setValue(String sensorName, Double value) {
+    public void setValue(String sensorName, Integer value) {
         myMap.put(sensorName, value);
     }
 
-    public Map<String, Double> getMyMap() {
+    public Map<String, Integer> getMyMap() {
         return myMap;
     }
 
-    public void setMyMap(Map<String, Double> myMap) {
+    public void setMyMap(Map<String, Integer> myMap) {
         this.myMap = myMap;
     }
 
@@ -98,11 +96,9 @@ public class SensorValues implements Serializable{
     @Override
     public String toString() {
         String stringValue = "";
-        for (String key : myMap.keySet()){
+        for (String key : myMap.keySet()) {
             stringValue += "[ " + key + ": " + myMap.get(key) + "]  ";
         }
         return stringValue;
     }
-
-
 }

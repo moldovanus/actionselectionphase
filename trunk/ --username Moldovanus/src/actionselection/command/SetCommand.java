@@ -20,24 +20,27 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Administrator
+ * @author Me
  */
-public class DecrementCommand extends Command {
+public class SetCommand extends Command {
 
-    private int decrementValue = 1;
+    private int newValue = 1;
+    private int previousValue = 1;
 
-    public int getDecrementValue() {
-        return decrementValue;
+    public SetCommand(String targetIndividual, String targetProperty, String hasWebService, OntModel policyConversionModel, int incrementValue) {
+        super(targetIndividual, targetProperty, hasWebService, policyConversionModel);
+        this.newValue = incrementValue;
     }
 
-    public void setDecrementValue(int decrementValue) {
-        this.decrementValue = decrementValue;
+    public int getNewValue() {
+        return newValue;
     }
 
-    public DecrementCommand(String targetIndividualName, String targetPropertyName, String hasWebServicePropertyName, OntModel policyConversionModel, int decrementValue) {
-        super(targetIndividualName, targetPropertyName, hasWebServicePropertyName, policyConversionModel);
-        this.decrementValue = decrementValue;
+    public void setNewValue(int newValue) {
+        this.newValue = newValue;
     }
+
+    
 
     @Override
     public void execute() {
@@ -46,10 +49,10 @@ public class DecrementCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
-            int value = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
-            value -= decrementValue;
+            previousValue = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
+
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
-                    targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));
+                    targetIndividual, targetProperty, newValue).getLiteral().as(RDFNode.class));
         } catch (java.text.ParseException ex) {
             Logger.getLogger(IncrementCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,20 +64,14 @@ public class DecrementCommand extends Command {
         Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
         Property targetProperty = policyConversionModel.getProperty(targetPropertyName);
 
-        RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
-        try {
-            int value = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
-            value += decrementValue;
-            targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
-                    targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));
-        } catch (java.text.ParseException ex) {
-            Logger.getLogger(IncrementCommand.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
+                targetIndividual, targetProperty, previousValue).getLiteral().as(RDFNode.class));
+
     }
 
     @Override
     public String toString() {
-        return "Decrement " + targetIndividualName + " by " + decrementValue;
+        return "Set " + targetIndividualName + " to " + newValue;
     }
 
     @Override
