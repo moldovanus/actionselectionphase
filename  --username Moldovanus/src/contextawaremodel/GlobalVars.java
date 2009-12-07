@@ -1,7 +1,7 @@
 package contextawaremodel;
 
 public class GlobalVars {
-
+    public static final String XML_ELEMENT = "int";
     public static final String CONTEXT_INSTANCE_MODIFIED = "Context instance modified";
     public static final String base = "http://www.owl-ontologies.com/Ontology1230214892.owl";
     public static final String CIAGENT_NAME = "CIAgent";

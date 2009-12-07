@@ -32,12 +32,12 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
         this.policyConversionModel = policyConversionModel;
     }
 
-    public synchronized void setValue(float value) {
+    public synchronized void setValue(int value) {
         String xmldata =
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                 "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
                 "<soap12:Body>" +
-                "<SetSensorValue xmlns=\"http://tempuri.org/\">\n<value>" + Float.toString(value) + "</value>\n</SetSensorValue> \n" +
+                "<SetSensorValue xmlns=\"http://tempuri.org/\">\n<value>" +Integer.toString(value) + "</value>\n</SetSensorValue> \n" +
                 "</soap12:Body>\n" +
                 "</soap12:Envelope>";
 
@@ -95,7 +95,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
 
     @Override
     protected void onTick() {
-        float f = (new Random()).nextFloat() * 2;
-        setValue(1.0f);
+        int f = (new Random()).nextInt() * 2;
+        setValue(1);
     }
 }

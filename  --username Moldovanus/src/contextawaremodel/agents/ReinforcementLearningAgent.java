@@ -75,7 +75,8 @@ public class ReinforcementLearningAgent extends Agent {
                     FileInputStream fileInputStream = new FileInputStream(memoryFile);
                     ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
                     memory = (Memory) inputStream.readObject();
-                    memory.restoreOwlModel(policyConversionModel);
+                    //memory.restoreOwlModel(policyConversionModel);
+                    memory = new Memory();
                 } catch (FileNotFoundException ex) {
                     System.err.println(ex.getMessage());
                     memory = new Memory();

@@ -7,16 +7,7 @@ package actionselection.context;
 import actionselection.command.Command;
 import com.hp.hpl.jena.ontology.OntModel;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

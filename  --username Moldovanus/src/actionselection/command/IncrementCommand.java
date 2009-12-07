@@ -24,18 +24,18 @@ import java.util.logging.Logger;
  */
 public class IncrementCommand extends Command {
 
-    private float incrementValue = 0.1f;
+    private int incrementValue = 1;
 
-    public IncrementCommand(String targetIndividual, String targetProperty, String hasWebService, OntModel policyConversionModel, float incrementValue) {
+    public IncrementCommand(String targetIndividual, String targetProperty, String hasWebService, OntModel policyConversionModel, int incrementValue) {
         super(targetIndividual, targetProperty, hasWebService, policyConversionModel);
         this.incrementValue = incrementValue;
     }
 
-    public double getIncrementValue() {
+    public int getIncrementValue() {
         return incrementValue;
     }
 
-    public void setIncrementValue(float incrementValue) {
+    public void setIncrementValue(int incrementValue) {
         this.incrementValue = incrementValue;
     }
 
@@ -46,7 +46,7 @@ public class IncrementCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
-            float value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
+            int value = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
             value += incrementValue;
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
                     targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));
@@ -63,7 +63,7 @@ public class IncrementCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
-            float value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
+            int value = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
             value -= incrementValue;
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
                     targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));
