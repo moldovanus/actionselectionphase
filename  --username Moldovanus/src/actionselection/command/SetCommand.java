@@ -40,8 +40,6 @@ public class SetCommand extends Command {
         this.newValue = newValue;
     }
 
-    
-
     @Override
     public void execute() {
         Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
@@ -49,7 +47,7 @@ public class SetCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
-            previousValue = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
+            previousValue = integerNumberFormat.parse(rdfValue.toString().split("\\^")[0]).intValue();
 
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
                     targetIndividual, targetProperty, newValue).getLiteral().as(RDFNode.class));
@@ -84,9 +82,9 @@ public class SetCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
 
-        float value = 0.0f;
+        int value = 0;
         try {
-            value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
+            value = integerNumberFormat.parse(rdfValue.toString().split("\\^")[0]).intValue();
         } catch (ParseException ex) {
             Logger.getLogger(IncrementCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

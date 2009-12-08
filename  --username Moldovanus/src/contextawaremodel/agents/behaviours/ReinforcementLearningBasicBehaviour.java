@@ -51,10 +51,10 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private OWLModel contextAwareModel;
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private JenaOWLModel owlModel;
-    private HashMap<SensorValues, SensorValues> checkCycles;
     private Memory memory;
     private Property evaluatePolicyProperty;
     private Property hasWebServiceProperty;
+    private NumberFormat integerNumberFormat = NumberFormat.getIntegerInstance();
 
     public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
         super(a, 1000);
@@ -79,12 +79,14 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     if (brokenPolicy == null) {
                         brokenPolicy = policy;
                     }
-                     //System.err.println("!!!!!! Broken " + policy);
+                    //System.err.println("!!!!!! Broken " + policy);
                     entropy++;
                 }
             }
         }
-        //System.err.println("!!!!!! Entropy : " + entropy + " Broken " + brokenPolicy);
+        //SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
+        System.err.println("!!!!!! Entropy : " + entropy + " Broken " + brokenPolicy);
+        //System.err.println("for " + currentValues);
         return new Pair<Double, Individual>(entropy, brokenPolicy);
     }
 
@@ -156,7 +158,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     //get the resource as individual from the global model such that getPropertyValue can be called on it
                     Individual sensor = model.getIndividual(attachedResource.toString());
 
-                   // System.err.println("Sensor : " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
+                    // System.err.println("Sensor : " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
 
                     //get all actuators associated to the current sensor
                     StmtIterator associatedActuators = sensor.listProperties(associatedActuatorProperty);
@@ -189,11 +191,16 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                             if (firstChar == '+') {
                                 try {
                                     String numberString = effect.substring(1, effect.length());
-                                    int value = NumberFormat.getIntegerInstance().parse(numberString).intValue();
+                                    int value = integerNumberFormat.parse(numberString).intValue();
                                     IncrementCommand incrementCommand = new IncrementCommand(sensor.toString(), sensorValueProperty.toString(), hasWebServiceProperty.toString(), model, value);
                                     Queue<Command> incrementQueue = new LinkedList(context.getActions());
+
+                                    //System.err.println("Before: Sensor  " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
+
                                     incrementCommand.execute();
                                     incrementQueue.add(incrementCommand);
+                                    //System.err.println(incrementCommand);
+                                    //System.err.println("After : Sensor  " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
 
                                     ContextSnapshot afterIncrement = new ContextSnapshot(model, incrementQueue, context.getJenaOwlModel());
                                     queue.add(afterIncrement);
@@ -205,11 +212,19 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                             } else if (firstChar == '-') {
                                 try {
                                     String numberString = effect.substring(1, effect.length());
-                                    int value = NumberFormat.getIntegerInstance().parse(numberString).intValue();
+                                    int value = integerNumberFormat.parse(numberString).intValue();
                                     Queue<Command> decrementQueue = new LinkedList(context.getActions());
                                     DecrementCommand decrementCommand = new DecrementCommand(sensor.toString(), sensorValueProperty.toString(), hasWebServiceProperty.toString(), model, value);
+
+
+                                   // System.err.println("Before: Sensor  " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
+
                                     decrementCommand.execute();
                                     decrementQueue.add(decrementCommand);
+
+                                    //System.err.println(decrementCommand);
+                                    //System.err.println("After : Sensor  " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
+
 
                                     ContextSnapshot afterDecrement = new ContextSnapshot(model, decrementQueue, context.getJenaOwlModel());
                                     queue.add(afterDecrement);
@@ -221,14 +236,29 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                             } else if (firstChar >= '0' && firstChar <= '9') {
                                 try {
                                     String numberString = effect.substring(0, effect.length());
-                                    int value = NumberFormat.getIntegerInstance().parse(numberString).intValue();
-                                    Queue<Command> setCommandQueue = new LinkedList(context.getActions());
+                                    int value = integerNumberFormat.parse(numberString).intValue();
+                                   
                                     SetCommand setCommand = new SetCommand(sensor.toString(), sensorValueProperty.toString(), hasWebServiceProperty.toString(), model, value);
-                                    setCommand.execute();
-                                    setCommandQueue.add(setCommand);
 
-                                    ContextSnapshot afterSet = new ContextSnapshot(model, setCommandQueue, context.getJenaOwlModel());
-                                    queue.add(afterSet);
+                                    int before = integerNumberFormat.parse(sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]).intValue();
+                                   // System.err.println("Before: Sensor  " + sensor + " value :" + before);
+
+
+                                    setCommand.execute();
+                                    
+
+                                    int after = integerNumberFormat.parse(sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]).intValue();
+
+                                   // System.err.println(setCommand);
+                                   // System.err.println("After : Sensor  " + sensor + " value :" + sensor.getPropertyValue(sensorValueProperty).toString().split("\\^")[0]);
+
+                                    if (after != before) {
+                                       // System.err.println("Action added");
+                                        Queue<Command> setCommandQueue = new LinkedList(context.getActions());
+                                        setCommandQueue.add(setCommand);
+                                        ContextSnapshot afterSet = new ContextSnapshot(model, setCommandQueue, context.getJenaOwlModel());
+                                        queue.add(afterSet);
+                                    }
                                     setCommand.rewind();
 
                                 } catch (ParseException ex) {
@@ -240,7 +270,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                         }
                     }
                 }
-                 //System.err.println("\n");
+                //System.err.println("\n");
 
                 if (queue.peek() == null) {
                     System.err.println("EMPTY QUEUE");

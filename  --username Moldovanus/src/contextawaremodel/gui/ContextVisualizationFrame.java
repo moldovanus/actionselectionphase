@@ -55,6 +55,7 @@ public class ContextVisualizationFrame extends JFrame {
     private Appearance sensorAppereance;
     private Hashtable<String, Text2D> textObjects;
     private Hashtable<String, Sphere> sensorObjects;
+
     public ContextVisualizationFrame(GUIAgent guia) {
 
         setSize(800, 500);
@@ -62,6 +63,7 @@ public class ContextVisualizationFrame extends JFrame {
         setLayout(new BorderLayout());
         GraphicsConfiguration config = SimpleUniverse.getPreferredConfiguration();
         canvas3d = new Canvas3D(config) {
+
             @Override
             public void postRender() {
                 J3DGraphics2D g2d = getGraphics2D();
@@ -113,7 +115,7 @@ public class ContextVisualizationFrame extends JFrame {
 
         // Stepback a little so we can see the whole scene
         Transform3D stepback = new Transform3D();
-        stepback.setTranslation(new Vector3d(0,0,10));
+        stepback.setTranslation(new Vector3d(0, 0, 10));
         vpTrans.setTransform(stepback);
 
         // Start rendering
@@ -190,14 +192,14 @@ public class ContextVisualizationFrame extends JFrame {
 
         contextObjects.addChild(ambientLight);
         contextObjects.addChild(directionalLight);
-        
+
         return contextObjects;
     }
 
     public synchronized void addSensor(String name, float x, float y, float z, float radius) {
         // Create the two spheres representing the sensor 
         TransformGroup newNode = new TransformGroup();
-        Sphere s1 = new Sphere(0.05f,Sphere.ENABLE_APPEARANCE_MODIFY | Sphere.ALLOW_LOCAL_TO_VWORLD_READ | Sphere.ALLOW_CHILDREN_WRITE | Sphere.ALLOW_CHILDREN_READ | Sphere.ALLOW_CHILDREN_EXTEND |Sphere.ALLOW_LOCALE_READ, getSensorAppereance());
+        Sphere s1 = new Sphere(0.05f, Sphere.ENABLE_APPEARANCE_MODIFY | Sphere.ALLOW_LOCAL_TO_VWORLD_READ | Sphere.ALLOW_CHILDREN_WRITE | Sphere.ALLOW_CHILDREN_READ | Sphere.ALLOW_CHILDREN_EXTEND | Sphere.ALLOW_LOCALE_READ, getSensorAppereance());
         Sphere s2 = new Sphere(radius, getInfluenceVolumeAppereance());
 
         // Add a node to invert the rotation tranform applied to the world,
@@ -212,7 +214,7 @@ public class ContextVisualizationFrame extends JFrame {
         newNode.addChild(myMouseRotate);
 
         // Create the text element
-        Text2D text = new Text2D(name, new Color3f(0,0,0), "Helvetica", 60, 0);
+        Text2D text = new Text2D(name, new Color3f(0, 0, 0), "Helvetica", 60, 0);
         text.getAppearance().setCapability(Appearance.ALLOW_TEXTURE_WRITE);
         text.setCapability(Text2D.ALLOW_GEOMETRY_WRITE);
         text.setCapability(Text2D.ALLOW_GEOMETRY_READ);
@@ -271,50 +273,55 @@ public class ContextVisualizationFrame extends JFrame {
     }
 
     public void updateText(String name, String newValue) {
-        if ( !this.isActive() ) return;
-        if ( !textObjects.containsKey(name) ) return;
+        if (!this.isActive()) {
+            return;
+        }
+        if (!textObjects.containsKey(name)) {
+            return;
+        }
         Text2D text = textObjects.get(name);
-        float f = text.getRectangleScaleFactor();
+        //float f = text.getRectangleScaleFactor();
         try {
             text.setString(name + ": " + newValue);
-             text.setRectangleScaleFactor(f);
+           // text.setRectangleScaleFactor(f);
         } catch (Exception e) {
-        System.out.println(e.getCause());
+            System.out.println(e.getCause());
         }
     }
 
-    public void setColor(String name, Boolean alternate)
-    {
-           if ( !this.isActive() ) return;
-        if ( !textObjects.containsKey(name) ) return;
-           try{
-      Sphere s1= sensorObjects.get(name);
-      if (alternate)
-      {
+    public void setColor(String name, Boolean alternate) {
+        if (!this.isActive()) {
+            return;
+        }
+        if (!textObjects.containsKey(name)) {
+            return;
+        }
+        try {
+            Sphere s1 = sensorObjects.get(name);
+            if (alternate) {
 
-        Material m = new Material();
-        m.setDiffuseColor(1.0f, 0.0f, 0.0f);
-        m.setAmbientColor(1.0f, 0.0f, 0.0f);
-        m.setShininess(10.0f);
-        m.setSpecularColor(1.0f, 0.0f, 0.0f);
+                Material m = new Material();
+                m.setDiffuseColor(1.0f, 0.0f, 0.0f);
+                m.setAmbientColor(1.0f, 0.0f, 0.0f);
+                m.setShininess(10.0f);
+                m.setSpecularColor(1.0f, 0.0f, 0.0f);
 
-            s1.getAppearance().setMaterial(m);
-           }else
-            {
+                s1.getAppearance().setMaterial(m);
+            } else {
 
-        Material m = new Material();
-        m.setDiffuseColor(0.0f, 0.0f, 1.0f);
-        m.setAmbientColor(0.0f, 0.0f, 1.0f);
-        m.setShininess(20.0f);
-        m.setSpecularColor(1.0f, 1.0f, 1.0f);
-        s1.getAppearance().setMaterial(m);
-      }}catch(Exception e){
-          System.out.println(e.getCause());
-      }
+                Material m = new Material();
+                m.setDiffuseColor(0.0f, 0.0f, 1.0f);
+                m.setAmbientColor(0.0f, 0.0f, 1.0f);
+                m.setShininess(20.0f);
+                m.setSpecularColor(1.0f, 1.0f, 1.0f);
+                s1.getAppearance().setMaterial(m);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+        }
     }
 
     public static void main(String[] args) {
         (new ContextVisualizationFrame(null)).setVisible(true);
     }
-
 }
