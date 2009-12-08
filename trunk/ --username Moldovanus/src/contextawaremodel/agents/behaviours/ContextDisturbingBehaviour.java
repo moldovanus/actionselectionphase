@@ -105,8 +105,13 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
         setValue(5);
         SetCommand command = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1);
-        //command.execute();
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+        command.execute();
+
+         SetCommand command2 = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 13);
+        command2.execute();
         
     }
 }
