@@ -20,6 +20,8 @@ public abstract class Command implements Serializable {
     protected transient com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     protected NumberFormat integerNumberFormat = NumberFormat.getIntegerInstance();
 
+
+    
     public Command(String targetIndividual, String targetProperty, String hasWebService, OntModel policyConversionModel) {
         this.targetIndividualName = targetIndividual;
         this.targetPropertyName = targetProperty;
