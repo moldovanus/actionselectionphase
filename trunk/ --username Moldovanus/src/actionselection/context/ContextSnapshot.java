@@ -18,12 +18,23 @@ public class ContextSnapshot {
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private Queue<Command> actions;
     private JenaOWLModel jenaOwlModel;
+    //private SensorValues currentValues ;
+    private double contextEntropy = 0;
 
     public ContextSnapshot(final OntModel policyConversionModel, final Queue<Command> actions, final JenaOWLModel owlModel) {
         this.policyConversionModel = policyConversionModel;
         this.actions = actions;
         this.jenaOwlModel = owlModel;
     }
+
+    public double getContextEntropy() {
+        return contextEntropy;
+    }
+
+    public void setContextEntropy(double contextEntropy) {
+        this.contextEntropy = contextEntropy;
+    }
+
 
     public void addActions(Queue<Command> commands){
         for(Command command:commands){
@@ -72,5 +83,13 @@ public class ContextSnapshot {
     public void setPolicyConversionModel(OntModel policyConversionModel) {
         this.policyConversionModel = policyConversionModel;
     }
+
+    //public SensorValues getCurrentValues() {
+   //     return currentValues;
+    //}
+
+   // public void setCurrentValues(SensorValues currentValues) {
+       // this.currentValues = currentValues;
+   // }
    
 }
