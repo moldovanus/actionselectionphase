@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +45,7 @@ public class IncrementCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
-            int value = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
+            int value = integerNumberFormat.parse(rdfValue.toString().split("\\^")[0]).intValue();
             value += incrementValue;
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
                     targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));
@@ -63,7 +62,7 @@ public class IncrementCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
         try {
-            int value = (NumberFormat.getIntegerInstance()).parse(rdfValue.toString().split("\\^")[0]).intValue();
+            int value = integerNumberFormat.parse(rdfValue.toString().split("\\^")[0]).intValue();
             value -= incrementValue;
             targetIndividual.setPropertyValue(targetProperty, policyConversionModel.createLiteralStatement(
                     targetIndividual, targetProperty, value).getLiteral().as(RDFNode.class));
@@ -74,7 +73,7 @@ public class IncrementCommand extends Command {
 
     @Override
     public String toString() {
-        return "Decrement " + targetIndividualName + " by " + incrementValue;
+        return "Increment " + targetIndividualName + " by " + incrementValue;
     }
 
     @Override
@@ -87,9 +86,9 @@ public class IncrementCommand extends Command {
 
         RDFNode rdfValue = targetIndividual.getPropertyValue(targetProperty);
 
-        float value = 0.0f;
+        int value = 0;
         try {
-            value = (NumberFormat.getNumberInstance()).parse(rdfValue.toString().split("\\^")[0]).floatValue();
+            value = integerNumberFormat.parse(rdfValue.toString().split("\\^")[0]).intValue();
         } catch (ParseException ex) {
             Logger.getLogger(IncrementCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

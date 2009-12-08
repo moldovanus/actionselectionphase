@@ -6,6 +6,7 @@ package actionselection.command;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import java.io.Serializable;
+import java.text.NumberFormat;
 
 /**
  *
@@ -17,6 +18,7 @@ public abstract class Command implements Serializable {
     protected String targetPropertyName;
     protected String hasWebServicePropertyName;
     protected transient com.hp.hpl.jena.ontology.OntModel policyConversionModel;
+    protected NumberFormat integerNumberFormat = NumberFormat.getIntegerInstance();
 
     public Command(String targetIndividual, String targetProperty, String hasWebService, OntModel policyConversionModel) {
         this.targetIndividualName = targetIndividual;
