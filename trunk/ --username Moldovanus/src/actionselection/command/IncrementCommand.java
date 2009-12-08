@@ -8,8 +8,11 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import edu.stanford.smi.protegex.owl.inference.dig.translator.DIGVocabulary.Response;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -97,7 +100,7 @@ public class IncrementCommand extends Command {
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                 "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
                 "<soap12:Body>" +
-                "<SetSensorValue xmlns=\"http://tempuri.org/\">\n<value>" + Float.toString(value) + "</value>\n</SetSensorValue> \n" +
+                "<SetSensorValue xmlns=\"http://tempuri.org/\">\n<value>" + Integer.toString(value) + "</value>\n</SetSensorValue> \n" +
                 "</soap12:Body>\n" +
                 "</soap12:Envelope>";
 
@@ -133,12 +136,12 @@ public class IncrementCommand extends Command {
                 //Send data
                 wr.write(xmldata);// System.out.println(xmldata);
                 wr.flush();
-                /*BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-                // Response
+                BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                //Response
                 String line;
                 while ((line = rd.readLine()) != null) {
                 System.out.println(line);
-                }*/
+                }
 
 
                 sock.close();

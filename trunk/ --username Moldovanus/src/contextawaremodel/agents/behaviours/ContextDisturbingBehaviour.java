@@ -4,12 +4,12 @@
  */
 package contextawaremodel.agents.behaviours;
 
+import actionselection.command.Command;
 import actionselection.command.SetCommand;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import contextawaremodel.ontology.sensor;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import java.io.BufferedReader;
@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,10 +30,12 @@ import java.util.Random;
 public class ContextDisturbingBehaviour extends TickerBehaviour {
 
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
+    private List<Command> commands ;
 
     public ContextDisturbingBehaviour(Agent a, long period, OntModel policyConversionModel) {
         super(a, period);
         this.policyConversionModel = policyConversionModel;
+        commands = new ArrayList<Command>(5);
     }
 
     public synchronized void setValue(int value) {
@@ -98,10 +102,11 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
         int f = (new Random()).nextInt() * 2;
-        setValue(14);
+        setValue(5);
         SetCommand command = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1);
-        command.execute();
+        //command.execute();
+        
     }
 }

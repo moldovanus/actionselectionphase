@@ -93,7 +93,7 @@ public class SetCommand extends Command {
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                 "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
                 "<soap12:Body>" +
-                "<SetSensorValue xmlns=\"http://tempuri.org/\">\n<value>" + Float.toString(value) + "</value>\n</SetSensorValue> \n" +
+                "<SetSensorValue xmlns=\"http://tempuri.org/\">\n<value>" + Integer.toString(value) + "</value>\n</SetSensorValue> \n" +
                 "</soap12:Body>\n" +
                 "</soap12:Envelope>";
 

@@ -55,7 +55,6 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private Property evaluatePolicyProperty;
     private Property hasWebServiceProperty;
     private Property hasAcceptedValueProperty;
-
     private NumberFormat integerNumberFormat = NumberFormat.getIntegerInstance();
     private double smallestEntropy = 10000;
 
@@ -89,7 +88,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             }
         }
         //SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
-        System.err.println("Entropy : " + entropy + " Broken " + brokenPolicy);
+       // System.err.println("Entropy : " + entropy + " Broken " + brokenPolicy);
         //System.err.println("for " + currentValues);
         return new Pair<Double, Individual>(entropy, brokenPolicy);
     }
@@ -103,10 +102,10 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     }
 
     public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) throws Exception {
-        ContextSnapshot context = null;
-        do {
-            context = queue.remove();
-        } while ( context.getContextEntropy() > smallestEntropy);
+        ContextSnapshot context = queue.remove();
+        // do {
+        //    context = queue.remove();
+        // } while ( context.getContextEntropy() > smallestEntropy);
 
 
         SensorValues values = new SensorValues(context.getPolicyConversionModel(), context.getJenaOwlModel(), GlobalVars.base);
@@ -159,7 +158,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     Individual sensor = model.getIndividual(attachedResource.toString());
 
                     //skip sensor if its value respects the policy
-                    if (sensorHasAcceptableValue(sensor)){
+                    if (sensorHasAcceptableValue(sensor)) {
                         System.err.println("Sensor " + sensor + " respects policy");
                         continue;
                     }
