@@ -166,7 +166,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
                     //skip sensor if its value respects the policy
                     if (sensorHasAcceptableValue(sensor)) {
-                        System.err.println(sensor + " respects policy");
+                  //      System.err.println(sensor + " respects policy");
                         continue;
                     }
 

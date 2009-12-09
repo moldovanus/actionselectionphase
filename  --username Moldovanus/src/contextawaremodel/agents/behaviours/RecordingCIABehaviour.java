@@ -22,6 +22,7 @@ public class RecordingCIABehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
         // Create the directory path for recording
+        /*
         DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
         java.util.Date date = new java.util.Date();
         String pathName = "./logs/" + dateFormat.format(date);
@@ -31,7 +32,7 @@ public class RecordingCIABehaviour extends TickerBehaviour {
         String fileName = pathName + "/ontology.owl";
         ArrayList errors = new ArrayList();
         ((JenaOWLModel) this.ag.getOwlModel()).save(new File(fileName).toURI(), FileUtils.langXMLAbbrev, errors);
-
-        System.out.println("[CIA] A new log was saved to \"" + pathName + "\".");
+        */
+     //   System.out.println("[CIA] A new log was saved to \"" + pathName + "\".");
     }
 }
