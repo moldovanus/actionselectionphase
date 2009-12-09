@@ -29,7 +29,7 @@ public class CIAgent extends Agent {
             getContentManager().registerOntology(MobilityOntology.getInstance());
 
             addBehaviour(new ReceiveMessagesCIABehaviour(this, owlModel));
-            addBehaviour(new RecordingCIABehaviour(this, 5000));
+            //addBehaviour(new RecordingCIABehaviour(this, 5000));
         } else {
             this.owlModel = null;
             System.out.println("[CIA] CIA Agent failed, owlModel argument is null!");

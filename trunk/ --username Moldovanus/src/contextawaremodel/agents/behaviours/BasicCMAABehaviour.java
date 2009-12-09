@@ -103,9 +103,10 @@ public class BasicCMAABehaviour extends TickerBehaviour {
                 }
 
             }
-
+            
+            //do not REMOVE :P
             //get all OWL Individuals from ontology
-            Object[] owlElements = owlModel.getOWLIndividuals().toArray();
+            /*Object[] owlElements = owlModel.getOWLIndividuals().toArray();
 
             //iterate to check if one was removed
             for (int i = 0; i < owlElements.length; i++) {
@@ -114,9 +115,11 @@ public class BasicCMAABehaviour extends TickerBehaviour {
                     agent.informCia(owli.getLocalName(), GlobalVars.INDIVIDUAL_DELETED);
                     System.out.println("[CMAA] Individual " + owli.getLocalName() + " was removed!");
                     //remove instance from owlmodel
+
+                    
                     owli.delete();
                 }
-            }
+            }*/
         }
 
 

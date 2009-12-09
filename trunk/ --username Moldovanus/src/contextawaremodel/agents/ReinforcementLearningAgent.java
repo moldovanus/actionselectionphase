@@ -5,14 +5,13 @@
 package contextawaremodel.agents;
 
 import actionselection.context.Memory;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.ontology.OntModel;
 import contextawaremodel.GlobalVars;
 import contextawaremodel.agents.behaviours.ContextDisturbingBehaviour;
 import contextawaremodel.agents.behaviours.ReceiveMessageRLBehaviour;
 import contextawaremodel.agents.behaviours.ReinforcementLearningBasicBehaviour;
 
 import contextawaremodel.agents.behaviours.StoreMemoryBehaviour;
-import edu.stanford.smi.protegex.owl.ProtegeOWL;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import jade.core.Agent;
@@ -22,8 +21,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import org.mindswap.pellet.jena.PelletReasonerFactory;
-import policyconversioncore.PoliciesHandler;
 
 /**
  *
@@ -32,7 +29,8 @@ import policyconversioncore.PoliciesHandler;
 public class ReinforcementLearningAgent extends Agent {
 
     private OWLModel contextAwareModel;
-    private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
+    private OntModel policyConversionModel;
+    private JenaOWLModel jenaOwlModel;
     private Memory memory;
 
     @Override
@@ -42,33 +40,11 @@ public class ReinforcementLearningAgent extends Agent {
         //the owl model is passed as an argument by the Administrator Agent
         Object[] args = getArguments();
         if (args != null) {
-
-
-
             this.contextAwareModel = (OWLModel) args[0];
+            this.policyConversionModel = (OntModel)args[1];
+            jenaOwlModel = (JenaOWLModel) args[2];
             try {
-                JenaOWLModel jenaOwlModel = null;
-                File file = new File(GlobalVars.ONTOLOGY_FILE);
-                jenaOwlModel = ProtegeOWL.createJenaOWLModelFromURI(file.toURI().toString());
-
-
-
-                // politici
-                PoliciesHandler policiesHandler = new PoliciesHandler();
-                policiesHandler.loadPolicies(GlobalVars.POLICIES_FILE);
-                //List<String> swrlCode = policiesHandler.getPoliciesConverter().convertAllPolicies();
-
-                // adaugare reguli in ontologie
-                /*SWRLFactory factory = new SWRLFactory(owlModel);
-                for (String s : swrlCode) {
-                System.out.println("Adding rule: " + s);
-                factory.createImp(s);
-                }*/
-
-                policyConversionModel = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
-                policyConversionModel.add(jenaOwlModel.getJenaModel());
-
-
+                
                 File memoryFile = new File(GlobalVars.MEMORY_FILE);
                 try {
                     FileInputStream fileInputStream = new FileInputStream(memoryFile);

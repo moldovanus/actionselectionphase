@@ -4,17 +4,10 @@ import com.sun.j3d.utils.behaviors.mouse.MouseBehavior;
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
 import com.sun.j3d.utils.behaviors.mouse.MouseTranslate;
 import com.sun.j3d.utils.behaviors.mouse.MouseZoom;
-import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.geometry.Text2D;
-import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.awt.BorderLayout;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.geometry.Sphere;
-import javax.media.j3d.BranchGroup;
-import javax.vecmath.Color3f;
-import javax.media.j3d.Appearance;
-import javax.media.j3d.Material;
-import javax.media.j3d.DirectionalLight;
 
 
 import java.awt.Color;
@@ -283,7 +276,7 @@ public class ContextVisualizationFrame extends JFrame {
         //float f = text.getRectangleScaleFactor();
         try {
             text.setString(name + ": " + newValue);
-           // text.setRectangleScaleFactor(f);
+            // text.setRectangleScaleFactor(f);
         } catch (Exception e) {
             System.out.println(e.getCause());
         }
@@ -294,6 +287,7 @@ public class ContextVisualizationFrame extends JFrame {
             return;
         }
         if (!textObjects.containsKey(name)) {
+            //System.err.println("NOT FOUND " + name);
             return;
         }
         try {
@@ -305,8 +299,9 @@ public class ContextVisualizationFrame extends JFrame {
                 m.setAmbientColor(1.0f, 0.0f, 0.0f);
                 m.setShininess(10.0f);
                 m.setSpecularColor(1.0f, 0.0f, 0.0f);
-
-                s1.getAppearance().setMaterial(m);
+                Appearance newAppearance = new Appearance();
+                newAppearance.setMaterial(m);
+                s1.setAppearance(newAppearance);
             } else {
 
                 Material m = new Material();
@@ -314,7 +309,9 @@ public class ContextVisualizationFrame extends JFrame {
                 m.setAmbientColor(0.0f, 0.0f, 1.0f);
                 m.setShininess(20.0f);
                 m.setSpecularColor(1.0f, 1.0f, 1.0f);
-                s1.getAppearance().setMaterial(m);
+                Appearance newAppearance = new Appearance();
+                newAppearance.setMaterial(m);
+                s1.setAppearance(newAppearance);
             }
         } catch (Exception e) {
             System.out.println(e.getCause());

@@ -36,6 +36,7 @@ public class ReceiveChangesGUIBehaviour extends CyclicBehaviour {
                     break;
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
