@@ -1,5 +1,8 @@
 package contextawaremodel;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class GlobalVars {
     public static final String XML_ELEMENT = "int";
     public static final String CONTEXT_INSTANCE_MODIFIED = "Context instance modified";
@@ -26,5 +29,15 @@ public class GlobalVars {
     public static final int INDIVIDUAL_DELETED = 0;
     public static final int INDIVIDUAL_CREATED = 1;
     public static final int INDIVIDUAL_MODIFIED = 2;
+    private static final Map<String, String> brokenResources = new HashMap<String, String>();
+    private static final Map<String, String> validResources = new HashMap<String, String>();
     
+    public static synchronized Map<String, String> getBrokenResources(){
+        return brokenResources;
+    }
+    
+      public static synchronized Map<String, String> getValidResources(){
+        return validResources;
+    }
+
 }

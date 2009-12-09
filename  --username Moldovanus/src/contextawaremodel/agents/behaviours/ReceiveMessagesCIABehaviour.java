@@ -59,7 +59,7 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                     final RDFProperty valueProperty_2 = owlModel.getRDFProperty("has-value-of-service");
                     String url_2 = individual_2.getPropertyValue(urlProperty_2).toString();
 
-                    System.out.println("Modified " + individualName_2);
+                    //System.out.println("Modified " + individualName_2);
 
                     SensorAPI.addSensorListener(url_2,
                             new SensorListener() {

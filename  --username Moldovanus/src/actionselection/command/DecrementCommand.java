@@ -8,8 +8,10 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -133,12 +135,12 @@ public class DecrementCommand extends Command {
                 //Send data
                 wr.write(xmldata);// System.out.println(xmldata);
                 wr.flush();
-                /*BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 // Response
                 String line;
                 while ((line = rd.readLine()) != null) {
-                System.out.println(line);
-                }*/
+                    System.out.println(line);
+                }
 
 
                 sock.close();

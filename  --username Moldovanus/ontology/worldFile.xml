@@ -13,7 +13,48 @@
 		<data-property data-name="has-type-of-service" data-value="Temperature Detection"/>
 		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/RandomTemperatureSensorWS.asmx/GetSensorValue"/>
 	</context-element>
-		<!--
+	
+	<context-element ontology-class-name="humidity-sensor" ontology-individual-name="HumiditySensorI">
+		<data-property data-name="has-position-X" data-value="0 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="2.5 m"/>
+		<data-property data-name="has-influence-Radius" data-value="5 m"/>
+		<data-property data-name="has-type-of-service" data-value="Alarm state"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/HumiditySensor.asmx/GetSensorValue"/>
+	</context-element>
+	
+	<context-element ontology-class-name="alarm-state-sensor" ontology-individual-name="AlarmStateSensorI">
+		<data-property data-name="has-position-X" data-value="-5 m"/>
+		<data-property data-name="has-position-Y" data-value="3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="2.5 m"/>
+		<data-property data-name="has-influence-Radius" data-value="0.5 m"/>
+		<data-property data-name="has-type-of-service" data-value="Alarm state"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/AlarmSensor.asmx/GetSensorValue"/>
+		
+	</context-element>
+		
+		<context-element ontology-class-name="computer-state-sensor" ontology-individual-name="ComputerStateSensorI">
+		<data-property data-name="has-position-X" data-value="5 m"/>
+		<data-property data-name="has-position-Y" data-value="-3.5 m"/>
+		<data-property data-name="has-position-Z" data-value="1.5 m"/>
+		<data-property data-name="has-influence-Radius" data-value="0.5 m"/>
+		<data-property data-name="has-type-of-service" data-value="Computer state"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/ComputerState.asmx/GetSensorValue"/>
+	</context-element>
+ 
+	
+		
+	<context-element ontology-class-name="face-recognition-sensor" ontology-individual-name="FaceRecognitionSensorI">
+		<data-property data-name="has-position-X" data-value="5 m"/>
+		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-Z" data-value="2 m"/>
+		<data-property data-name="has-influence-Radius" data-value="3 m"/>
+		<data-property data-name="has-type-of-service" data-value="Face recognition outcome"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/FaceRecognitionSensor.asmx/GetSensorValue"/>
+	</context-element>
+	
+	<!--
+	
     
  	<context-element ontology-class-name="temperature-sensor" ontology-individual-name="Temperature actuator">
 		<data-property data-name="has-position-X" data-value="0 m"/>

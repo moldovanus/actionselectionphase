@@ -1,5 +1,7 @@
 package contextawaremodel.agents;
 
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 import contextawaremodel.GlobalVars;
 import java.io.File;
 
@@ -15,6 +17,8 @@ import jade.wrapper.AgentContainer;
 import jade.core.behaviours.Behaviour;
 import jade.wrapper.AgentController;
 import contextawaremodel.ontology.*;
+import org.mindswap.pellet.jena.PelletReasonerFactory;
+import policyconversioncore.PoliciesHandler;
 //import contextawaremodel.model.SimulatedContext;
 //import contextawaremodel.gui.SimulatorMainWindow;
 
@@ -22,6 +26,11 @@ public class CMAAgent extends Agent implements CMAAExternal {
 
     //the owl model
     private JenaOWLModel owlModel;
+
+    private OntModel policyConversionModel;
+
+    private JenaOWLModel jenaOwlModel;
+
     //the protege factory
     public MyFactory factory;
     //the main window of the simulator
@@ -37,7 +46,6 @@ public class CMAAgent extends Agent implements CMAAExternal {
     private AgentController ema = null;
     //Controller for the EMAgent which is created by the CMMA agent
     private AgentController gui = null;
-
     //rl agent
     private AgentController rl = null;
 
@@ -49,6 +57,29 @@ public class CMAAgent extends Agent implements CMAAExternal {
             //create owlModel from Ontology
             this.owlModel = ProtegeOWL.createJenaOWLModelFromURI(new File(GlobalVars.ONTOLOGY_FILE).toURI().toString());
             this.factory = new MyFactory(owlModel);
+
+             
+            File file = new File(GlobalVars.ONTOLOGY_FILE);
+            jenaOwlModel = ProtegeOWL.createJenaOWLModelFromURI(file.toURI().toString());
+
+
+
+            // politici
+            PoliciesHandler policiesHandler = new PoliciesHandler();
+            policiesHandler.loadPolicies(GlobalVars.POLICIES_FILE);
+            //List<String> swrlCode = policiesHandler.getPoliciesConverter().convertAllPolicies();
+
+            // adaugare reguli in ontologie
+                /*SWRLFactory factory = new SWRLFactory(owlModel);
+            for (String s : swrlCode) {
+            System.out.println("Adding rule: " + s);
+            factory.createImp(s);
+            }*/
+
+            policyConversionModel = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC);
+            policyConversionModel.add(jenaOwlModel.getJenaModel());
+
+
 
             //runnable object for refreshing the GUI
             //this.addIt = new Runnable() {
@@ -77,7 +108,7 @@ public class CMAAgent extends Agent implements CMAAExternal {
             cia = container.createNewAgent(GlobalVars.CIAGENT_NAME, CIAgent.class.getName(), new Object[]{this.owlModel});
             cia.start();
 
-            rl = container.createNewAgent(GlobalVars.RLAGENT_NAME, ReinforcementLearningAgent.class.getName(), new Object[]{this.owlModel});
+            rl = container.createNewAgent(GlobalVars.RLAGENT_NAME, ReinforcementLearningAgent.class.getName(), new Object[]{this.owlModel,this.policyConversionModel , this.jenaOwlModel});
             rl.start();
 
             //star the Request Processing Agent
