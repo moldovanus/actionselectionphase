@@ -41,4 +41,6 @@ public abstract class Command implements Serializable {
     public abstract String toString();
 
     public abstract void setOWLValue();
+
+    public abstract String[] toStringArray();
 }

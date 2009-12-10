@@ -7,11 +7,13 @@ package actionselection.context;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
+import contextawaremodel.GlobalVars;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
 import java.io.Serializable;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -100,5 +102,19 @@ public class SensorValues implements Serializable {
             stringValue += "[ " + key + ": " + myMap.get(key) + "]  ";
         }
         return stringValue;
+    }
+
+    public ArrayList<String[]> toArrayList() {
+        ArrayList<String[]> list = new ArrayList<String[]>();
+        Map<String, String> mapping = GlobalVars.getValueMapping();
+
+        for (String key : myMap.keySet()) {
+            String[] entry = new String[2];
+            entry[0] = key;
+            String mappedValue = mapping.get(key);
+            entry[1] = (mappedValue == null) ? "" + myMap.get(key) : mappedValue;
+            list.add(entry);
+        }
+        return list;
     }
 }

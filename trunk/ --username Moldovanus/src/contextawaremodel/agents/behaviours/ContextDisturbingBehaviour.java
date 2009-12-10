@@ -30,9 +30,10 @@ import java.util.Random;
 public class ContextDisturbingBehaviour extends TickerBehaviour {
 
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
-    private ArrayList<Command> commands ;
-    private ArrayList<ArrayList<Command>> myList= new ArrayList<ArrayList<Command>>(4);
-    private int currentindex=0;
+    private ArrayList<Command> commands;
+    private ArrayList<ArrayList<Command>> myList = new ArrayList<ArrayList<Command>>(4);
+    private int currentindex = 0;
+
     public ContextDisturbingBehaviour(Agent a, long period, OntModel policyConversionModel) {
         super(a, period);
         this.policyConversionModel = policyConversionModel;
@@ -41,52 +42,54 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
 
         commands = new ArrayList<Command>(5);
         ///Allarm Professor
-        commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
-        commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
-         commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
-         ///LightPolicy
-          commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomEmptySensorI",
+        ///LightPolicy
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomEmptySensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1));
-         commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
-         myList.add(commands);
+        myList.add(commands);
 
-         commands= new ArrayList<Command>(2);
-         ///StudentSensorRule
-           commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+        commands.clear();
+        ///StudentSensorRule
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1));
-        commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1));
-         myList.add(commands);
+        myList.add(commands);
 
-         commands = new ArrayList<Command>(2);
-          commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
+        commands.clear();
+
+        //Temperature = 9 and Humidity = 18 -> TemperatureAndHumidityProlicyI broken
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 9));
-        commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 18));
-         myList.add(commands);
+        myList.add(commands);
 
-          commands= new ArrayList<Command>(2);
-         ///StudentSensorRule
-           commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+        commands.clear();
+        ///StudentSensorRule
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
-        commands.add( new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 2));
-         myList.add(commands);
+        myList.add(commands);
 
 
     }
@@ -154,24 +157,27 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
 
     @Override
     protected void onTick() {
-       /* int f = (new Random()).nextInt() * 2;
+        /* int f = (new Random()).nextInt() * 2;
         setValue(5);
         SetCommand command = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
         command.execute();
 
-         SetCommand command2 = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 13);
+        SetCommand command2 = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
+        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 13);
         command2.execute();
-        */
-       ArrayList <Command> commandList = myList.get(currentindex);
-       for (int i=0;i<commandList.size(); i++){
-           commandList.get(i).execute();
-       }
+         */
+        System.err.println("Context broken intentionally");
+        ArrayList<Command> commandList = myList.get(currentindex);
+        for (int i = 0; i < commandList.size(); i++) {
+            commandList.get(i).execute();
+        }
 
-       currentindex++;
-       if (currentindex>3) currentindex=0;
+        currentindex++;
+        if (currentindex > 3) {
+            currentindex = 0;
+        }
     }
 }

@@ -151,4 +151,15 @@ public class DecrementCommand extends Command {
         }
 
     }
+
+    @Override
+    public String[] toStringArray() {
+        String[] array = new String[3];
+        array[0] = "Decrement";
+        array[1] = targetIndividualName.substring(targetIndividualName.lastIndexOf('/'),targetIndividualName.length());
+        array[2] = "" + decrementValue;
+        return array;
+    }
+
+
 }
