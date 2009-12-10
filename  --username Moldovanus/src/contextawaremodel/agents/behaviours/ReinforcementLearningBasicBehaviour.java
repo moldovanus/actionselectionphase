@@ -21,6 +21,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import contextawaremodel.GlobalVars;
+import contextawaremodel.agents.ReinforcementLearningAgent;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
@@ -61,9 +62,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private ArrayList<Resource> actuatorsList;
     private ArrayList<Resource> actionsList;
     private ActionsOutputFrame resultsFrame;
+    private ReinforcementLearningAgent agent;
 
-    public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
-        super(a, 2000);
+    public ReinforcementLearningBasicBehaviour(Agent a, int interval, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
+        super(a, interval);
+        agent = (ReinforcementLearningAgent) a;
         this.contextAwareModel = contextAwareModel;
         this.policyConversionModel = policyConversionModel;
         this.owlModel = owlModel;
@@ -357,11 +360,14 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
         try {
-            int startMinutes = new java.util.Date().getMinutes();
+            int startMinutes = new java.util.Date().getSeconds();
             contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());
-            int endMinutes = new java.util.Date().getMinutes();
+            int endMinutes = new java.util.Date().getSeconds();
 
-            System.err.println("Reinforcement alg running time: " + (endMinutes - startMinutes) + "minutes");
+            int value = endMinutes - startMinutes;
+            agent.setRlTime(value);
+
+            System.err.println("Reinforcement alg running time: " + value + "minutes");
 
         } catch (Exception ex) {
             Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);

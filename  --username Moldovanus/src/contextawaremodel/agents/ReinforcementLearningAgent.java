@@ -8,6 +8,7 @@ import actionselection.context.Memory;
 import com.hp.hpl.jena.ontology.OntModel;
 import contextawaremodel.GlobalVars;
 import contextawaremodel.agents.behaviours.ContextDisturbingBehaviour;
+import contextawaremodel.agents.behaviours.RLPlotterBehaviour;
 import contextawaremodel.agents.behaviours.ReceiveMessageRLBehaviour;
 import contextawaremodel.agents.behaviours.ReinforcementLearningBasicBehaviour;
 
@@ -33,6 +34,27 @@ public class ReinforcementLearningAgent extends Agent {
     private OntModel policyConversionModel;
     private JenaOWLModel jenaOwlModel;
     private Memory memory;
+    private int rlTime;
+    private int totalRunningTime;
+    private int runCount;
+
+    public int getTotalRunningTime() {
+        return totalRunningTime;
+    }
+
+    public int getRlAverageTime() {
+        return totalRunningTime / runCount;
+    }
+
+    public int getRlTime() {
+        return rlTime;
+    }
+
+    public void setRlTime(int rlTime) {
+        this.rlTime = rlTime;
+        this.totalRunningTime += rlTime;
+        runCount++;
+    }
 
     @Override
     protected void setup() {
@@ -64,6 +86,7 @@ public class ReinforcementLearningAgent extends Agent {
                     memory = new Memory();
                 }
 
+                addBehaviour(new ReinforcementLearningBasicBehaviour(this, 1000, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
                 Map<String, Map<String, String>> valueMapping = GlobalVars.getValueMapping();
 
                 Map<String, String> mapping = new HashMap<String, String>();
@@ -93,10 +116,11 @@ public class ReinforcementLearningAgent extends Agent {
                 valueMapping.put("FaceRecognitionSensorI", faceRecognition);
 
 
-                addBehaviour(new ReinforcementLearningBasicBehaviour(this, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
+                addBehaviour(new ReinforcementLearningBasicBehaviour(this,1000, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
                 addBehaviour(new ContextDisturbingBehaviour(this, 10000, policyConversionModel));
                 addBehaviour(new ReceiveMessageRLBehaviour(this, contextAwareModel, policyConversionModel));
                 addBehaviour(new StoreMemoryBehaviour(this, 5000, memory));
+                addBehaviour(new RLPlotterBehaviour(this, 1000));
 
             } catch (Exception e) {
                 e.printStackTrace();
