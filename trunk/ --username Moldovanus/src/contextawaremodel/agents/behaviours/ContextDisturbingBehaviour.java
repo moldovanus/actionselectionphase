@@ -32,7 +32,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private ArrayList<Command> commands;
     private ArrayList<ArrayList<Command>> myList = new ArrayList<ArrayList<Command>>(4);
-    private int currentindex = 1;
+    private int currentindex = 0;
 
     public ContextDisturbingBehaviour(Agent a, long period, OntModel policyConversionModel) {
         super(a, period);
@@ -61,7 +61,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
         myList.add(commands);
 
-        commands  = new ArrayList<Command>(5);
+        commands = new ArrayList<Command>(5);
         ///StudentSensorRule
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
@@ -71,7 +71,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1));
         myList.add(commands);
 
-        commands  = new ArrayList<Command>(5);
+        commands = new ArrayList<Command>(5);
 
         //Temperature = 9 and Humidity = 18 -> TemperatureAndHumidityProlicyI broken
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
@@ -82,7 +82,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 18));
         myList.add(commands);
 
-        commands  = new ArrayList<Command>(5);
+        commands = new ArrayList<Command>(5);
         ///StudentSensorRule
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
@@ -178,9 +178,9 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
             c.setOWLValue();
         }
 
-        //currentindex++;
-       // if (currentindex > 3) {
-        //    currentindex = 0;
-       // }
+        currentindex++;
+        if (currentindex > 3) {
+            currentindex = 0;
+        }
     }
 }
