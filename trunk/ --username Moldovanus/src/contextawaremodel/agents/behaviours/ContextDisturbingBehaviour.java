@@ -32,7 +32,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private ArrayList<Command> commands;
     private ArrayList<ArrayList<Command>> myList = new ArrayList<ArrayList<Command>>(4);
-    private int currentindex = 0;
+    private int currentindex = 1;
 
     public ContextDisturbingBehaviour(Agent a, long period, OntModel policyConversionModel) {
         super(a, period);
@@ -45,6 +45,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
+
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
@@ -52,7 +53,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
         ///LightPolicy
-        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomEmptySensorI",
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1));
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI",
@@ -60,7 +61,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
         myList.add(commands);
 
-        commands.clear();
+        commands  = new ArrayList<Command>(5);
         ///StudentSensorRule
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
@@ -70,7 +71,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1));
         myList.add(commands);
 
-        commands.clear();
+        commands  = new ArrayList<Command>(5);
 
         //Temperature = 9 and Humidity = 18 -> TemperatureAndHumidityProlicyI broken
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
@@ -81,7 +82,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 18));
         myList.add(commands);
 
-        commands.clear();
+        commands  = new ArrayList<Command>(5);
         ///StudentSensorRule
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
@@ -169,15 +170,17 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 13);
         command2.execute();
          */
-        System.err.println("Context broken intentionally");
+
         ArrayList<Command> commandList = myList.get(currentindex);
-        for (int i = 0; i < commandList.size(); i++) {
-            commandList.get(i).execute();
+        System.err.println("Context broken intentionally " + currentindex);
+        for (Command c : commandList) {
+            c.execute();
+            c.setOWLValue();
         }
 
-        currentindex++;
-        if (currentindex > 3) {
-            currentindex = 0;
-        }
+        //currentindex++;
+       // if (currentindex > 3) {
+        //    currentindex = 0;
+       // }
     }
 }

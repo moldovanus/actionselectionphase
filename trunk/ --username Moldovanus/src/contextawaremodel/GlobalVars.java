@@ -32,7 +32,7 @@ public class GlobalVars {
     public static final int INDIVIDUAL_MODIFIED = 2;
     private static final Map<String, String> brokenResources = new HashMap<String, String>();
     private static final Map<String, String> validResources = new HashMap<String, String>();
-    private static final Map<String, String> valueMapping = new HashMap<String, String>();
+    private static Map<String,Map<String, String>> valueMapping = new HashMap<String,Map<String, String>>();
 
     public static synchronized Map<String, String> getBrokenResources() {
         return brokenResources;
@@ -42,7 +42,7 @@ public class GlobalVars {
         return validResources;
     }
 
-    public static synchronized Map<String, String> getValueMapping() {
+    public static synchronized Map<String,Map<String, String>> getValueMapping() {
         return valueMapping;
     }
 }

@@ -15,14 +15,25 @@
 	</context-element>
 	
 	<context-element ontology-class-name="humidity-sensor" ontology-individual-name="HumiditySensorI">
-		<data-property data-name="has-position-X" data-value="0 m"/>
-		<data-property data-name="has-position-Y" data-value="0 m"/>
+		<data-property data-name="has-position-X" data-value="-1 m"/>
+		<data-property data-name="has-position-Y" data-value="2 m"/>
 		<data-property data-name="has-position-Z" data-value="2.5 m"/>
 		<data-property data-name="has-influence-Radius" data-value="5 m"/>
 		<data-property data-name="has-type-of-service" data-value="Alarm state"/>
 		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/HumiditySensor.asmx/GetSensorValue"/>
 	</context-element>
 	
+	<context-element ontology-class-name="room-state-sensor" ontology-individual-name="RoomStateSensorI">
+		<data-property data-name="has-position-X" data-value="-1 m"/>
+		<data-property data-name="has-position-Y" data-value="2 m"/>
+		<data-property data-name="has-position-Z" data-value="1.75 m"/>
+		<data-property data-name="has-influence-Radius" data-value="5 m"/>
+		<data-property data-name="has-type-of-service" data-value="People detection"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/RoomStateSensor.asmx/GetSensorValue"/>
+	</context-element>
+	
+	
+
 	<context-element ontology-class-name="alarm-state-sensor" ontology-individual-name="AlarmStateSensorI">
 		<data-property data-name="has-position-X" data-value="-5 m"/>
 		<data-property data-name="has-position-Y" data-value="3.5 m"/>
@@ -34,7 +45,7 @@
 	</context-element>
 		
 		<context-element ontology-class-name="computer-state-sensor" ontology-individual-name="ComputerStateSensorI">
-		<data-property data-name="has-position-X" data-value="5 m"/>
+		<data-property data-name="has-position-X" data-value="-5 m"/>
 		<data-property data-name="has-position-Y" data-value="-3.5 m"/>
 		<data-property data-name="has-position-Z" data-value="1.5 m"/>
 		<data-property data-name="has-influence-Radius" data-value="0.5 m"/>
@@ -45,12 +56,21 @@
 	
 		
 	<context-element ontology-class-name="face-recognition-sensor" ontology-individual-name="FaceRecognitionSensorI">
-		<data-property data-name="has-position-X" data-value="5 m"/>
+		<data-property data-name="has-position-X" data-value="-5 m"/>
 		<data-property data-name="has-position-Y" data-value="0 m"/>
 		<data-property data-name="has-position-Z" data-value="2 m"/>
 		<data-property data-name="has-influence-Radius" data-value="3 m"/>
 		<data-property data-name="has-type-of-service" data-value="Face recognition outcome"/>
 		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/FaceRecognitionSensor.asmx/GetSensorValue"/>
+	</context-element>
+	
+	<context-element ontology-class-name="light-sensor" ontology-individual-name="LightSensorI">
+		<data-property data-name="has-position-X" data-value="-1 m"/>
+		<data-property data-name="has-position-Y" data-value="-2 m"/>
+		<data-property data-name="has-position-Z" data-value="2.5 m"/>
+		<data-property data-name="has-influence-Radius" data-value="0.5 m"/>
+		<data-property data-name="has-type-of-service" data-value="Light state"/>
+		<data-property data-name="has-web-service-URI" data-value="http://localhost:2591/LightSensor.asmx/GetSensorValue"/>
 	</context-element>
 	
 	<!--
