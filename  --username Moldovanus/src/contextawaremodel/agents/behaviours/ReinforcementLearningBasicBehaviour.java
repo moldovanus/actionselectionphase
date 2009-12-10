@@ -359,12 +359,15 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
+        if (computeEntropy(initialContext).getFirst()!=0)
+        {
         try {
-            int startMinutes = new java.util.Date().getSeconds();
+            long startMinutes = new java.util.Date().getTime();
             contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());
-            int endMinutes = new java.util.Date().getSeconds();
+            long endMinutes = new java.util.Date().getTime();
 
-            int value = endMinutes - startMinutes;
+            int value = (int)((endMinutes - startMinutes)/1000);
+
             agent.setRlTime(value);
 
             System.err.println("Reinforcement alg running time: " + value + "minutes");
@@ -373,7 +376,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
-
+        
         setBrokenResources(contextSnapshot);
 
         Queue<Command> bestActionsList = contextSnapshot.getActions();
@@ -402,6 +405,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         setBrokenResources(initialContext);
 
         System.out.println("");
+        }
     }
 
     public boolean getEvaluateProp(Individual policy) {

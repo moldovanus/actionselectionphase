@@ -36,14 +36,18 @@ public class ReinforcementLearningAgent extends Agent {
     private Memory memory;
     private int rlTime;
     private int totalRunningTime;
-    private int runCount;
+    private int runCount = 0;
 
     public int getTotalRunningTime() {
         return totalRunningTime;
     }
 
     public int getRlAverageTime() {
-        return totalRunningTime / runCount;
+        if (runCount == 0) {
+            return 0;
+        } else {
+            return totalRunningTime / runCount;
+        }
     }
 
     public int getRlTime() {
@@ -96,7 +100,7 @@ public class ReinforcementLearningAgent extends Agent {
                 valueMapping.put("AlarmStateSensorI", mapping);
                 valueMapping.put("ComputerStateSensorI", mapping);
                 valueMapping.put("LightSensorI", mapping);
-        
+
 
                 Map<String, String> roomEmpty = new HashMap<String, String>();
                 roomEmpty.put("0.00", "EMPTY");
@@ -107,7 +111,7 @@ public class ReinforcementLearningAgent extends Agent {
                 //movementEmpty.put("0.00", "NO MOVEMENT");
                 //movementEmpty.put("1.00", "MOVEMENT DETECTED");
                 //valueMapping.put("RoomEmptySensorI", movementEmpty);
-                
+
 
                 Map<String, String> faceRecognition = new HashMap<String, String>();
                 faceRecognition.put("0.00", "PROFESSOR");
@@ -116,7 +120,7 @@ public class ReinforcementLearningAgent extends Agent {
                 valueMapping.put("FaceRecognitionSensorI", faceRecognition);
 
 
-                addBehaviour(new ReinforcementLearningBasicBehaviour(this,1000, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
+                addBehaviour(new ReinforcementLearningBasicBehaviour(this, 1000, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
                 addBehaviour(new ContextDisturbingBehaviour(this, 10000, policyConversionModel));
                 addBehaviour(new ReceiveMessageRLBehaviour(this, contextAwareModel, policyConversionModel));
                 addBehaviour(new StoreMemoryBehaviour(this, 5000, memory));
