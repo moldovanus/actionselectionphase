@@ -140,7 +140,7 @@ public class IncrementCommand extends Command {
                 //Response
                 String line;
                 while ((line = rd.readLine()) != null) {
-                System.out.println(line);
+                    System.out.println(line);
                 }
 
 
@@ -151,5 +151,14 @@ public class IncrementCommand extends Command {
 
         }
 
+    }
+
+    @Override
+    public String[] toStringArray() {
+        String[] array = new String[3];
+        array[0] = "Decrement";
+        array[1] = targetIndividualName.substring(targetIndividualName.lastIndexOf('/'), targetIndividualName.length());
+        array[2] = "" + incrementValue;
+        return array;
     }
 }

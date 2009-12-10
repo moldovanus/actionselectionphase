@@ -11,6 +11,7 @@ import actionselection.command.SetCommand;
 import actionselection.context.ContextSnapshot;
 import actionselection.context.Memory;
 import actionselection.context.SensorValues;
+import actionselection.gui.ActionsOutputFrame;
 import actionselection.utils.Pair;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.ObjectProperty;
@@ -59,6 +60,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private ArrayList<Resource> associatedResources;
     private ArrayList<Resource> actuatorsList;
     private ArrayList<Resource> actionsList;
+    private ActionsOutputFrame resultsFrame;
 
     public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
         super(a, 1000);
@@ -74,9 +76,18 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         associatedActionProperty = policyConversionModel.getObjectProperty(GlobalVars.base + "#associated-action");
         actionEffect = policyConversionModel.getProperty(GlobalVars.base + "#effect");
         sensorValueProperty = policyConversionModel.getDatatypeProperty(GlobalVars.base + "#has-value-of-service");
-        associatedResources = new ArrayList<Resource>(10);
-        actuatorsList = new ArrayList<Resource>(10);
-        actionsList = new ArrayList<Resource>(10);
+        associatedResources = new ArrayList<Resource>();
+        actuatorsList = new ArrayList<Resource>();
+        actionsList = new ArrayList<Resource>();
+        resultsFrame = new ActionsOutputFrame();
+
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                resultsFrame.setVisible(true);
+            }
+        });
     }
 
     private Pair<Double, Individual> computeEntropy(ContextSnapshot contextSnapshot) {
@@ -113,10 +124,6 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
     public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) throws Exception {
         ContextSnapshot context = queue.remove();
-        // do {
-        //    context = queue.remove();
-        // } while ( context.getContextEntropy() > smallestEntropy);
-
 
         SensorValues values = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         Queue<Command> actions = memory.getActions(values);
@@ -160,7 +167,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
                     //skip sensor if its value respects the policy
                     if (sensorHasAcceptableValue(sensor)) {
-                  //      System.err.println(sensor + " respects policy");
+                        //      System.err.println(sensor + " respects policy");
                         continue;
                     }
 
@@ -336,6 +343,9 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         queue.add(initialContext);
 
+
+        resultsFrame.setBrokenStatesList(currentValues.toArrayList());
+
         setBrokenResources(initialContext);
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
@@ -350,20 +360,27 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
+
         setBrokenResources(contextSnapshot);
 
         Queue<Command> bestActionsList = contextSnapshot.getActions();
+
+        ArrayList<String[]> actions = new ArrayList<String[]>(bestActionsList.size());
+
+
         System.err.println();
         System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.err.println("for " + currentValues);
         System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.err.println("===============================================================");
         for (Command command : bestActionsList) {
+            actions.add(command.toStringArray());
             System.err.println(command);
         }
         System.err.println("===============================================================");
         System.err.println();
 
+        resultsFrame.setActionsList(actions);
 
         memory.memorize(currentValues, bestActionsList);
         contextSnapshot.executeActions();
