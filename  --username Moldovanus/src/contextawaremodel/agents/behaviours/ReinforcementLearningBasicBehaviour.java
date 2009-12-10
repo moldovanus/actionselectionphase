@@ -63,7 +63,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private ActionsOutputFrame resultsFrame;
 
     public ReinforcementLearningBasicBehaviour(Agent a, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
-        super(a, 1000);
+        super(a, 2000);
         this.contextAwareModel = contextAwareModel;
         this.policyConversionModel = policyConversionModel;
         this.owlModel = owlModel;
@@ -302,6 +302,9 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         brokenResources.clear();
         validResources.clear();
 
+        //set for printing
+        ArrayList<String> brokenPoliciesNames = new ArrayList<String>();
+
         Collection<RDFResource> resources = contextSnapshot.getJenaOwlModel().getRDFResources();
 
         for (RDFResource resource : resources) {
@@ -310,6 +313,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 Individual policy = policyConversionModel.getIndividual(GlobalVars.base + "#" + resource.getProtegeType().getName() + "I").asIndividual();
                 StmtIterator sensorsForBrokenPolicy = policy.listProperties(associatedResource);
                 if (!getEvaluateProp(policy)) {
+                    
+                    brokenPoliciesNames.add(resource.getProtegeType().getName());
 
                     while (sensorsForBrokenPolicy.hasNext()) {
                         Resource res = sensorsForBrokenPolicy.nextStatement().getResource();
@@ -332,6 +337,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             }
         }
 
+        resultsFrame.setBrokenPoliciesList(brokenPoliciesNames);
 
     }
 
@@ -343,10 +349,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         queue.add(initialContext);
 
-
+        resultsFrame.setActionsList(null);
         resultsFrame.setBrokenStatesList(currentValues.toArrayList());
 
         setBrokenResources(initialContext);
+
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
         try {
@@ -386,6 +393,9 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         contextSnapshot.executeActions();
         contextSnapshot.executeActionsOnOWL();
 
+        setBrokenResources(initialContext);
+
+        System.out.println("");
     }
 
     public boolean getEvaluateProp(Individual policy) {

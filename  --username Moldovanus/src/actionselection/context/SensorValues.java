@@ -106,13 +106,17 @@ public class SensorValues implements Serializable {
 
     public ArrayList<String[]> toArrayList() {
         ArrayList<String[]> list = new ArrayList<String[]>();
-        Map<String, String> mapping = GlobalVars.getValueMapping();
+        Map<String, Map<String, String>> mapping = GlobalVars.getValueMapping();
 
         for (String key : myMap.keySet()) {
             String[] entry = new String[2];
             entry[0] = key;
-            String mappedValue = mapping.get(key);
-            entry[1] = (mappedValue == null) ? "" + myMap.get(key) : mappedValue;
+            Map<String, String> valueMapping = mapping.get(key);
+            if (valueMapping == null) {
+                entry[1] = "" + myMap.get(key);
+            } else {
+                entry[1] = valueMapping.get("" + myMap.get(key));
+            }
             list.add(entry);
         }
         return list;

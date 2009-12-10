@@ -20,7 +20,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -41,10 +42,10 @@ public class ReinforcementLearningAgent extends Agent {
         Object[] args = getArguments();
         if (args != null) {
             this.contextAwareModel = (OWLModel) args[0];
-            this.policyConversionModel = (OntModel)args[1];
+            this.policyConversionModel = (OntModel) args[1];
             jenaOwlModel = (JenaOWLModel) args[2];
             try {
-                
+
                 File memoryFile = new File(GlobalVars.MEMORY_FILE);
                 try {
                     FileInputStream fileInputStream = new FileInputStream(memoryFile);
@@ -63,10 +64,39 @@ public class ReinforcementLearningAgent extends Agent {
                     memory = new Memory();
                 }
 
+                Map<String, Map<String, String>> valueMapping = GlobalVars.getValueMapping();
+
+                Map<String, String> mapping = new HashMap<String, String>();
+                mapping.put("0.00", "OFF");
+                mapping.put("1.00", "ON");
+
+                valueMapping.put("AlarmStateSensorI", mapping);
+                valueMapping.put("ComputerStateSensorI", mapping);
+                valueMapping.put("LightSensorI", mapping);
+        
+
+                Map<String, String> roomEmpty = new HashMap<String, String>();
+                roomEmpty.put("0.00", "EMPTY");
+                roomEmpty.put("1.00", "NOT EMPTY");
+                valueMapping.put("RoomStateSensorI", roomEmpty);
+
+                //Map<String, String> movementEmpty = new HashMap<String, String>();
+                //movementEmpty.put("0.00", "NO MOVEMENT");
+                //movementEmpty.put("1.00", "MOVEMENT DETECTED");
+                //valueMapping.put("RoomEmptySensorI", movementEmpty);
+                
+
+                Map<String, String> faceRecognition = new HashMap<String, String>();
+                faceRecognition.put("0.00", "PROFESSOR");
+                faceRecognition.put("1.00", "STUDENT");
+                faceRecognition.put("2.00", "UNKNOWN");
+                valueMapping.put("FaceRecognitionSensorI", faceRecognition);
+
+
                 addBehaviour(new ReinforcementLearningBasicBehaviour(this, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
                 addBehaviour(new ContextDisturbingBehaviour(this, 10000, policyConversionModel));
                 addBehaviour(new ReceiveMessageRLBehaviour(this, contextAwareModel, policyConversionModel));
-                addBehaviour(new StoreMemoryBehaviour(this, 1000, memory));
+                addBehaviour(new StoreMemoryBehaviour(this, 5000, memory));
 
             } catch (Exception e) {
                 e.printStackTrace();

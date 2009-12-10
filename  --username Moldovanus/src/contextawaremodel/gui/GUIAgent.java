@@ -17,6 +17,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Collection;
 
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -40,7 +41,17 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
             if (!property.getName().equals("has-value-of-service")) {
                 return;
             }
-            final String newValue = resource.getPropertyValue(property).toString();
+            Map<String,Map<String,String>> mapping = GlobalVars.getValueMapping();
+            String tempValue = resource.getPropertyValue(property).toString();
+            final String newValue;
+            Map<String,String> valueMapping = mapping.get(resource.getName());
+
+            if(valueMapping != null){
+                newValue = valueMapping.get(tempValue);
+            }else{
+                 newValue = tempValue;
+            }
+            
             try {
                 SwingUtilities.invokeLater(new Runnable() {
 

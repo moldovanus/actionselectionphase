@@ -13,6 +13,7 @@ import com.sun.j3d.utils.geometry.Sphere;
 import java.awt.Color;
 import java.awt.GraphicsConfiguration;
 import java.util.Hashtable;
+import java.util.Random;
 import javax.media.j3d.AmbientLight;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Background;
@@ -32,6 +33,7 @@ import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.media.j3d.TransparencyAttributes;
 import javax.swing.JFrame;
+import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
@@ -48,6 +50,7 @@ public class ContextVisualizationFrame extends JFrame {
     private Appearance sensorAppereance;
     private Hashtable<String, Text2D> textObjects;
     private Hashtable<String, Sphere> sensorObjects;
+    private Random random = new Random();
 
     public ContextVisualizationFrame(GUIAgent guia) {
 
@@ -108,7 +111,7 @@ public class ContextVisualizationFrame extends JFrame {
 
         // Stepback a little so we can see the whole scene
         Transform3D stepback = new Transform3D();
-        stepback.setTranslation(new Vector3d(0, 0, 10));
+        stepback.setTranslation(new Vector3d(0, 0, 15));
         vpTrans.setTransform(stepback);
 
         // Start rendering
@@ -235,12 +238,10 @@ public class ContextVisualizationFrame extends JFrame {
     }
 
     private Appearance getInfluenceVolumeAppereance() {
-        if (influenceVolumeAppereance != null) {
-            return influenceVolumeAppereance;
-        }
+        
         influenceVolumeAppereance = new Appearance();
         ColoringAttributes ca = new ColoringAttributes();
-        ca.setColor(0.0f, 0.5f, 0.0f);
+        ca.setColor(random.nextFloat(), random.nextFloat(), random.nextFloat());
         influenceVolumeAppereance.setColoringAttributes(ca);
         TransparencyAttributes ta = new TransparencyAttributes(TransparencyAttributes.BLENDED, 0.9f);
         influenceVolumeAppereance.setTransparencyAttributes(ta);

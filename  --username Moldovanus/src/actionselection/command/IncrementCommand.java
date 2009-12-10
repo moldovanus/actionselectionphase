@@ -157,7 +157,7 @@ public class IncrementCommand extends Command {
     public String[] toStringArray() {
         String[] array = new String[3];
         array[0] = "Increment";
-        array[1] = targetIndividualName.substring(targetIndividualName.lastIndexOf('#'), targetIndividualName.length());
+        array[1] = targetIndividualName.substring(targetIndividualName.lastIndexOf('#') + 1, targetIndividualName.length());
         array[2] = "" + incrementValue;
         return array;
     }
