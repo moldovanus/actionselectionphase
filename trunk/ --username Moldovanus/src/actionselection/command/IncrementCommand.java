@@ -138,10 +138,10 @@ public class IncrementCommand extends Command {
                 wr.flush();
                 BufferedReader rd = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 //Response
-                String line;
-                while ((line = rd.readLine()) != null) {
-                    System.out.println(line);
-                }
+                //String line;
+                //while ((line = rd.readLine()) != null) {
+                //    System.out.println(line);
+                //}
 
 
                 sock.close();
@@ -156,8 +156,8 @@ public class IncrementCommand extends Command {
     @Override
     public String[] toStringArray() {
         String[] array = new String[3];
-        array[0] = "Decrement";
-        array[1] = targetIndividualName.substring(targetIndividualName.lastIndexOf('/'), targetIndividualName.length());
+        array[0] = "Increment";
+        array[1] = targetIndividualName.substring(targetIndividualName.lastIndexOf('#'), targetIndividualName.length());
         array[2] = "" + incrementValue;
         return array;
     }

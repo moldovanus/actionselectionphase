@@ -10,10 +10,12 @@
  */
 package actionselection.gui;
 
+import java.awt.Component;
 import java.util.ArrayList;
-import javax.swing.JScrollPane;
+import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 /**
@@ -56,7 +58,6 @@ public class ActionsOutputFrame extends javax.swing.JFrame {
         }
     };
     JTable brokenStateTable = new JTable(brokenStateDataModel);
-    
     TableModel actionsDataModel = new AbstractTableModel() {
 
         @Override
@@ -67,6 +68,8 @@ public class ActionsOutputFrame extends javax.swing.JFrame {
         public int getColumnCount() {
             return 3;
         }
+
+
 
         public int getRowCount() {
             return actionsList.size();
@@ -87,6 +90,7 @@ public class ActionsOutputFrame extends javax.swing.JFrame {
         }
     };
     JTable actionsTable = new JTable(actionsDataModel);
+
 
 
     /** Creates new form ActionsOutputFrame */
@@ -181,4 +185,6 @@ public class ActionsOutputFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
 }
+
