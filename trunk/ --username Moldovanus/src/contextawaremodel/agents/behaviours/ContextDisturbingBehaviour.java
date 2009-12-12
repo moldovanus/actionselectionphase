@@ -39,7 +39,15 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
         this.policyConversionModel = policyConversionModel;
 
         myList = new ArrayList<ArrayList<Command>>();
-
+   commands = new ArrayList<Command>(5);
+        ///StudentSensorRule
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
+        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 2));
+        myList.add(commands);
         commands = new ArrayList<Command>(5);
         ///Allarm Professor
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
@@ -82,15 +90,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 18));
         myList.add(commands);
 
-        commands = new ArrayList<Command>(5);
-        ///StudentSensorRule
-        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0));
-        commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 2));
-        myList.add(commands);
+     
 
 
     }

@@ -88,7 +88,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                resultsFrame.setVisible(true);
+              resultsFrame.setVisible(true);
             }
         });
     }
@@ -370,7 +370,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
             agent.setRlTime(value);
 
-            System.err.println("Reinforcement alg running time: " + value + "minutes");
+            System.err.println("Reinforcement alg running time: " + value + " seconds");
 
         } catch (Exception ex) {
             Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
