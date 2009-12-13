@@ -1,0 +1,2247 @@
+run:
+Dec 13, 2009 8:02:42 PM jade.core.Runtime beginContainer
+INFO: ----------------------------------
+    This is JADE snapshot - revision $WCREV$ of $WCDATE$
+    downloaded in Open Source, under LGPL restrictions,
+    at http://jade.tilab.com/
+----------------------------------------
+Dec 13, 2009 8:02:44 PM jade.core.BaseService init
+INFO: Service jade.core.management.AgentManagement initialized
+Dec 13, 2009 8:02:44 PM jade.core.BaseService init
+INFO: Service jade.core.messaging.Messaging initialized
+Dec 13, 2009 8:02:44 PM jade.core.BaseService init
+INFO: Service jade.core.mobility.AgentMobility initialized
+Dec 13, 2009 8:02:44 PM jade.core.BaseService init
+INFO: Service jade.core.event.Notification initialized
+Dec 13, 2009 8:02:44 PM jade.core.messaging.MessagingService clearCachedSlice
+INFO: Clearing cache
+Dec 13, 2009 8:02:44 PM jade.core.AgentContainerImpl joinPlatform
+INFO: --------------------------------------
+Agent container Main-Container@moldovanus is ready.
+--------------------------------------------
+CMA Agent CMAgent started.
+INFO: Loading triples
+INFO: Start processing ontology: file:/C:/Documents%20and%20Settings/Me/Desktop/Context%20Aware%20SVN/%20--username%20Moldovanus/ontology/contextOntology.owl Time: Sun Dec 13 20:02:48 EET 2009
+INFO: [ProtegeOWLParser] Completed triple loading after 531 ms
+INFO: [TripleChangePostProcessor] Completed lists after 0 ms
+INFO: [TripleChangePostProcessor] Completed anonymous classes after 15 ms
+INFO: [TripleChangePostProcessor] Completed deprecated classes after 0 ms
+INFO: [TripleChangePostProcessor] Completed properties after 0 ms
+INFO: [TripleChangePostProcessor] Completed named classes after 16 ms
+INFO: ... Loading completed after 672 ms
+INFO: Loading triples
+INFO: Start processing ontology: file:/C:/Documents%20and%20Settings/Me/Desktop/Context%20Aware%20SVN/%20--username%20Moldovanus/ontology/contextOntology.owl Time: Sun Dec 13 20:02:49 EET 2009
+INFO: [ProtegeOWLParser] Completed triple loading after 187 ms
+INFO: [TripleChangePostProcessor] Completed lists after 0 ms
+INFO: [TripleChangePostProcessor] Completed anonymous classes after 0 ms
+INFO: [TripleChangePostProcessor] Completed deprecated classes after 0 ms
+INFO: [TripleChangePostProcessor] Completed properties after 0 ms
+INFO: [TripleChangePostProcessor] Completed named classes after 16 ms
+INFO: ... Loading completed after 281 ms
+[GUIAgent] Hello!
+[CIA] Hello!
+[RL agent] Hello!
+Start time:Sun Dec 13 20:02:51 EET 2009
+[GUI] Generating ontology class tree.
+[CMAA] Individual Actor2(actor) was added to the context
+[CMAA] has-web-service-URI was changed for TemperatureSensorIfrom  to http://localhost:2591/RandomTemperatureSensorWS.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for TemperatureSensorIfrom  to 5 m
+[CMAA] has-position-X was changed for TemperatureSensorIfrom  to 0 m
+[CMAA] has-type-of-service was changed for TemperatureSensorIfrom  to Temperature Detection
+[CMAA] has-position-Y was changed for TemperatureSensorIfrom  to 0 m
+[CMAA] has-position-Z was changed for TemperatureSensorIfrom  to 0 m
+[CMAA] has-web-service-URI was changed for HumiditySensorIfrom  to http://localhost:2591/HumiditySensor.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for HumiditySensorIfrom  to 5 m
+[CMAA] has-position-X was changed for HumiditySensorIfrom  to -1 m
+[CMAA] has-type-of-service was changed for HumiditySensorIfrom  to Alarm state
+[CMAA] has-position-Y was changed for HumiditySensorIfrom  to 2 m
+[CMAA] has-position-Z was changed for HumiditySensorIfrom  to 2.5 m
+[CMAA] has-web-service-URI was changed for RoomStateSensorIfrom  to http://localhost:2591/RoomStateSensor.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for RoomStateSensorIfrom  to 5 m
+[CMAA] has-position-X was changed for RoomStateSensorIfrom  to -1 m
+[CMAA] has-type-of-service was changed for RoomStateSensorIfrom  to People detection
+[CMAA] has-position-Y was changed for RoomStateSensorIfrom  to 2 m
+[CMAA] has-position-Z was changed for RoomStateSensorIfrom  to 1.75 m
+[CMAA] has-web-service-URI was changed for AlarmStateSensorIfrom  to http://localhost:2591/AlarmSensor.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for AlarmStateSensorIfrom  to 0.5 m
+[CMAA] has-position-X was changed for AlarmStateSensorIfrom  to -5 m
+[CMAA] has-type-of-service was changed for AlarmStateSensorIfrom  to Alarm state
+[CMAA] has-position-Y was changed for AlarmStateSensorIfrom  to 3.5 m
+[CMAA] has-position-Z was changed for AlarmStateSensorIfrom  to 2.5 m
+[CMAA] has-web-service-URI was changed for ComputerStateSensorIfrom  to http://localhost:2591/ComputerState.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for ComputerStateSensorIfrom  to 0.5 m
+[CMAA] has-position-X was changed for ComputerStateSensorIfrom  to -5 m
+[CMAA] has-type-of-service was changed for ComputerStateSensorIfrom  to Computer state
+[CMAA] has-position-Y was changed for ComputerStateSensorIfrom  to -3.5 m
+[CMAA] has-position-Z was changed for ComputerStateSensorIfrom  to 1.5 m
+[CMAA] has-web-service-URI was changed for FaceRecognitionSensorIfrom  to http://localhost:2591/FaceRecognitionSensor.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for FaceRecognitionSensorIfrom  to 3 m
+[CMAA] has-position-X was changed for FaceRecognitionSensorIfrom  to -5 m
+[CMAA] has-type-of-service was changed for FaceRecognitionSensorIfrom  to Face recognition outcome
+[CMAA] has-position-Y was changed for FaceRecognitionSensorIfrom  to 0 m
+[CMAA] has-position-Z was changed for FaceRecognitionSensorIfrom  to 2 m
+[CMAA] has-web-service-URI was changed for LightSensorIfrom  to http://localhost:2591/LightSensor.asmx/GetSensorValue
+[CMAA] has-influence-Radius was changed for LightSensorIfrom  to 0.5 m
+[CMAA] has-position-X was changed for LightSensorIfrom  to -1 m
+[CMAA] has-type-of-service was changed for LightSensorIfrom  to Light state
+[CMAA] has-position-Y was changed for LightSensorIfrom  to -2 m
+[CMAA] has-position-Z was changed for LightSensorIfrom  to 2.5 m
+[GUIAgent] TemperatureSensorI (0.0,0.0,0.0,5.0) was added to the Visualization Frame.
+WARNING: Invalid frame type: SimpleInstance(Actor2 of [DefaultOWLNamedClass(actor, FrameID(5:10080 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+WARNING: Invalid frame type: SimpleInstance(TemperatureSensorI of [DefaultOWLNamedClass(temperature-sensor, FrameID(5:10099 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+WARNING: Invalid frame type: SimpleInstance(HumiditySensorI of [DefaultOWLNamedClass(humidity-sensor, FrameID(5:10093 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+[GUIAgent] HumiditySensorI (-1.0,2.0,2.5,5.0) was added to the Visualization Frame.
+[GUIAgent] RoomStateSensorI (-1.0,2.0,1.75,5.0) was added to the Visualization Frame.
+[GUIAgent] AlarmStateSensorI (-5.0,3.5,2.5,0.5) was added to the Visualization Frame.
+WARNING: Invalid frame type: SimpleInstance(RoomStateSensorI of [DefaultOWLNamedClass(room-state-sensor, FrameID(5:10095 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+WARNING: Invalid frame type: SimpleInstance(AlarmStateSensorI of [DefaultOWLNamedClass(alarm-state-sensor, FrameID(5:10077 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+WARNING: Invalid frame type: SimpleInstance(ComputerStateSensorI of [DefaultOWLNamedClass(computer-state-sensor, FrameID(5:10085 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+[GUIAgent] ComputerStateSensorI (-5.0,-3.5,1.5,0.5) was added to the Visualization Frame.
+[GUIAgent] FaceRecognitionSensorI (-5.0,0.0,2.0,3.0) was added to the Visualization Frame.
+[GUIAgent] LightSensorI (-1.0,-2.0,2.5,0.5) was added to the Visualization Frame.
+WARNING: Invalid frame type: SimpleInstance(FaceRecognitionSensorI of [DefaultOWLNamedClass(face-recognition-sensor, FrameID(5:10079 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+WARNING: Invalid frame type: SimpleInstance(LightSensorI of [DefaultOWLNamedClass(light-sensor, FrameID(5:10100 1))]) -- AbstractRedirectingDispatch.getDirectOwnSlotValues()
+Context disturbed
+ Memory has been saved to "memory/memory.dat".
+Reinforcement alg running time: 23 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 17]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+Context disturbed
+ Memory has been saved to "memory/memory.dat".
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 24]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+===============================================================
+
+
+Context disturbed
+Reinforcement alg running time: 9 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 22]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 46 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 32]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 13 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 24]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 9 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 29]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 10 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 25]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 17 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 23]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 14 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 30]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 351 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 30]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 25]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 21]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 29 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 30]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 30 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 20]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 4 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 29]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 26]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 78 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 28]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 4 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 4 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 23 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 32]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 77 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 19]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 15 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 25]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 26]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 25]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 27]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 351 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 24]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 361 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 30]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 13 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 21]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 98 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 72 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 32]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 28]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 26]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 10 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 27]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 220 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 6 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 24]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 28]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 17 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 32]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 25 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 21]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 202 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 19 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 20]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 11 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 15]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 96 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 29]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 6 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 31]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 43 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 26]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 20 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 15]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 22]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 90 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 6 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 4 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 27]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 29]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 25]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 24]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 22]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 10 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 28]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 29]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 18 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 11 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 0 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 22]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+===============================================================
+
+Remembered
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 19 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 63 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 15]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 19]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 287 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 34]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 27 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 19]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 21]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 27]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 24]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 90 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 20]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Remembered
+Reinforcement alg running time: 0 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 20]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 13 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 28]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 11 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 25]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 4 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 6 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 26]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 6 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 34]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 22]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 28]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 334 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 14 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 23]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 4 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 18]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 97 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 15]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 104 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 26]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 29 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 31]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 20]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 22]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 51 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 31]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 88 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 14 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 34]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 110 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 18]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 10 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 29]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 17 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 30]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 30 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 20]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 32]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 26]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 14 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 32]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 69 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 33]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 12 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 23]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 94 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 15]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 16 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 34]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 28]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 25 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 19]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 28 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 32]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 72 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 15]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 28]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 16 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 23]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 13 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 19]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 21]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 22]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 27]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 32]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 92 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 33]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 22]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 22]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 17 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 31]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 21]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 368 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 16]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 88 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 20]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 26]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Remembered
+Reinforcement alg running time: 0 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 23]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 21]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 5 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 23]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 7 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 19]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 31]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 177 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 23]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 34]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 6 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 21]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 21]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 252 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 15]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 24]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 22]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 119 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 30]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 388 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 18]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 34]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 2
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+Decrement http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 3 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 29]  [ room-state-sensor: 1]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 8 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 1]  [ alarm-state-sensor: 1]  [ humidity-sensor: 25]  [ room-state-sensor: 0]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 16]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 21]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 24]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 2 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 20]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 26]  [ room-state-sensor: 0]  [ face-recognition-sensor: 2]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 18 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 15]  [ light-sensor: 0]  [ alarm-state-sensor: 0]  [ humidity-sensor: 19]  [ room-state-sensor: 1]  [ face-recognition-sensor: 1]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI by 3
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Reinforcement alg running time: 1 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 21]  [ light-sensor: 1]  [ alarm-state-sensor: 0]  [ humidity-sensor: 23]  [ room-state-sensor: 1]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
+Remembered
+Reinforcement alg running time: 0 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+for [ temperature-sensor: 17]  [ light-sensor: 0]  [ alarm-state-sensor: 1]  [ humidity-sensor: 29]  [ room-state-sensor: 0]  [ face-recognition-sensor: 0]  [ computer-state-sensor: 0]  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===============================================================
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI to 0
+Set http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI to 1
+Increment http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI by 5
+===============================================================
+
+
+ Memory has been saved to "memory/memory.dat".
+Context disturbed
