@@ -10,6 +10,7 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import contextawaremodel.agents.ReinforcementLearningAgent;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import java.io.BufferedReader;
@@ -20,7 +21,6 @@ import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -33,13 +33,16 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
     private ArrayList<Command> commands;
     private ArrayList<ArrayList<Command>> myList = new ArrayList<ArrayList<Command>>(4);
     private int currentindex = 0;
+    private Random random = new Random();
+    private ReinforcementLearningAgent agent;
 
     public ContextDisturbingBehaviour(Agent a, long period, OntModel policyConversionModel) {
         super(a, period);
+        agent = (ReinforcementLearningAgent) a;
         this.policyConversionModel = policyConversionModel;
 
         myList = new ArrayList<ArrayList<Command>>();
-   commands = new ArrayList<Command>(5);
+        commands = new ArrayList<Command>(5);
         ///StudentSensorRule
         commands.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
@@ -90,7 +93,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
                 "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 18));
         myList.add(commands);
 
-     
+
 
 
     }
@@ -171,16 +174,58 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
         command2.execute();
          */
 
-        ArrayList<Command> commandList = myList.get(currentindex);
+        /*ArrayList<Command> commandList = myList.get(currentindex);
         System.err.println("Context broken intentionally " + currentindex);
         for (Command c : commandList) {
-            c.execute();
-            c.setOWLValue();
+        c.execute();
+        c.setOWLValue();
         }
 
         currentindex++;
         if (currentindex > 3) {
-            currentindex = 0;
+        currentindex = 0;
         }
+
+         */
+
+        if (agent.isContextIsOK()) {
+            ArrayList<Command> commandList = new ArrayList<Command>(7);
+
+
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(2)));
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(3)));
+            
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(1)));
+
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(20) + 15));
+
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(10) + 15));
+
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(2)));
+
+            commandList.add(new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomStateSensorI",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                    "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, random.nextInt(2)));
+
+            for (Command c : commandList) {
+                c.execute();
+                c.setOWLValue();
+            }
+
+            System.err.println("Context disturbed");
+        }
+
     }
 }

@@ -9,6 +9,7 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import contextawaremodel.GlobalVars;
+import contextawaremodel.agents.ReinforcementLearningAgent;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFProperty;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
@@ -22,14 +23,13 @@ import jade.lang.acl.ACLMessage;
  */
 public class ReceiveMessageRLBehaviour extends CyclicBehaviour {
 
-    private Agent agent;
+    private ReinforcementLearningAgent agent;
     private OWLModel owlModel;
     private OntModel jenaModel;
 
-
-    public ReceiveMessageRLBehaviour( Agent agent, OWLModel owlModel, OntModel jenaModel) {
+    public ReceiveMessageRLBehaviour(Agent agent, OWLModel owlModel, OntModel jenaModel) {
         super(agent);
-        this.agent = agent;
+        this.agent = (ReinforcementLearningAgent) agent;
         this.owlModel = owlModel;
         this.jenaModel = jenaModel;
     }
@@ -58,6 +58,16 @@ public class ReceiveMessageRLBehaviour extends CyclicBehaviour {
                     Property urlJenaProperty = jenaModel.getDatatypeProperty(GlobalVars.base + "#has-web-service-URI");
                     sensor.setPropertyValue(urlJenaProperty, jenaModel.createLiteralStatement(
                             sensor, urlJenaProperty, url).getLiteral().as(RDFNode.class));
+                    break;
+
+                case ACLMessage.INFORM:
+                    String content = (String) message.getContent();
+                    if ( content.equals("BROKEN")){
+                       agent.setContextIsOK(false);
+                    }else if ( content.equals("OK")) {
+                        agent.setContextIsOK(true);
+                    }
+                    break;
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.err);

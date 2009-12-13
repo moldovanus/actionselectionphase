@@ -25,8 +25,10 @@ import contextawaremodel.agents.ReinforcementLearningAgent;
 import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
+import jade.lang.acl.ACLMessage;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -88,7 +90,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-              resultsFrame.setVisible(true);
+                resultsFrame.setVisible(true);
             }
         });
     }
@@ -316,7 +318,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 Individual policy = policyConversionModel.getIndividual(GlobalVars.base + "#" + resource.getProtegeType().getName() + "I").asIndividual();
                 StmtIterator sensorsForBrokenPolicy = policy.listProperties(associatedResource);
                 if (!getEvaluateProp(policy)) {
-                    
+
                     brokenPoliciesNames.add(resource.getProtegeType().getName());
 
                     while (sensorsForBrokenPolicy.hasNext()) {
@@ -359,52 +361,64 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
-        if (computeEntropy(initialContext).getFirst()!=0)
-        {
-        try {
-            long startMinutes = new java.util.Date().getTime();
-            contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());
-            long endMinutes = new java.util.Date().getTime();
+        if (computeEntropy(initialContext).getFirst() != 0) {
+            try {
+                long startMinutes = new java.util.Date().getTime();
+                
+                ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+                msg.setLanguage("JavaSerialization");
 
-            int value = (int)((endMinutes - startMinutes)/1000);
+                msg.setContent("BROKEN");
+                msg.addReceiver(new AID(GlobalVars.RLAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                agent.send(msg);
 
-            agent.setRlTime(value);
+                contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());
+                
+                msg.setContent("OK");
+                msg.addReceiver(new AID(GlobalVars.RLAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                agent.send(msg);
 
-            System.err.println("Reinforcement alg running time: " + value + " seconds");
+                long endMinutes = new java.util.Date().getTime();
 
-        } catch (Exception ex) {
-            Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        }
-        
-        setBrokenResources(contextSnapshot);
+                int value = (int) ((endMinutes - startMinutes) / 1000);
 
-        Queue<Command> bestActionsList = contextSnapshot.getActions();
+                agent.setRlTime(value);
 
-        ArrayList<String[]> actions = new ArrayList<String[]>(bestActionsList.size());
+                System.err.println("Reinforcement alg running time: " + value + " seconds");
+
+            } catch (Exception ex) {
+                Logger.getLogger(ReinforcementLearningBasicBehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                return;
+            }
+
+            setBrokenResources(contextSnapshot);
+
+            Queue<Command> bestActionsList = contextSnapshot.getActions();
+
+            ArrayList<String[]> actions = new ArrayList<String[]>(bestActionsList.size());
 
 
-        System.err.println();
-        System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.err.println("for " + currentValues);
-        System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.err.println("===============================================================");
-        for (Command command : bestActionsList) {
-            actions.add(command.toStringArray());
-            System.err.println(command);
-        }
-        System.err.println("===============================================================");
-        System.err.println();
+            System.err.println();
+            System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            System.err.println("for " + currentValues);
+            System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            System.err.println("===============================================================");
+            for (Command command : bestActionsList) {
+                actions.add(command.toStringArray());
+                System.err.println(command);
+            }
+            System.err.println("===============================================================");
+            System.err.println();
 
-        resultsFrame.setActionsList(actions);
+            resultsFrame.setActionsList(actions);
 
-        memory.memorize(currentValues, bestActionsList);
-        contextSnapshot.executeActions();
-        contextSnapshot.executeActionsOnOWL();
+            memory.memorize(currentValues, bestActionsList);
+            contextSnapshot.executeActions();
+            contextSnapshot.executeActionsOnOWL();
 
-        setBrokenResources(initialContext);
+            setBrokenResources(initialContext);
 
-        System.out.println("");
+            System.out.println("");
         }
     }
 

@@ -276,6 +276,7 @@ public class ContextVisualizationFrame extends JFrame {
         Text2D text = textObjects.get(name);
         //float f = text.getRectangleScaleFactor();
         try {
+           
             text.setString(name + ": " + newValue);
             // text.setRectangleScaleFactor(f);
         } catch (Exception e) {
