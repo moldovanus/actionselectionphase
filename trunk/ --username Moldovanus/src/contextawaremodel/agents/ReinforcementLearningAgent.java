@@ -90,7 +90,7 @@ public class ReinforcementLearningAgent extends Agent {
                     memory = new Memory();
                 }
 
-                addBehaviour(new ReinforcementLearningBasicBehaviour(this, 1000, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
+                
                 Map<String, Map<String, String>> valueMapping = GlobalVars.getValueMapping();
 
                 Map<String, String> mapping = new HashMap<String, String>();
