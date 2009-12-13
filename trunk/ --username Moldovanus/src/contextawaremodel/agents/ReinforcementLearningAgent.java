@@ -8,6 +8,7 @@ import actionselection.context.Memory;
 import com.hp.hpl.jena.ontology.OntModel;
 import contextawaremodel.GlobalVars;
 import contextawaremodel.agents.behaviours.ContextDisturbingBehaviour;
+import contextawaremodel.agents.behaviours.GarbadgeCollectForcerAgent;
 import contextawaremodel.agents.behaviours.RLPlotterBehaviour;
 import contextawaremodel.agents.behaviours.ReceiveMessageRLBehaviour;
 import contextawaremodel.agents.behaviours.ReinforcementLearningBasicBehaviour;
@@ -37,6 +38,17 @@ public class ReinforcementLearningAgent extends Agent {
     private int rlTime;
     private int totalRunningTime;
     private int runCount = 0;
+    private boolean contextIsOK = true;
+
+    public boolean isContextIsOK() {
+        return contextIsOK;
+    }
+
+    public void setContextIsOK(boolean contextIsOK) {
+        this.contextIsOK = contextIsOK;
+    }
+
+    
 
     public int getTotalRunningTime() {
         return totalRunningTime;
@@ -121,10 +133,11 @@ public class ReinforcementLearningAgent extends Agent {
 
 
                 addBehaviour(new ReinforcementLearningBasicBehaviour(this, 1000, contextAwareModel, policyConversionModel, jenaOwlModel, memory));
-                addBehaviour(new ContextDisturbingBehaviour(this, 10000, policyConversionModel));
+                addBehaviour(new ContextDisturbingBehaviour(this,5000, policyConversionModel));
                 addBehaviour(new ReceiveMessageRLBehaviour(this, contextAwareModel, policyConversionModel));
                 addBehaviour(new StoreMemoryBehaviour(this, 5000, memory));
                 addBehaviour(new RLPlotterBehaviour(this, 1000));
+                addBehaviour(new GarbadgeCollectForcerAgent(this,60000));
 
             } catch (Exception e) {
                 e.printStackTrace();

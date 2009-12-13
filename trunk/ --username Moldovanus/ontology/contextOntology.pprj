@@ -1,4 +1,4 @@
-; Sun Dec 13 12:14:29 EET 2009
+; Sun Dec 13 14:28:25 EET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[contextOntology_ProjectKB_Class103]
-		[contextOntology_ProjectKB_Class104]
-		[contextOntology_ProjectKB_Class105]
-		[contextOntology_ProjectKB_Class106]
-		[contextOntology_ProjectKB_Class107]))
+		[contextOntology_ProjectKB_Class10111]
+		[contextOntology_ProjectKB_Class10112]
+		[contextOntology_ProjectKB_Class10113]
+		[contextOntology_ProjectKB_Class10114]
+		[contextOntology_ProjectKB_Class10115]))
 
 ([CLSES_TAB] of  Widget
 
@@ -18,9 +18,6 @@
 	(label "Classes")
 	(property_list [Instance_47])
 	(widget_class_name "edu.stanford.smi.protege.widget.ClsesTab"))
-
-([contextOntology_ProjectKB_Class0] of  Map
-)
 
 ([contextOntology_ProjectKB_Class1] of  Widget
 
@@ -34,27 +31,279 @@
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2003/11/swrl#body"))
 
-([contextOntology_ProjectKB_Class103] of  String
+([contextOntology_ProjectKB_Class10004] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10005])
+	(widget_class_name "se.liu.ida.JessTab.JessTab"))
+
+([contextOntology_ProjectKB_Class10005] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10006] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10007])
+	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+
+([contextOntology_ProjectKB_Class10007] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10008] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10009])
+	(widget_class_name "ezpal.EZPalTab"))
+
+([contextOntology_ProjectKB_Class10009] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10010] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10011])
+	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
+
+([contextOntology_ProjectKB_Class10011] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10012] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10013])
+	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
+
+([contextOntology_ProjectKB_Class10013] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10014] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10015])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+
+([contextOntology_ProjectKB_Class10015] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10016] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10017])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+
+([contextOntology_ProjectKB_Class10017] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10018] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10019])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+
+([contextOntology_ProjectKB_Class10019] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10020] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10021])
+	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
+
+([contextOntology_ProjectKB_Class10021] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10022] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10023])
+	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
+
+([contextOntology_ProjectKB_Class10023] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10024] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10025])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
+
+([contextOntology_ProjectKB_Class10025] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10026] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10027])
+	(widget_class_name "TGViztab.TGVizTab"))
+
+([contextOntology_ProjectKB_Class10027] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10028] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10029])
+	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
+
+([contextOntology_ProjectKB_Class10029] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10030] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10031])
+	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+
+([contextOntology_ProjectKB_Class10031] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10032] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10033])
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+
+([contextOntology_ProjectKB_Class10033] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10034] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10035])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+
+([contextOntology_ProjectKB_Class10035] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10036] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10037])
+	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
+
+([contextOntology_ProjectKB_Class10037] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10038] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10039])
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+
+([contextOntology_ProjectKB_Class10039] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10040] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10041])
+	(widget_class_name "script.ProtegeScriptTab"))
+
+([contextOntology_ProjectKB_Class10041] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10042] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10043])
+	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+
+([contextOntology_ProjectKB_Class10043] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10044] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10045])
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+
+([contextOntology_ProjectKB_Class10045] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10046] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10047])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+
+([contextOntology_ProjectKB_Class10047] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10048] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10049])
+	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
+
+([contextOntology_ProjectKB_Class10049] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10050] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10051])
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+
+([contextOntology_ProjectKB_Class10051] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10052] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10053])
+	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+
+([contextOntology_ProjectKB_Class10053] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10054] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [contextOntology_ProjectKB_Class10055])
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+
+([contextOntology_ProjectKB_Class10055] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10056] of  Widget
+
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [contextOntology_ProjectKB_Class10058])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([contextOntology_ProjectKB_Class10057] of  Widget
+
+	(is_hidden FALSE)
+	(label "Comment")
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([contextOntology_ProjectKB_Class10058] of  Property_List
+)
+
+([contextOntology_ProjectKB_Class10111] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([contextOntology_ProjectKB_Class104] of  String
+([contextOntology_ProjectKB_Class10112] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([contextOntology_ProjectKB_Class105] of  String
+([contextOntology_ProjectKB_Class10113] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([contextOntology_ProjectKB_Class106] of  String
+([contextOntology_ProjectKB_Class10114] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([contextOntology_ProjectKB_Class107] of  String
+([contextOntology_ProjectKB_Class10115] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
@@ -131,57 +380,6 @@
 ([contextOntology_ProjectKB_Class28] of  Property_List
 )
 
-([contextOntology_ProjectKB_Class29] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class30])
-	(widget_class_name "se.liu.ida.JessTab.JessTab"))
-
-([contextOntology_ProjectKB_Class30] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class31] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class32])
-	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
-
-([contextOntology_ProjectKB_Class32] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class33] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class34])
-	(widget_class_name "ezpal.EZPalTab"))
-
-([contextOntology_ProjectKB_Class34] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class35] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class36])
-	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
-
-([contextOntology_ProjectKB_Class36] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class37] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class38])
-	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
-
-([contextOntology_ProjectKB_Class38] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class39] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class40])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
-
 ([contextOntology_ProjectKB_Class4] of  Property_List
 
 	(properties
@@ -193,54 +391,7 @@
 		[contextOntology_ProjectKB_Class18]
 		[contextOntology_ProjectKB_Class20]
 		[contextOntology_ProjectKB_Class22]
-		[contextOntology_ProjectKB_Class27]
-		[contextOntology_ProjectKB_Class84]
-		[contextOntology_ProjectKB_Class86]))
-
-([contextOntology_ProjectKB_Class40] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class41] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class42])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
-
-([contextOntology_ProjectKB_Class42] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class43] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class44])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
-
-([contextOntology_ProjectKB_Class44] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class45] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class46])
-	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
-
-([contextOntology_ProjectKB_Class46] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class47] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class48])
-	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
-
-([contextOntology_ProjectKB_Class48] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class49] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class50])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
+		[contextOntology_ProjectKB_Class27]))
 
 ([contextOntology_ProjectKB_Class5] of  Widget
 
@@ -254,146 +405,11 @@
 	(x 0)
 	(y 0))
 
-([contextOntology_ProjectKB_Class50] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class51] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class52])
-	(widget_class_name "TGViztab.TGVizTab"))
-
-([contextOntology_ProjectKB_Class52] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class53] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class54])
-	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
-
-([contextOntology_ProjectKB_Class54] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class55] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class56])
-	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
-
-([contextOntology_ProjectKB_Class56] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class57] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class58])
-	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
-
-([contextOntology_ProjectKB_Class58] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class59] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class60])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
-
 ([contextOntology_ProjectKB_Class6] of  Property_List
 
 	(properties
-		[contextOntology_ProjectKB_Class81]
-		[contextOntology_ProjectKB_Class82]))
-
-([contextOntology_ProjectKB_Class60] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class61] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class62])
-	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
-
-([contextOntology_ProjectKB_Class62] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class63] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class64])
-	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
-
-([contextOntology_ProjectKB_Class64] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class65] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class66])
-	(widget_class_name "script.ProtegeScriptTab"))
-
-([contextOntology_ProjectKB_Class66] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class67] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class68])
-	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
-
-([contextOntology_ProjectKB_Class68] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class69] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class70])
-	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
-
-([contextOntology_ProjectKB_Class70] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class71] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class72])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
-
-([contextOntology_ProjectKB_Class72] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class73] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class74])
-	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
-
-([contextOntology_ProjectKB_Class74] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class75] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class76])
-	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
-
-([contextOntology_ProjectKB_Class76] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class77] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class78])
-	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
-
-([contextOntology_ProjectKB_Class78] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class79] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [contextOntology_ProjectKB_Class80])
-	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+		[contextOntology_ProjectKB_Class10056]
+		[contextOntology_ProjectKB_Class10057]))
 
 ([contextOntology_ProjectKB_Class8] of  Property_List
 
@@ -401,45 +417,6 @@
 	(properties
 		[contextOntology_ProjectKB_Class9]
 		[contextOntology_ProjectKB_Class10]))
-
-([contextOntology_ProjectKB_Class80] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class81] of  Widget
-
-	(is_hidden FALSE)
-	(label "Name")
-	(name ":NAME")
-	(property_list [contextOntology_ProjectKB_Class83])
-	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
-
-([contextOntology_ProjectKB_Class82] of  Widget
-
-	(is_hidden FALSE)
-	(label "Comment")
-	(name "http://www.w3.org/2000/01/rdf-schema#comment")
-	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
-
-([contextOntology_ProjectKB_Class83] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class84] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled")
-	(property_list [contextOntology_ProjectKB_Class85]))
-
-([contextOntology_ProjectKB_Class85] of  Property_List
-)
-
-([contextOntology_ProjectKB_Class86] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#hasRuleGroup")
-	(property_list [contextOntology_ProjectKB_Class87]))
-
-([contextOntology_ProjectKB_Class87] of  Property_List
-)
 
 ([contextOntology_ProjectKB_Class9] of  String
 
@@ -3758,6 +3735,9 @@
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
 
+([KB_899683_Class0] of  Map
+)
+
 ([KB_933314_Instance_11] of  Boolean
 
 	(boolean_value FALSE)
@@ -5823,8 +5803,8 @@
 		"http://www.w3.org/2002/07/owl#InverseFunctionalProperty"
 		":ANNOTATED-INSTANCE"
 		"http://www.w3.org/2003/11/swrl#BuiltinAtom"
-		"http://www.w3.org/2002/07/owl#Ontology"
 		":OWL-ONTOLOGY-POINTER-CLASS"
+		"http://www.w3.org/2002/07/owl#Ontology"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#object"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
 		":VALUE-TYPE"
@@ -5880,8 +5860,8 @@
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
 		"http://www.w3.org/2001/XMLSchema#normalizedString"
 		"http://www.w3.org/2001/XMLSchema#nonPositiveInteger"
-		"http://protege.stanford.edu/plugins/owl/protege#classificationStatus"
 		"http://www.w3.org/2002/07/owl#someValuesFrom"
+		"http://protege.stanford.edu/plugins/owl/protege#classificationStatus"
 		"http://protege.stanford.edu/plugins/owl/protege#inferredSuperclassOf"
 		"http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
@@ -6428,19 +6408,6 @@
 
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2002/07/owl#imports"))
-
-([XY_Instance_217] of  Widget
-
-	(height 0)
-	(is_hidden FALSE)
-	(name ":OWL-ONTOLOGY-PREFIXES")
-	(property_list [XY_Instance_218])
-	(width 0)
-	(x 0)
-	(y 0))
-
-([XY_Instance_218] of  Property_List
-)
 
 ([XY_Instance_235] of  Widget
 

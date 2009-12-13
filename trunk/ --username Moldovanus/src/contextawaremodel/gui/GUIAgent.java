@@ -41,24 +41,24 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
             if (!property.getName().equals("has-value-of-service")) {
                 return;
             }
-            Map<String,Map<String,String>> mapping = GlobalVars.getValueMapping();
+            Map<String, Map<String, String>> mapping = GlobalVars.getValueMapping();
             String tempValue = resource.getPropertyValue(property).toString();
             final String newValue;
-            Map<String,String> valueMapping = mapping.get(resource.getName());
+            Map<String, String> valueMapping = mapping.get(resource.getName());
 
-            if(valueMapping != null){
+            if (valueMapping != null) {
                 newValue = valueMapping.get(tempValue);
-            }else{
-                 newValue = tempValue;
+            } else {
+                newValue = tempValue;
             }
-            
+
             try {
                 SwingUtilities.invokeLater(new Runnable() {
 
                     public void run() {
 
                         cvf.updateText(resource.getName(), newValue);
-
+                        
                     }
                 });
 
