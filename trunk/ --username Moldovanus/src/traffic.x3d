@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
+
+<X3D profile="Immersive" version="3.0">
+    <head>
+        <meta name="filename" content="traffic.wrl"/>
+        <meta name="description" content="An animated traffic light"/>
+        <meta name="author" content="Copyright 2004 Pinecoast Software"/>
+    </head> 
+
+    <Scene>
+        <Background DEF='grays' groundColor='0 0 0' skyAngle='1.35 1.45 1.52 1.57' skyColor='0.41176 0.41176 0.41176 0.74509 0.74509 0.74509 0.8 0.8 0.8 0.82745 0.82745 0.82745 1 1 1'/>
+        <PointLight DEF='Light' color="1.0 1.0 1.0" on="true" 
+         intensity="1" radius="30"  location="0 0 0"/>
+
+        <Transform translation="0 13 0">
+            <Shape>
+                <Appearance>
+                    <Material DEF="boxColor" diffuseColor="0.5 0.5 0.0"   />
+                </Appearance>
+                <Sphere />
+            </Shape>
+            <TouchSensor DEF='LightTouchSensor'/>
+        </Transform>
+
+        <Transform >
+             <Shape>
+                <Appearance>
+                    <Material DEF="f" diffuseColor="1 0.5 0.25"   />
+                </Appearance>
+
+                <Box size="50 30 30" solid="false" />
+            </Shape>
+        </Transform>
+
+    </Scene>
+</X3D>
+

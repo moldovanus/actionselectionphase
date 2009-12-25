@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
+<X3D
+    profile='Immersive'
+    >
+    <Scene >
+        <WorldInfo
+            DEF='SceneWorldInfo'
+            title=''
+            info=''
+            />
+        <Transform
+            DEF='Group01_XFORM'
+            translation='1.274 0.3911 -1.085'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box01_XFORM'
+                translation='0.2231 -0.2119 -0.007835'
+                >
+                <Transform
+                    DEF='Box01_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box01_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box01_MAT'
+                                diffuseColor='0.02353 0.5255 0.02353'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box01'
+                            size='0.1157 0.2329 0.3174'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box02_XFORM'
+                translation='-0.2393 -0.2119 -0.1232'
+                >
+                <Transform
+                    DEF='Box02_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box02_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box02_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box02'
+                            size='0.04219 0.2772 0.03616'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box03_XFORM'
+                translation='0.04141 -0.2119 -0.1232'
+                >
+                <Transform
+                    DEF='Box03_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box03_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box03_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box03'
+                            size='0.04219 0.2772 0.03616'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box09_XFORM'
+                translation='-0.175 0.1072 -0.0163'
+                >
+                <Transform
+                    DEF='Box09_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box09_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box09_MAT'
+                                diffuseColor='0.8784 0.7765 0.3412'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box09'
+                            size='0.03836 0.06393 0.006393'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box05_XFORM'
+                translation='0.04141 -0.2119 0.1322'
+                >
+                <Transform
+                    DEF='Box05_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box05_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box05_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box05'
+                            size='0.04219 0.2772 0.03616'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box06_XFORM'
+                translation='-0.102 0.03347 0.004565'
+                >
+                <Transform
+                    DEF='Box06_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box06_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box06_MAT'
+                                diffuseColor='0.8941 0.6 0.7216'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box06'
+                            size='0.358 0.0554 0.3239'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box07_XFORM'
+                translation='-0.1674 0.0995 0.07696'
+                >
+                <Transform
+                    DEF='Box07_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box07_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box07_MAT'
+                                diffuseColor='0.3373 0.3373 0.3373'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box07'
+                            size='0.1577 0.01492 0.0618'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box08_XFORM'
+                translation='-0.1762 0.09597 -0.0195'
+                >
+                <Transform
+                    DEF='Box08_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box08_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box08_MAT'
+                                diffuseColor='0.102 0.6941 0.3451'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box08'
+                            size='0.1385 0.008523 0.03409'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box10_XFORM'
+                translation='-0.1743 0.1692 -0.01288'
+                rotation='-1 0 0 -1.456'
+                >
+                <Transform
+                    DEF='Box10_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box10_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box10_MAT'
+                                diffuseColor='0.7686 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box10'
+                            size='0.1145 0.007534 0.08438'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Box04_XFORM'
+                translation='-0.2393 -0.2119 0.1322'
+                >
+                <Transform
+                    DEF='Box04_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box04_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box04_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box04'
+                            size='0.04219 0.2772 0.03616'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='lightSource_XFORM'
+            translation='-0.5827 1.7 0.1141'
+            >
+            <Transform
+                DEF='lightSource_WRAPXFORM'
+                >
+                <Shape
+                    DEF='lightSource_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='lightSource_MAT'
+                            diffuseColor='1 1 1'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='lightSource'
+                        size='1.247 0.0693 0.8085'
+                        />
+                </Shape>
+                <
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box12_XFORM'
+            translation='1.201 0.5603 -1.244'
+            rotation='-0.7472 0.4962 -0.4421 -1.746'
+            >
+            <Transform
+                DEF='Box12_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box12_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box12_MAT'
+                            diffuseColor='0.7686 0.3451 0.8824'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box12'
+                        size='0.1145 0.007534 0.08438'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box13_XFORM'
+            translation='1.388 0.1792 -0.8936'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box13_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box13_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box13_MAT'
+                            diffuseColor='0.02353 0.5255 0.02353'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box13'
+                        size='0.1157 0.2329 0.3174'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box14_XFORM'
+            translation='1.267 0.1792 -1.354'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box14_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box14_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box14_MAT'
+                            diffuseColor='0.549 0.3451 0.8824'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box14'
+                        size='0.04219 0.2772 0.03616'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box15_XFORM'
+            translation='1.402 0.1792 -1.108'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box15_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box15_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box15_MAT'
+                            diffuseColor='0.549 0.3451 0.8824'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box15'
+                        size='0.04219 0.2772 0.03616'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box16_XFORM'
+            translation='1.204 0.4984 -1.247'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box16_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box16_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box16_MAT'
+                            diffuseColor='0.8784 0.7765 0.3412'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box16'
+                        size='0.03836 0.06393 0.006393'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box17_XFORM'
+            translation='1.178 0.1792 -0.9855'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box17_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box17_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box17_MAT'
+                            diffuseColor='0.549 0.3451 0.8824'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box17'
+                        size='0.04219 0.2772 0.03616'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box18_XFORM'
+            translation='1.221 0.4246 -1.173'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box18_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box18_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box18_MAT'
+                            diffuseColor='0.8941 0.6 0.7216'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box18'
+                        size='0.358 0.0554 0.3239'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box19_XFORM'
+            translation='1.126 0.4906 -1.195'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box19_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box19_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box19_MAT'
+                            diffuseColor='0.3373 0.3373 0.3373'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box19'
+                        size='0.1577 0.01492 0.0618'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box20_XFORM'
+            translation='1.206 0.4871 -1.249'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box20_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box20_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box20_MAT'
+                            diffuseColor='0.102 0.6941 0.3451'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box20'
+                        size='0.1385 0.008523 0.03409'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box21_XFORM'
+            translation='1.043 0.1792 -1.232'
+            rotation='0 1 0 -1.069'
+            >
+            <Transform
+                DEF='Box21_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box21_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box21_MAT'
+                            diffuseColor='0.549 0.3451 0.8824'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box21'
+                        size='0.04219 0.2772 0.03616'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='computerScreen_XFORM'
+            translation='1.193 0.5603 -1.24'
+            rotation='-0.7472 0.4962 -0.4421 -1.746'
+            scale='0.8174 0.8174 0.8174'
+            scaleOrientation='0 0.02096 -0.9998 -0.506'
+            >
+            <Transform
+                DEF='computerScreen_WRAPXFORM'
+                >
+                <Shape
+                    DEF='computerScreen_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='computerScreen_MAT'
+                            diffuseColor='0 0 0'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='computerScreen'
+                        size='0.1145 0.007534 0.08438'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='heaterGroup_XFORM'
+            translation='0.7866 0.4667 1.655'
+            scale='0.6445 0.6445 0.6445'
+            >
+            <Transform
+                DEF='Cylinder01_XFORM'
+                translation='-0.8279 -0.4447 0'
+                >
+                <Transform
+                    translation='0 0.4267 0'
+                    >
+                    <Shape
+                        DEF='Cylinder01_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Cylinder01_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='Cylinder01'
+                            radius='0.1586'
+                            height='0.8535'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Cylinder03_XFORM'
+                translation='-0.4285 -0.4447 0'
+                >
+                <Transform
+                    translation='0 0.4267 0'
+                    >
+                    <Shape
+                        DEF='Cylinder03_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Cylinder03_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='Cylinder03'
+                            radius='0.1586'
+                            height='0.8535'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Cylinder04_XFORM'
+                translation='-0.007928 -0.4447 0'
+                >
+                <Transform
+                    translation='0 0.4267 0'
+                    >
+                    <Shape
+                        DEF='Cylinder04_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Cylinder04_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='Cylinder04'
+                            radius='0.1586'
+                            height='0.8535'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Cylinder05_XFORM'
+                translation='0.441 -0.4447 0'
+                >
+                <Transform
+                    translation='0 0.4267 0'
+                    >
+                    <Shape
+                        DEF='Cylinder05_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Cylinder05_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='Cylinder05'
+                            radius='0.1586'
+                            height='0.8535'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Cylinder06_XFORM'
+                translation='0.8279 -0.4447 0'
+                >
+                <Transform
+                    translation='0 0.4267 0'
+                    >
+                    <Shape
+                        DEF='Cylinder06_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Cylinder06_MAT'
+                                diffuseColor='0.549 0.3451 0.8824'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='Cylinder06'
+                            radius='0.1586'
+                            height='0.8535'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='heater_XFORM'
+                translation='-0.01704 -0.4447 0.00338'
+                >
+                <Transform
+                    DEF='heater_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='heater_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='heater_MAT'
+                                diffuseColor='0.5255 0.2314 0.03137'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='heater'
+                            size='1.79 0.8894 0.2426'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Box11_XFORM'
+            translation='-0.5806 0.1069 0.09453'
+            >
+            <Transform
+                DEF='Box11_WRAPXFORM'
+                >
+                <Shape
+                    DEF='Box11_SHAPE'
+                    >
+                    <Appearance     >
+                        <Material
+                            DEF='Box11_MAT'
+                            diffuseColor='0.7216 0.6078 0.898'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Box
+                        DEF='Box11'
+                        size='5.08 2.156 3.675'
+                        />
+                </Shape>
+            </Transform>
+        </Transform>
+        <Transform
+            DEF='Group02_XFORM'
+            translation='1.798 1.801 0.007254'
+            >
+            <TimeSensor
+                DEF='Group02_TIMER'
+                loop='true'
+                cycleInterval='3.333'
+                />
+            <Transform
+                DEF='Box22_XFORM'
+                translation='0.02524 -0.1097 0'
+                rotation='0 -1 0 -3.127'
+                scale='0.4064 0.4064 0.4064'
+                >
+                <Transform
+                    DEF='Box22_WRAPXFORM'
+                    >
+                    <Shape
+                        DEF='Box22_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Box22_MAT'
+                                diffuseColor='0.03137 0.03137 0.5333'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Box
+                            DEF='Box22'
+                            size='0.6534 0.2614 0.2777'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='videoCameraLens_XFORM'
+                translation='-0.01448 -0.05758 -0.001109'
+                rotation='-0.583 -0.5745 0.5745 -2.086'
+                scale='0.3679 0.3679 0.3679'
+                >
+                <Transform
+                    translation='0 -0.2079 0'
+                    >
+                    <Shape
+                        DEF='videoCameraLens_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='videoCameraLens_MAT'
+                                diffuseColor='0.6 0.8941 0.7216'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='videoCameraLens'
+                            radius='0.1138'
+                            height='0.4158'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+            <Transform
+                DEF='Cylinder02_XFORM'
+                translation='0.05813 -0.02537 0.002016'
+                rotation='-0.3089 -0.9511 -0.00225 -3.128'
+                scale='0.4064 0.6098 0.4064'
+                scaleOrientation='0 -1 0 -0.009894'
+                >
+                <Transform
+                    translation='0 0.1184 0'
+                    >
+                    <Shape
+                        DEF='Cylinder02_SHAPE'
+                        >
+                        <Appearance      >
+                            <Material
+                                DEF='Cylinder02_MAT'
+                                diffuseColor='0.8941 0.6 0.7216'
+                                ambientIntensity='1'
+                                />
+                        </Appearance>
+                        <Cylinder
+                            DEF='Cylinder02'
+                            radius='0.07629'
+                            height='0.2368'
+                            />
+                    </Shape>
+                </Transform>
+            </Transform>
+        </Transform>
+    </Scene>
+</X3D>
+<!--#comment Produced by 3D Studio Max X3D exporter -->
