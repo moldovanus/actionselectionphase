@@ -1,13 +1,19 @@
 package contextawaremodel.agents.behaviours;
 
+import actionselection.x3dCommand.X3DOnOffCommand;
+import contextawaremodel.GlobalVars;
 import contextawaremodel.sensorapi.SensorAPI;
 import contextawaremodel.sensorapi.SensorListener;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import edu.stanford.smi.protegex.owl.model.RDFProperty;
 import edu.stanford.smi.protegex.owl.model.RDFResource;
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
 
@@ -29,7 +35,8 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
         try {
             switch (message.getPerformative()) {
                 case ACLMessage.INFORM:
-                    String individualName = (String) message.getContentObject();
+                    final String individualName = (String) message.getContentObject();
+
                     final RDFResource individual = owlModel.getRDFResource(individualName);
                     if (!individual.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
                         return;
@@ -43,13 +50,16 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                             new SensorListener() {
 
                                 public void valueChanged(double newValue) {
+
                                     individual.setPropertyValue(valueProperty, String.format("%1$2.2f", newValue));
                                 }
                             });
 
                     break;
                 case ACLMessage.INFORM_REF:
-                    String individualName_2 = (String) message.getContentObject();
+
+                    final String individualName_2 = (String) message.getContentObject();
+                     System.err.println("!!!!  " + individualName_2);
                     final RDFResource individual_2 = owlModel.getRDFResource(individualName_2);
                     if (!individual_2.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
                         return;
@@ -65,6 +75,19 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                             new SensorListener() {
 
                                 public void valueChanged(double newValue) {
+                                    if (individualName_2.equals("LightSensorI")) {
+                                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        boolean value = (newValue > 0) ? true : false;
+                                        X3DOnOffCommand command = new X3DOnOffCommand("Light", value);
+                                        try {
+                                            message.setContentObject(command);
+                                            message.setLanguage("JavaSerialization");
+                                            message.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        agent.send(message);
+                                    }
                                     individual_2.setPropertyValue(valueProperty_2, String.format("%1$2.2f", newValue));
                                 }
                             });
