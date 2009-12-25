@@ -26,11 +26,8 @@ public class CMAAgent extends Agent implements CMAAExternal {
 
     //the owl model
     private JenaOWLModel owlModel;
-
     private OntModel policyConversionModel;
-
     private JenaOWLModel jenaOwlModel;
-
     //the protege factory
     public MyFactory factory;
     //the main window of the simulator
@@ -48,6 +45,8 @@ public class CMAAgent extends Agent implements CMAAExternal {
     private AgentController gui = null;
     //rl agent
     private AgentController rl = null;
+    //x3d agent
+    private AgentController x3d = null;
 
     @Override
     protected void setup() {
@@ -58,7 +57,7 @@ public class CMAAgent extends Agent implements CMAAExternal {
             this.owlModel = ProtegeOWL.createJenaOWLModelFromURI(new File(GlobalVars.ONTOLOGY_FILE).toURI().toString());
             this.factory = new MyFactory(owlModel);
 
-             
+
             File file = new File(GlobalVars.ONTOLOGY_FILE);
             jenaOwlModel = ProtegeOWL.createJenaOWLModelFromURI(file.toURI().toString());
 
@@ -108,9 +107,11 @@ public class CMAAgent extends Agent implements CMAAExternal {
             cia = container.createNewAgent(GlobalVars.CIAGENT_NAME, CIAgent.class.getName(), new Object[]{this.owlModel});
             cia.start();
 
-            rl = container.createNewAgent(GlobalVars.RLAGENT_NAME, ReinforcementLearningAgent.class.getName(), new Object[]{this.owlModel,this.policyConversionModel , this.jenaOwlModel});
+            rl = container.createNewAgent(GlobalVars.RLAGENT_NAME, ReinforcementLearningAgent.class.getName(), new Object[]{this.owlModel, this.policyConversionModel, this.jenaOwlModel});
             rl.start();
 
+            x3d = container.createNewAgent(GlobalVars.X3DAGENT_NAME, X3DAgent.class.getName(), new Object[]{});
+            x3d.start();
             //star the Request Processing Agent
 
             //createNewAgent(Name, Class name, arguments to the agent)
