@@ -5,8 +5,8 @@
 package contextawaremodel.agents.behaviours;
 
 import actionselection.x3dCommand.X3DCommand;
+import actionselection.x3dCommand.X3DStringCommand;
 import contextawaremodel.agents.X3DAgent;
-import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
@@ -35,6 +35,12 @@ public class BasicX3DABehaviour extends CyclicBehaviour {
                 case ACLMessage.INFORM:
                     X3DCommand command = (X3DCommand) message.getContentObject();
                     command.execute(agent.getMainScene());
+                    if (command instanceof X3DStringCommand) {
+                        X3DStringCommand x3dCommand = (X3DStringCommand) command;
+                        if (x3dCommand.getNodeName().equals("computerState_STRING")) {
+                            agent.flipComputerState(x3dCommand.getContent());
+                        }
+                    }
                     break;
             }
         } catch (Exception ex) {

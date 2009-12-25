@@ -4,7 +4,7 @@
  */
 package actionselection.x3dCommand;
 
-import org.web3d.x3d.sai.SFBool;
+import org.web3d.x3d.sai.MFString;
 import org.web3d.x3d.sai.X3DNode;
 import org.web3d.x3d.sai.X3DScene;
 
@@ -12,19 +12,23 @@ import org.web3d.x3d.sai.X3DScene;
  *
  * @author Me
  */
-public class X3DOnOffCommand extends X3DCommand {
+public class X3DStringCommand extends X3DCommand {
 
-    private boolean value;
+    private String content;
 
-    public X3DOnOffCommand(String nodeName, boolean value) {
+    public String getContent() {
+        return content;
+    }
+
+    public X3DStringCommand(String nodeName, String content) {
         super(nodeName);
-        this.value = value;
+        this.content = content;
     }
 
     @Override
     public void execute(X3DScene mainScene) {
         X3DNode sensor = mainScene.getNamedNode(nodeName);
-        SFBool sensorState = (SFBool) sensor.getField("on");
-        sensorState.setValue(value);
+        MFString sensorState = (MFString) sensor.getField("string");
+        sensorState.set1Value(0, content);
     }
 }
