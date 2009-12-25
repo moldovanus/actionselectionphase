@@ -1,6 +1,8 @@
 package contextawaremodel.agents.behaviours;
 
+import actionselection.x3dCommand.X3DCommand;
 import actionselection.x3dCommand.X3DOnOffCommand;
+import actionselection.x3dCommand.X3DStringCommand;
 import contextawaremodel.GlobalVars;
 import contextawaremodel.sensorapi.SensorAPI;
 import contextawaremodel.sensorapi.SensorListener;
@@ -59,7 +61,6 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                 case ACLMessage.INFORM_REF:
 
                     final String individualName_2 = (String) message.getContentObject();
-                     System.err.println("!!!!  " + individualName_2);
                     final RDFResource individual_2 = owlModel.getRDFResource(individualName_2);
                     if (!individual_2.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
                         return;
@@ -77,8 +78,41 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                 public void valueChanged(double newValue) {
                                     if (individualName_2.equals("LightSensorI")) {
                                         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        ACLMessage stringMessage = new ACLMessage(ACLMessage.INFORM);
                                         boolean value = (newValue > 0) ? true : false;
+                                        String stringValue = (newValue > 0) ? "ON" : "FALSE";
+
                                         X3DOnOffCommand command = new X3DOnOffCommand("Light", value);
+                                        X3DStringCommand stringCommand = new X3DStringCommand("lightState_STRING", "Light: " + stringValue);
+                                        try {
+                                            message.setContentObject(command);
+                                            stringMessage.setContentObject(stringCommand);
+                                            message.setLanguage("JavaSerialization");
+                                            stringMessage.setLanguage("JavaSerialization");
+                                            message.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                                            stringMessage.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        agent.send(message);
+                                        agent.send(stringMessage);
+                                    } else if (individualName_2.equals("RoomStateSensorI")) {
+                                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        String value = (newValue > 0) ? "FALSE" : "TRUE";
+                                        X3DStringCommand command = new X3DStringCommand("roomEmpty_STRING", "Room empty: " + value);
+                                        try {
+                                            message.setContentObject(command);
+                                            message.setLanguage("JavaSerialization");
+                                            message.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        agent.send(message);
+                                    } else if (individualName_2.equals("ComputerStateSensorI")) {
+                                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        String value = (newValue > 0) ? "ON" : "OFF";
+                                        X3DStringCommand command = new X3DStringCommand("computerState_STRING", "Computer state:  " + value);
                                         try {
                                             message.setContentObject(command);
                                             message.setLanguage("JavaSerialization");
@@ -88,6 +122,8 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                         }
                                         agent.send(message);
                                     }
+
+
                                     individual_2.setPropertyValue(valueProperty_2, String.format("%1$2.2f", newValue));
                                 }
                             });

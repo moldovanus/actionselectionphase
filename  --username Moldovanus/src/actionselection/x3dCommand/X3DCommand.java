@@ -14,10 +14,14 @@ import org.web3d.x3d.sai.X3DScene;
 public abstract class X3DCommand implements Serializable {
 
     protected String nodeName;
-    protected boolean value;
 
-    public X3DCommand(String nodeName, boolean value) {
-        this.value = value;
+    public final String getNodeName() {
+        return nodeName;
+    }
+    
+
+
+    public X3DCommand(String nodeName ) {
         this.nodeName = nodeName;
 
     }

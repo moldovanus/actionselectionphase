@@ -6,7 +6,7 @@
 
     <Scene >
         <Viewpoint DEF="viewPoint" position="-100 50 200" orientation="0 50 0 1" />
-        <PointLight DEF='Light' color="1.0 1.0 1.0" on="true"
+        <PointLight DEF='Light' color="1.0 1.0 1.0" on="false"
                     intensity="1" radius="30"  location="0 0 0"/>
 
         <Shape
@@ -43,7 +43,7 @@
                         ambientIntensity='1'
                         />
                 </Appearance>
-                <Text DEF='lightState_STRING' string='"Light"' solid="true">
+                <Text DEF='lightState_STRING' string='"Light: OFF"' solid="true">
                     <FontStyle justify='"MIDDLE" "MIDDLE"' size="10"/>
                 </Text>
             </Shape>
@@ -287,7 +287,7 @@
                         ambientIntensity='1'
                         />
                 </Appearance>
-                <Text DEF='roomEmpty_STRING' string='"Room empty: false"' solid="true">
+                <Text DEF='roomEmpty_STRING' string='"Room empty: TRUE"' solid="true">
                     <FontStyle justify='"MIDDLE" "MIDDLE"' size="10"/>
                 </Text>
             </Shape>
@@ -316,6 +316,7 @@
                         size='197.4 5.145 144.7'
                         />
                 </Shape>
+                <TouchSensor DEF='PressureSensor'/>
             </Transform>
         </Transform>
         <Transform
@@ -495,6 +496,7 @@
         <Transform
             DEF='computerGroup_XFORM'
             translation='50.16 16 -42.73'
+            scale="1.5 1.5 1.5"
             >
             <TimeSensor
                 DEF='computerGroup_TIMER'
@@ -540,7 +542,7 @@
                         </Appearance>
                         <Box
                             DEF='computerStandScreen'
-                            size='4.508 0.2966 3.322'
+                            size='6.508 0.2966 3.322'
                             />
                     </Shape>
                 </Transform>
@@ -549,8 +551,7 @@
                 DEF='computerScreen_XFORM'
                 translation='-3.188 6.66 -6.067'
                 rotation='-0.7472 0.4962 -0.4421 -1.746'
-                scale='0.8174 0.8174 0.8174'
-                scaleOrientation='-0.8596 -0.511 0 -0.0855'
+                 
                 >
                 <Transform
                     DEF='computerScreen_WRAPXFORM'
@@ -561,7 +562,7 @@
                         <Appearance      >
                             <Material
                                 DEF='computerScreen_MAT'
-                                diffuseColor='0 0 0'
+                                diffuseColor='1 1 1'
                                 ambientIntensity='1'
                                 />
                         </Appearance>
@@ -795,6 +796,7 @@
                             size='4.553 9.17 12.49'
                             />
                     </Shape>
+                    <TouchSensor  DEF="ComputerStateSensor" />
                 </Transform>
             </Transform>
             <Transform
