@@ -1,13 +1,7 @@
 package contextawaremodel.agents.behaviours;
 
-import com.hp.hpl.jena.util.FileUtils;
 import contextawaremodel.agents.CIAgent;
-import edu.stanford.smi.protegex.owl.jena.JenaOWLModel;
 import jade.core.behaviours.TickerBehaviour;
-import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 public class RecordingCIABehaviour extends TickerBehaviour {
 
