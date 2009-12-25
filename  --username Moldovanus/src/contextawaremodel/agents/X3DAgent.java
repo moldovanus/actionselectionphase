@@ -4,13 +4,21 @@
  */
 package contextawaremodel.agents;
 
+import actionselection.command.DecrementCommand;
+import actionselection.command.IncrementCommand;
 import actionselection.command.SetCommand;
 import com.hp.hpl.jena.ontology.OntModel;
+import contextawaremodel.GlobalVars;
 import contextawaremodel.agents.behaviours.BasicX3DABehaviour;
+import jade.core.AID;
 import jade.core.Agent;
+import jade.lang.acl.ACLMessage;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import org.web3d.x3d.sai.BrowserFactory;
@@ -34,6 +42,8 @@ public class X3DAgent extends Agent {
     private JFrame frame;
     private com.hp.hpl.jena.ontology.OntModel policyConversionModel;
     private X3DScene mainScene;
+    private ACLMessage message;
+    private final Agent selfReference = this;
 
     public void flipComputerState(String value) {
         X3DNode computerMaterial = mainScene.getNamedNode("computerScreen_MAT");
@@ -47,10 +57,20 @@ public class X3DAgent extends Agent {
 
     @Override
     protected void setup() {
+
         Object[] args = getArguments();
         if (args == null) {
             this.policyConversionModel = null;
             System.out.println("[X3D] X3D Agent failed, owlModel arguments are null!");
+            return;
+        }
+        message = new ACLMessage(ACLMessage.SUBSCRIBE);
+        message.addReceiver(new AID(GlobalVars.RLAGENT_NAME + "@" + this.getContainerController().getPlatformName()));
+        try {
+            message.setContentObject(new Boolean(true));
+            message.setLanguage("JavaSerialization");
+        } catch (IOException ex) {
+            Logger.getLogger(X3DAgent.class.getName()).log(Level.SEVERE, null, ex);
             return;
         }
 
@@ -102,6 +122,8 @@ public class X3DAgent extends Agent {
         X3DNode lightSensor = mainScene.getNamedNode("LightTouchSensor");
         X3DNode computerSensor = mainScene.getNamedNode("ComputerStateSensor");
         X3DNode pressureSensor = mainScene.getNamedNode("PressureSensor");
+        X3DNode airConditioningSensor = mainScene.getNamedNode("AirConditioningSensor");
+        X3DNode heaterSensor = mainScene.getNamedNode("HeaterSensor");
 
         if (lightSensor == null) {
             System.out.println("Couldn't find TouchSensor named: TOUCH_SENSOR");
@@ -117,19 +139,64 @@ public class X3DAgent extends Agent {
             return;
         }
 
+        if (airConditioningSensor == null) {
+            System.out.println("Couldn't find TouchSensor named: AirConditioningSensor");
+            return;
+        }
+
+        if (heaterSensor == null) {
+            System.out.println("Couldn't find TouchSensor named: HeaterSensor");
+            return;
+        }
+
 
         //final float[] f = new float[]{1, 1, 1};
         SFTime lightTouchTimeField = (SFTime) lightSensor.getField("touchTime");
         SFTime pressureTouchTimeField = (SFTime) pressureSensor.getField("touchTime");
         SFTime computerTouchTimeField = (SFTime) computerSensor.getField("touchTime");
+        SFTime airConditioningTouchTimeField = (SFTime) airConditioningSensor.getField("touchTime");
+        SFTime heaterTouchTimeField = (SFTime) heaterSensor.getField("touchTime");
         //X3DNode sphere = mainScene.getNamedNode("boxColor");
         //SFColor color = (SFColor) sphere.getField("diffuseColor");
         //color.setValue(f);
 
-        computerTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
+        heaterTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
 
             public void readableFieldChanged(X3DFieldEvent xdfe) {
 
+                IncrementCommand command = new IncrementCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 5);
+                command.execute();
+                command.setOWLValue();
+                selfReference.send(message);
+                //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
+                //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
+
+                System.out.println("Air Conditioning unit clicked");
+            }
+        });
+
+        airConditioningTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
+
+            public void readableFieldChanged(X3DFieldEvent xdfe) {
+
+                DecrementCommand command = new DecrementCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 5);
+                command.execute();
+                command.setOWLValue();
+                selfReference.send(message);
+                //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
+                //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
+                System.out.println("Air Conditioning unit clicked");
+            }
+        });
+
+        computerTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
+
+            public void readableFieldChanged(X3DFieldEvent xdfe) {
+                
                 X3DNode computerStateString = mainScene.getNamedNode("computerState_STRING");
                 MFString computerStateSensorValue = (MFString) computerStateString.getField("string");
                 System.err.println("Room state: " + computerStateSensorValue.get1Value(0));
@@ -150,7 +217,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, computerState);
                 command.execute();
                 command.setOWLValue();
-
+                selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
                 System.out.println("Computer unit clicked");
@@ -177,7 +244,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, roomState);
                 command.execute();
                 command.setOWLValue();
-
+                selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
                 System.out.println("Room pressure pad clicked");

@@ -213,7 +213,8 @@
                 loop='true'
                 cycleInterval='3.333'
                 />
-            <Transform>
+            <TouchSensor DEF="AirConditioningSensor" />
+            <Transform translation="0 -2 0">
                 <Shape USE="temperatureState_SHAPE" />
             </Transform>
             <Transform
@@ -270,6 +271,7 @@
                                 />
                         </IndexedFaceSet>
                     </Shape>
+
                 </Transform>
             </Transform>
         </Transform>
@@ -464,6 +466,7 @@
                             size='70.48 35.01 9.549'
                             />
                     </Shape>
+                    <TouchSensor DEF="HeaterSensor" />
                 </Transform>
             </Transform>
             <Transform
@@ -495,7 +498,7 @@
         </Transform>
         <Transform
             DEF='computerGroup_XFORM'
-            translation='50.16 16 -42.73'
+            translation='50.16 22 -42.73'
             scale="1.5 1.5 1.5"
             >
             <TimeSensor
@@ -526,6 +529,7 @@
                 DEF='computerStandScreen_XFORM'
                 translation='-2.86 6.66 -6.26'
                 rotation='-0.7472 0.4962 -0.4421 -1.746'
+                scale='1.5 1.5 1.5'
                 >
                 <Transform
                     DEF='computerStandScreen_WRAPXFORM'
@@ -551,7 +555,7 @@
                 DEF='computerScreen_XFORM'
                 translation='-3.188 6.66 -6.067'
                 rotation='-0.7472 0.4962 -0.4421 -1.746'
-                 
+                scale='1.3 1.3 1.3'
                 >
                 <Transform
                     DEF='computerScreen_WRAPXFORM'

@@ -39,6 +39,16 @@ public class ReinforcementLearningAgent extends Agent {
     private int totalRunningTime;
     private int runCount = 0;
     private boolean contextIsOK = true;
+    private boolean contextDirty = false;
+
+    public boolean isContextDirty() {
+        return contextDirty;
+    }
+
+    public void setContextDirty(boolean dirtyContext) {
+        this.contextDirty = dirtyContext;
+    }
+
 
     public boolean isContextIsOK() {
         return contextIsOK;
@@ -47,6 +57,7 @@ public class ReinforcementLearningAgent extends Agent {
     public void setContextIsOK(boolean contextIsOK) {
         this.contextIsOK = contextIsOK;
     }
+
 
     
 

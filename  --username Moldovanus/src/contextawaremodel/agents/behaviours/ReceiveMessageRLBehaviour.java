@@ -62,11 +62,17 @@ public class ReceiveMessageRLBehaviour extends CyclicBehaviour {
 
                 case ACLMessage.INFORM:
                     String content = (String) message.getContent();
-                    if ( content.equals("BROKEN")){
-                       agent.setContextIsOK(false);
-                    }else if ( content.equals("OK")) {
+                    if (content.equals("BROKEN")) {
+                        agent.setContextIsOK(false);
+                    } else if (content.equals("OK")) {
                         agent.setContextIsOK(true);
                     }
+                    break;
+
+                case ACLMessage.SUBSCRIBE:
+                    Boolean value = (Boolean) message.getContentObject();
+                    agent.setContextDirty(value);
+                    System.err.println("Context dirty received");
                     break;
             }
         } catch (Exception ex) {

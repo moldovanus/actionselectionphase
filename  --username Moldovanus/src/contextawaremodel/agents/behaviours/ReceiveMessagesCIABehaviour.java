@@ -80,7 +80,7 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                                         ACLMessage stringMessage = new ACLMessage(ACLMessage.INFORM);
                                         boolean value = (newValue > 0) ? true : false;
-                                        String stringValue = (newValue > 0) ? "ON" : "FALSE";
+                                        String stringValue = (newValue > 0) ? "ON" : "OFF";
 
                                         X3DOnOffCommand command = new X3DOnOffCommand("Light", value);
                                         X3DStringCommand stringCommand = new X3DStringCommand("lightState_STRING", "Light: " + stringValue);
@@ -121,8 +121,19 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                             Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
                                         }
                                         agent.send(message);
+                                    } else if (individualName_2.equals("TemperatureSensorI")) {
+                                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        int value = (int) newValue;
+                                        X3DStringCommand command = new X3DStringCommand("temperatureState_STRING", "Temperature:  " + value);
+                                        try {
+                                            message.setContentObject(command);
+                                            message.setLanguage("JavaSerialization");
+                                            message.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        agent.send(message);
                                     }
-
 
                                     individual_2.setPropertyValue(valueProperty_2, String.format("%1$2.2f", newValue));
                                 }

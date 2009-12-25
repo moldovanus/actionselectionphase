@@ -128,7 +128,13 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     }
 
     public ContextSnapshot reinforcementLearning(Queue<ContextSnapshot> queue, HashMap<SensorValues, SensorValues> contexts) throws Exception {
+
         ContextSnapshot context = queue.remove();
+
+        //if values have been changed stop and repair what you can so far 
+        //if (agent.isContextDirty()) {
+         ///   return context;
+       // }
 
         SensorValues values = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         Queue<Command> actions = memory.getActions(values);
@@ -187,7 +193,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     while (associatedActuators.hasNext()) {
                         actuatorsList.add(associatedActuators.nextStatement().getResource());
                     }
-                    for (Resource attachedActuatorResource : actuatorsList) {
+
+                    int actuatorsListLength = actuatorsList.size();
+                    for ( int i = 0; i < actuatorsListLength; i++) {
+                        
+                        Resource attachedActuatorResource = actuatorsList.get(i);
                         //Resource attachedActuatorResource =
                         Individual actuator = policyConversionModel.getIndividual(attachedActuatorResource.toString());
 
@@ -364,16 +374,16 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         if (computeEntropy(initialContext).getFirst() != 0) {
             try {
                 long startMinutes = new java.util.Date().getTime();
-                
+
                 ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
                 msg.setLanguage("JavaSerialization");
 
                 msg.setContent("BROKEN");
                 msg.addReceiver(new AID(GlobalVars.RLAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
                 agent.send(msg);
-
+                agent.setContextDirty(false);
                 contextSnapshot = reinforcementLearning(queue, new HashMap<SensorValues, SensorValues>());
-                
+
                 msg.setContent("OK");
                 msg.addReceiver(new AID(GlobalVars.RLAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
                 agent.send(msg);
@@ -391,6 +401,10 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 return;
             }
 
+            //do nothing if 
+            if ( agent.isContextDirty()){
+                return;
+            }
             setBrokenResources(contextSnapshot);
 
             Queue<Command> bestActionsList = contextSnapshot.getActions();
