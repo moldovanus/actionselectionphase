@@ -19,8 +19,6 @@ public abstract class X3DCommand implements Serializable {
         return nodeName;
     }
     
-
-
     public X3DCommand(String nodeName ) {
         this.nodeName = nodeName;
 

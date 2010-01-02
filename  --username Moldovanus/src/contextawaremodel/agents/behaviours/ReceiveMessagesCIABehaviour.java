@@ -1,6 +1,5 @@
 package contextawaremodel.agents.behaviours;
 
-import actionselection.x3dCommand.X3DCommand;
 import actionselection.x3dCommand.X3DOnOffCommand;
 import actionselection.x3dCommand.X3DStringCommand;
 import contextawaremodel.GlobalVars;
@@ -125,6 +124,18 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                                         int value = (int) newValue;
                                         X3DStringCommand command = new X3DStringCommand("temperatureState_STRING", "Temperature:  " + value);
+                                        try {
+                                            message.setContentObject(command);
+                                            message.setLanguage("JavaSerialization");
+                                            message.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        agent.send(message);
+                                    } else if (individualName_2.equals("AlarmStateSensorI")) {
+                                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        String value = (newValue > 0) ? "ON" : "OFF";
+                                        X3DStringCommand command = new X3DStringCommand("alarmState_STRING", "Alarm state: " + value);
                                         try {
                                             message.setContentObject(command);
                                             message.setLanguage("JavaSerialization");

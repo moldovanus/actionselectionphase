@@ -9,6 +9,7 @@
         <PointLight DEF='Light' color="1.0 1.0 1.0" on="false"
                     intensity="1" radius="30"  location="0 0 0"/>
 
+
         <Shape
             DEF='temperatureState_SHAPE'
             >
@@ -28,6 +29,45 @@
             title=''
             info=''
             />
+
+        <Transform
+            DEF='alarmState_XFORM'
+            translation='9.94 65 65.14'
+            rotation='0 1 0 -2.5'
+            >
+            <Shape
+                DEF='alarmState_SHAPE'
+                >
+                <Appearance      >
+                    <Material
+                        DEF='alarmState_MAT'
+                        diffuseColor='1 0.8941 0.0'
+                        ambientIntensity='1'
+                        />
+                </Appearance>
+                <Text DEF='alarmState_STRING' string='"Alarm state: OFF"' solid="true">
+                    <FontStyle justify='"MIDDLE" "MIDDLE"' size="10"/>
+                </Text>
+            </Shape>
+
+        </Transform>
+        <Transform DEF='alarm_XFRM' scale="1 1 1"
+                   translation='9.94 70 65.14'>
+            <Transform DEF='alarm_WRAPXFORM'
+                       >
+                <Shape>
+                    <Appearance>
+                        <Material
+                            DEF='alarm_MAT'
+                            diffuseColor='1.0 0.0 0.0'
+                            ambientIntensity='1'
+                            />
+                    </Appearance>
+                    <Sphere DEF="alarm_SHAPE" radius="5" solid="true" />
+                </Shape>
+                <TouchSensor DEF="AlarmSensor" />
+            </Transform>
+        </Transform>
 
         <Transform
             translation='-22.94 85 0.492'
@@ -173,6 +213,7 @@
                             height='16.37'
                             />
                     </Shape>
+                    <TouchSensor DEF="VideoCameraSensor" />
                 </Transform>
             </Transform>
             <Transform
@@ -321,6 +362,7 @@
                 <TouchSensor DEF='PressureSensor'/>
             </Transform>
         </Transform>
+
         <Transform
             DEF='heaterGroup_XFORM'
             translation='9.94 22.24 65.14'

@@ -124,6 +124,8 @@ public class X3DAgent extends Agent {
         X3DNode pressureSensor = mainScene.getNamedNode("PressureSensor");
         X3DNode airConditioningSensor = mainScene.getNamedNode("AirConditioningSensor");
         X3DNode heaterSensor = mainScene.getNamedNode("HeaterSensor");
+        X3DNode alarmSensor = mainScene.getNamedNode("AlarmSensor");
+        X3DNode videoCameraSensor = mainScene.getNamedNode("VideoCameraSensor");
 
         if (lightSensor == null) {
             System.out.println("Couldn't find TouchSensor named: TOUCH_SENSOR");
@@ -148,6 +150,14 @@ public class X3DAgent extends Agent {
             System.out.println("Couldn't find TouchSensor named: HeaterSensor");
             return;
         }
+        if (alarmSensor == null) {
+            System.out.println("Couldn't find TouchSensor named: Alarm Sensor");
+            return;
+        }
+        if (videoCameraSensor == null) {
+            System.out.println("Couldn't find TouchSensor named: Video Camera Sensor");
+            return;
+        }
 
 
         //final float[] f = new float[]{1, 1, 1};
@@ -156,9 +166,45 @@ public class X3DAgent extends Agent {
         SFTime computerTouchTimeField = (SFTime) computerSensor.getField("touchTime");
         SFTime airConditioningTouchTimeField = (SFTime) airConditioningSensor.getField("touchTime");
         SFTime heaterTouchTimeField = (SFTime) heaterSensor.getField("touchTime");
+        SFTime alarmTouchTimeField = (SFTime) alarmSensor.getField("touchTime");
+        SFTime videoTouchTimeField = (SFTime) videoCameraSensor.getField("touchTime");
         //X3DNode sphere = mainScene.getNamedNode("boxColor");
         //SFColor color = (SFColor) sphere.getField("diffuseColor");
         //color.setValue(f);
+
+
+        alarmTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
+
+            public void readableFieldChanged(X3DFieldEvent xdfe) {
+
+                X3DNode alarmStateString = mainScene.getNamedNode("alarmState_STRING");
+                MFString alarmStateSensorValue = (MFString) alarmStateString.getField("string");
+
+                int alarmState = 0;
+                if (alarmStateSensorValue.get1Value(0).equals("Alarm state: OFF")) {
+                    //computerStateSensorValue.set1Value(0,"Computer state: ON");
+                    alarmState = 1;
+
+                } else {
+                    //computerStateSensorValue.set1Value(0,"Computer state: OFF");
+                    alarmState = 0;
+
+                }
+                System.err.println("Alarm new state = " + alarmState);
+                
+                SetCommand command = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, alarmState);
+                command.execute();
+                command.setOWLValue();
+                selfReference.send(message);
+                //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
+                //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
+
+                System.out.println("Air Conditioning unit clicked");
+            }
+        });
+
 
         heaterTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
 
@@ -196,7 +242,7 @@ public class X3DAgent extends Agent {
         computerTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
 
             public void readableFieldChanged(X3DFieldEvent xdfe) {
-                
+
                 X3DNode computerStateString = mainScene.getNamedNode("computerState_STRING");
                 MFString computerStateSensorValue = (MFString) computerStateString.getField("string");
                 System.err.println("Room state: " + computerStateSensorValue.get1Value(0));
