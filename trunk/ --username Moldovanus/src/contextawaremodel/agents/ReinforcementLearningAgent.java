@@ -4,11 +4,11 @@
  */
 package contextawaremodel.agents;
 
+import actionselection.command.Command;
+import actionselection.command.SetCommand;
 import actionselection.context.Memory;
 import com.hp.hpl.jena.ontology.OntModel;
 import contextawaremodel.GlobalVars;
-import contextawaremodel.agents.behaviours.ContextDisturbingBehaviour;
-import contextawaremodel.agents.behaviours.GarbadgeCollectForcerAgent;
 import contextawaremodel.agents.behaviours.RLPlotterBehaviour;
 import contextawaremodel.agents.behaviours.ReceiveMessageRLBehaviour;
 import contextawaremodel.agents.behaviours.ReinforcementLearningBasicBehaviour;
@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
 import java.util.Map;
+import logger.LoggerGUI;
 
 /**
  *
@@ -40,6 +41,7 @@ public class ReinforcementLearningAgent extends Agent {
     private int runCount = 0;
     private boolean contextIsOK = true;
     private boolean contextDirty = false;
+    private LoggerGUI logger;
 
     public boolean isContextDirty() {
         return contextDirty;
@@ -49,7 +51,6 @@ public class ReinforcementLearningAgent extends Agent {
         this.contextDirty = dirtyContext;
     }
 
-
     public boolean isContextIsOK() {
         return contextIsOK;
     }
@@ -57,9 +58,6 @@ public class ReinforcementLearningAgent extends Agent {
     public void setContextIsOK(boolean contextIsOK) {
         this.contextIsOK = contextIsOK;
     }
-
-
-    
 
     public int getTotalRunningTime() {
         return totalRunningTime;
@@ -83,6 +81,16 @@ public class ReinforcementLearningAgent extends Agent {
         runCount++;
     }
 
+    public LoggerGUI getLogger() {
+        return logger;
+    }
+
+    public void setLogger(LoggerGUI logger) {
+        this.logger = logger;
+    }
+
+    
+
     @Override
     protected void setup() {
         System.out.println("[RL agent] Hello!");
@@ -90,6 +98,8 @@ public class ReinforcementLearningAgent extends Agent {
         //the owl model is passed as an argument by the Administrator Agent
         Object[] args = getArguments();
         if (args != null) {
+            logger = new LoggerGUI();
+            logger.setLogPath("logs\\");
             this.contextAwareModel = (OWLModel) args[0];
             this.policyConversionModel = (OntModel) args[1];
             jenaOwlModel = (JenaOWLModel) args[2];
@@ -113,7 +123,7 @@ public class ReinforcementLearningAgent extends Agent {
                     memory = new Memory();
                 }
 
-                
+
                 Map<String, Map<String, String>> valueMapping = GlobalVars.getValueMapping();
 
                 Map<String, String> mapping = new HashMap<String, String>();
@@ -150,6 +160,49 @@ public class ReinforcementLearningAgent extends Agent {
                 addBehaviour(new RLPlotterBehaviour(this, 1000));
                 //addBehaviour(new GarbadgeCollectForcerAgent(this,60000));
 
+                Command c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+                c.execute();
+                c.executeOnWebService();
+
+                c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+                c.execute();
+                c.executeOnWebService();
+
+                c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#ComputerStateSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1);
+                c.execute();
+                c.executeOnWebService();
+
+
+
+                c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomStateSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+                c.execute();
+                c.executeOnWebService();
+
+                c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 20);
+                c.execute();
+                c.executeOnWebService();
+
+                c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#TemperatureSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 21);
+                c.execute();
+                c.executeOnWebService();
+
+                c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+                c.execute();
+                c.executeOnWebService();
             } catch (Exception e) {
                 e.printStackTrace();
             }

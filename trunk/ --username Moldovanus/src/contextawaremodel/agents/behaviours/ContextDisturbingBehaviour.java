@@ -221,7 +221,7 @@ public class ContextDisturbingBehaviour extends TickerBehaviour {
 
             for (Command c : commandList) {
                 c.execute();
-                c.setOWLValue();
+                c.executeOnWebService();
             }
 
             System.err.println("Context disturbed");

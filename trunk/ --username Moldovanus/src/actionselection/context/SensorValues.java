@@ -104,6 +104,16 @@ public class SensorValues implements Serializable {
         return stringValue;
     }
 
+
+    public ArrayList<String> toMessage() {
+        ArrayList<String> list = new ArrayList<String>();
+        String stringValue = "";
+        for (String key : myMap.keySet()) {
+            list.add("[ " + key + ": " + myMap.get(key) + "]  ");
+        }
+        return list;
+    }
+
     public ArrayList<String[]> toArrayList() {
         ArrayList<String[]> list = new ArrayList<String[]>();
         Map<String, Map<String, String>> mapping = GlobalVars.getValueMapping();

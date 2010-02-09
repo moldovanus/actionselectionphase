@@ -50,7 +50,7 @@ public class ContextSnapshot {
 
      public void executeActionsOnOWL() {
         for (Command command : actions) {
-            command.setOWLValue();
+            command.executeOnWebService();
         }
     }
 

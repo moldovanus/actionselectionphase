@@ -70,11 +70,11 @@ public class SetCommand extends Command {
 
     @Override
     public String toString() {
-        return "Set " + targetIndividualName + " to " + newValue;
+        return "Set " + targetIndividualName.substring(targetIndividualName.lastIndexOf("#")+1, targetIndividualName.length()) + " to " + newValue;
     }
 
     @Override
-    public void setOWLValue() {
+    public void executeOnWebService() {
 
         Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
         Property targetProperty = policyConversionModel.getProperty(targetPropertyName);

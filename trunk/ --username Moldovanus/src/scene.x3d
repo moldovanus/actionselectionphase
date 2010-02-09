@@ -182,7 +182,7 @@
                             ambientIntensity='1'
                             />
                     </Appearance>
-                    <Text DEF='faceRecognitionResult_STRING' string='"Face recognition result"' solid="true">
+                    <Text DEF='faceRecognitionResult_STRING' string='"Face recognition: "' solid="true">
                         <FontStyle justify='"MIDDLE" "MIDDLE"' size="10"/>
                     </Text>
                 </Shape>
