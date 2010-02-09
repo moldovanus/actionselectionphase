@@ -6,6 +6,7 @@ package contextawaremodel.agents.behaviours;
 
 import actionselection.context.Memory;
 import contextawaremodel.GlobalVars;
+import contextawaremodel.agents.ReinforcementLearningAgent;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import java.io.File;
@@ -23,14 +24,19 @@ import java.util.logging.Logger;
 public class StoreMemoryBehaviour extends TickerBehaviour {
 
     private Memory memory;
+    private ReinforcementLearningAgent agent;
 
     public StoreMemoryBehaviour(Agent a, long period, Memory memory) {
         super(a, period);
+        agent = (ReinforcementLearningAgent) a;
         this.memory = memory;
     }
 
     @Override
     protected void onTick() {
+
+        agent.getLogger().savePDF();
+
         FileOutputStream fileOutputStream = null;
         {
             ObjectOutputStream outputStream = null;

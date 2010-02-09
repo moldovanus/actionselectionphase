@@ -40,7 +40,7 @@ public abstract class Command implements Serializable {
     @Override
     public abstract String toString();
 
-    public abstract void setOWLValue();
+    public abstract void executeOnWebService();
 
     public abstract String[] toStringArray();
 }

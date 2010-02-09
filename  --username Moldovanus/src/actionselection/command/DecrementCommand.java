@@ -75,11 +75,11 @@ public class DecrementCommand extends Command {
 
     @Override
     public String toString() {
-        return "Decrement " + targetIndividualName + " by " + decrementValue;
+        return "Decrement " + targetIndividualName.substring(targetIndividualName.lastIndexOf("#")+1, targetIndividualName.length()) + " by " + decrementValue;
     }
 
     @Override
-    public void setOWLValue() {
+    public void executeOnWebService() {
 
         Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
         Property targetProperty = policyConversionModel.getProperty(targetPropertyName);

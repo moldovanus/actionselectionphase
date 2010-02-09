@@ -29,6 +29,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
+import java.awt.Color;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
             public void run() {
                 resultsFrame.setVisible(true);
+
             }
         });
     }
@@ -116,6 +118,13 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         //SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         // System.err.println("Entropy : " + entropy + " Broken " + brokenPolicy);
         //System.err.println("for " + currentValues);
+        if ( entropy > 0 ){
+            ArrayList<String> list = new ArrayList<String>();
+            String policyName = brokenPolicy.toString();
+            policyName = policyName.substring(policyName.lastIndexOf("#")+1, policyName.length());
+            list.add(policyName);
+            agent.getLogger().log(Color.ORANGE, "Broken policy",list );
+        }
         return new Pair<Double, Individual>(entropy, brokenPolicy);
     }
 
@@ -133,8 +142,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
         //if values have been changed stop and repair what you can so far 
         //if (agent.isContextDirty()) {
-         ///   return context;
-       // }
+        ///   return context;
+        // }
 
         SensorValues values = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         Queue<Command> actions = memory.getActions(values);
@@ -195,8 +204,8 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                     }
 
                     int actuatorsListLength = actuatorsList.size();
-                    for ( int i = 0; i < actuatorsListLength; i++) {
-                        
+                    for (int i = 0; i < actuatorsListLength; i++) {
+
                         Resource attachedActuatorResource = actuatorsList.get(i);
                         //Resource attachedActuatorResource =
                         Individual actuator = policyConversionModel.getIndividual(attachedActuatorResource.toString());
@@ -372,6 +381,9 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
         if (computeEntropy(initialContext).getFirst() != 0) {
+
+            agent.getLogger().log(Color.red, "Current state", currentValues.toMessage());
+
             try {
                 long startMinutes = new java.util.Date().getTime();
 
@@ -402,7 +414,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             }
 
             //do nothing if 
-            if ( agent.isContextDirty()){
+            if (agent.isContextDirty()) {
                 return;
             }
             setBrokenResources(contextSnapshot);
@@ -415,12 +427,20 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             System.err.println();
             System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.err.println("for " + currentValues);
+
+
             System.err.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             System.err.println("===============================================================");
+
+            ArrayList<String> message = new ArrayList<String>();
             for (Command command : bestActionsList) {
                 actions.add(command.toStringArray());
                 System.err.println(command);
+                message.add(command.toString());
             }
+
+            agent.getLogger().log(Color.BLACK, "Corrective actions", message);
+
             System.err.println("===============================================================");
             System.err.println();
 
@@ -433,7 +453,11 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
             setBrokenResources(initialContext);
 
             System.out.println("");
+        } else {
+            agent.getLogger().log(Color.green, "Current state", currentValues.toMessage());
         }
+
+
     }
 
     public boolean getEvaluateProp(Individual policy) {

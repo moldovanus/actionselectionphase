@@ -42,6 +42,9 @@ public class BasicX3DABehaviour extends CyclicBehaviour {
                         }
                     }
                     break;
+
+                    case ACLMessage.INFORM_IF:
+                        break;
             }
         } catch (Exception ex) {
             ex.printStackTrace(System.err);

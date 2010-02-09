@@ -144,6 +144,25 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                             Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
                                         }
                                         agent.send(message);
+                                    } else if (individualName_2.equals("FaceRecognitionSensorI")) {
+                                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                                        String value;
+                                        if (newValue >= 0 && newValue < 1) {
+                                            value = "PROFESSOR";
+                                        } else if (newValue >= 1 && newValue < 2) {
+                                            value = "STUDENT";
+                                        } else {
+                                            value = "UNKNOWN";
+                                        }
+                                        X3DStringCommand command = new X3DStringCommand("faceRecognitionResult_STRING", "Face recognition: " + value);
+                                        try {
+                                            message.setContentObject(command);
+                                            message.setLanguage("JavaSerialization");
+                                            message.addReceiver(new AID(GlobalVars.X3DAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(ReceiveMessagesCIABehaviour.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                        agent.send(message);
                                     }
 
                                     individual_2.setPropertyValue(valueProperty_2, String.format("%1$2.2f", newValue));

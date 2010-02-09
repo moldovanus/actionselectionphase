@@ -76,11 +76,11 @@ public class IncrementCommand extends Command {
 
     @Override
     public String toString() {
-        return "Increment " + targetIndividualName + " by " + incrementValue;
+        return "Increment " + targetIndividualName.substring(targetIndividualName.lastIndexOf("#")+1, targetIndividualName.length()) + " by " + incrementValue;
     }
 
     @Override
-    public void setOWLValue() {
+    public void executeOnWebService() {
 
         Individual targetIndividual = policyConversionModel.getIndividual(targetIndividualName);
         Property targetProperty = policyConversionModel.getProperty(targetPropertyName);

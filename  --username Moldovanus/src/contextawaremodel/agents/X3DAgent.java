@@ -172,6 +172,36 @@ public class X3DAgent extends Agent {
         //SFColor color = (SFColor) sphere.getField("diffuseColor");
         //color.setValue(f);
 
+        videoTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
+
+            public void readableFieldChanged(X3DFieldEvent xdfe) {
+                X3DNode videoStateString = mainScene.getNamedNode("faceRecognitionResult_STRING");
+                MFString videoStateSensorValue = (MFString) videoStateString.getField("string");
+
+                int videoState = 0;
+                String value = videoStateSensorValue.get1Value(0); 
+                if (value.equals("Face recognition: PROFESSOR")) {
+                    //computerStateSensorValue.set1Value(0,"Computer state: ON");
+                    videoState = 1;
+
+                } else if (value.equals("Face recognition: STUDENT")) {
+                    //computerStateSensorValue.set1Value(0,"Computer state: ON");
+                    videoState = 2;
+                } else if(value.equals("Face recognition: UNKNOWN")){
+                    videoState = 0;
+                }
+               
+                SetCommand command = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#FaceRecognitionSensorI",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, videoState);
+                command.execute();
+                command.executeOnWebService();
+                selfReference.send(message);
+               
+              
+            }
+        });
+
 
         alarmTouchTimeField.addX3DEventListener(new X3DFieldEventListener() {
 
@@ -191,12 +221,12 @@ public class X3DAgent extends Agent {
 
                 }
                 System.err.println("Alarm new state = " + alarmState);
-                
+
                 SetCommand command = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#AlarmStateSensorI",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, alarmState);
                 command.execute();
-                command.setOWLValue();
+                command.executeOnWebService();
                 selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
@@ -214,7 +244,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 5);
                 command.execute();
-                command.setOWLValue();
+                command.executeOnWebService();
                 selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
@@ -231,7 +261,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 5);
                 command.execute();
-                command.setOWLValue();
+                command.executeOnWebService();
                 selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
@@ -262,7 +292,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, computerState);
                 command.execute();
-                command.setOWLValue();
+                command.executeOnWebService();
                 selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
@@ -289,7 +319,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, roomState);
                 command.execute();
-                command.setOWLValue();
+                command.executeOnWebService();
                 selfReference.send(message);
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
@@ -306,10 +336,10 @@ public class X3DAgent extends Agent {
                 //ACLMessage message= new ACLMessage(ACLMessage.INFORM);
                 int lightState = 0;
                 if (lightIntensity.getValue()) {
-                    lightIntensity.setValue(false);
+                    //lightIntensity.setValue(false);
                     lightState = 0;
                 } else {
-                    lightIntensity.setValue(true);
+                    //lightIntensity.setValue(true);
                     lightState = 1;
                 }
 
@@ -317,7 +347,7 @@ public class X3DAgent extends Agent {
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, lightState);
                 command.execute();
-                command.setOWLValue();
+                command.executeOnWebService();
 
                 //mainScene.addRoute(timer, "fraction_changed", PI, "set_fraction");
                 //mainScene.addRoute(PI, "value_changed", TS, "diffuseColor");
