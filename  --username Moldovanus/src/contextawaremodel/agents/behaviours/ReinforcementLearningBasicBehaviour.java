@@ -118,13 +118,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         //SensorValues currentValues = new SensorValues(policyConversionModel, owlModel, GlobalVars.base);
         // System.err.println("Entropy : " + entropy + " Broken " + brokenPolicy);
         //System.err.println("for " + currentValues);
-        if ( entropy > 0 ){
-            ArrayList<String> list = new ArrayList<String>();
-            String policyName = brokenPolicy.toString();
-            policyName = policyName.substring(policyName.lastIndexOf("#")+1, policyName.length());
-            list.add(policyName);
-            agent.getLogger().log(Color.ORANGE, "Broken policy",list );
-        }
+
         return new Pair<Double, Individual>(entropy, brokenPolicy);
     }
 
@@ -380,9 +374,39 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
         smallestEntropy = 10000;
         ContextSnapshot contextSnapshot;
-        if (computeEntropy(initialContext).getFirst() != 0) {
+        Pair<Double, Individual> entropyState = computeEntropy(initialContext);
+        if (entropyState.getFirst() != 0) {
+
+            ArrayList<String> list = new ArrayList<String>();
+            String policyName = entropyState.getSecond().toString();
+            policyName = policyName.substring(policyName.lastIndexOf("#") + 1, policyName.length());
+            list.add(policyName);
+            agent.getLogger().log(Color.ORANGE, "Broken policy", list);
 
             agent.getLogger().log(Color.red, "Current state", currentValues.toMessage());
+
+            Individual brokenPolicy = entropyState.getSecond();
+            StmtIterator iterator = brokenPolicy.listProperties(associatedResource);
+
+            associatedResources.clear();
+            while (iterator.hasNext()) {
+                associatedResources.add(iterator.nextStatement().getResource());
+            }
+            ArrayList<String> brokenSensorsList = new ArrayList<String>();
+            for (Resource attachedResource : associatedResources) {
+
+                //get the resource as individual from the global model such that getPropertyValue can be called on it
+                Individual sensor = policyConversionModel.getIndividual(attachedResource.toString());
+
+                //skip sensor if its value respects the policy
+                if (!sensorHasAcceptableValue(sensor)) {
+                    String sensorName = sensor.toString();
+                    sensorName = sensorName.substring(sensorName.lastIndexOf("#") + 1, sensorName.length());
+                    brokenSensorsList.add(sensorName);
+                }
+            }
+            agent.getLogger().log(Color.ORANGE, "Sensors that break the policies", brokenSensorsList);
+
 
             try {
                 long startMinutes = new java.util.Date().getTime();
@@ -439,7 +463,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
                 message.add(command.toString());
             }
 
-            agent.getLogger().log(Color.BLACK, "Corrective actions", message);
+            agent.getLogger().log(Color.BLUE, "Corrective actions", message);
 
             System.err.println("===============================================================");
             System.err.println();
