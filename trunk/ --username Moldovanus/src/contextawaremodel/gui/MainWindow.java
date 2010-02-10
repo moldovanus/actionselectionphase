@@ -63,7 +63,7 @@ public class MainWindow extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Context Aware Model :: Calin Bindea, Cristian Patrasciuc");
+        setTitle("Context Aware Model :: Main window");
         setName("mainWndow"); // NOI18N
 
         toolBar.setFloatable(false);
