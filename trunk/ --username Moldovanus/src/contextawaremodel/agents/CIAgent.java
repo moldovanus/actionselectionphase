@@ -1,7 +1,6 @@
 package contextawaremodel.agents;
 
 import contextawaremodel.agents.behaviours.ReceiveMessagesCIABehaviour;
-import contextawaremodel.agents.behaviours.RecordingCIABehaviour;
 import edu.stanford.smi.protegex.owl.model.OWLModel;
 import jade.content.lang.sl.SLCodec;
 import jade.core.Agent;

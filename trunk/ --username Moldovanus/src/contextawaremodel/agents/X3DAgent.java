@@ -9,7 +9,7 @@ import actionselection.command.IncrementCommand;
 import actionselection.command.SetCommand;
 import com.hp.hpl.jena.ontology.OntModel;
 import contextawaremodel.GlobalVars;
-import contextawaremodel.agents.behaviours.BasicX3DABehaviour;
+import contextawaremodel.agents.behaviours.BasicX3DBehaviour;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
@@ -360,7 +360,7 @@ public class X3DAgent extends Agent {
         //color.getValue(f);
         //System.out.println("" + f[0] + "   " + f[1] + "   " + f[2]);
 
-        addBehaviour(new BasicX3DABehaviour(this));
+        addBehaviour(new BasicX3DBehaviour(this));
     }
 
     public X3DScene getMainScene() {

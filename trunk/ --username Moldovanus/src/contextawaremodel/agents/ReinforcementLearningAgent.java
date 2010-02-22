@@ -182,13 +182,13 @@ public class ReinforcementLearningAgent extends Agent {
 
                 c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#RoomStateSensorI",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1);
                 c.execute();
                 c.executeOnWebService();
 
                 c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#HumiditySensorI",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 20);
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 21);
                 c.execute();
                 c.executeOnWebService();
 
@@ -200,7 +200,7 @@ public class ReinforcementLearningAgent extends Agent {
 
                 c = new SetCommand("http://www.owl-ontologies.com/Ontology1230214892.owl#LightSensorI",
                         "http://www.owl-ontologies.com/Ontology1230214892.owl#has-value-of-service",
-                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 0);
+                        "http://www.owl-ontologies.com/Ontology1230214892.owl#has-web-service-URI", policyConversionModel, 1);
                 c.execute();
                 c.executeOnWebService();
             } catch (Exception e) {

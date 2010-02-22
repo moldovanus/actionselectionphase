@@ -66,6 +66,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     private ArrayList<Resource> actionsList;
     private ActionsOutputFrame resultsFrame;
     private ReinforcementLearningAgent agent;
+    private boolean contextBroken = false;
 
     public ReinforcementLearningBasicBehaviour(Agent a, int interval, OWLModel contextAwareModel, OntModel policyConversionModel, JenaOWLModel owlModel, Memory memory) {
         super(a, interval);
@@ -376,7 +377,7 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
         ContextSnapshot contextSnapshot;
         Pair<Double, Individual> entropyState = computeEntropy(initialContext);
         if (entropyState.getFirst() != 0) {
-
+            contextBroken = true;
             ArrayList<String> list = new ArrayList<String>();
             String policyName = entropyState.getSecond().toString();
             policyName = policyName.substring(policyName.lastIndexOf("#") + 1, policyName.length());
@@ -478,7 +479,10 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
 
             System.out.println("");
         } else {
-            agent.getLogger().log(Color.green, "Current state", currentValues.toMessage());
+           if ( contextBroken){
+               contextBroken = false;
+               agent.getLogger().log(Color.green, "Current state", currentValues.toMessage());
+           }
         }
 
 
