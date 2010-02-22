@@ -35,7 +35,7 @@ public class StoreMemoryBehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
 
-        agent.getLogger().savePDF();
+ 
 
         FileOutputStream fileOutputStream = null;
         {

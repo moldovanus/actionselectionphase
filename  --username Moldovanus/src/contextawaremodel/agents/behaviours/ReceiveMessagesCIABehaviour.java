@@ -53,6 +53,7 @@ public class ReceiveMessagesCIABehaviour extends CyclicBehaviour {
                                 public void valueChanged(double newValue) {
 
                                     individual.setPropertyValue(valueProperty, String.format("%1$2.2f", newValue));
+
                                 }
                             });
 
