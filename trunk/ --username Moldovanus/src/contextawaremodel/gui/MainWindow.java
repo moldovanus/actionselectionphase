@@ -194,7 +194,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_shutdownMenuItemActionPerformed
 
     private void visualizationMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizationMenuItemActionPerformed
-        guiAgent.showContextVisualizationWindow();
+
     }//GEN-LAST:event_visualizationMenuItemActionPerformed
 
     private void memoryMonitorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryMonitorMenuItemActionPerformed

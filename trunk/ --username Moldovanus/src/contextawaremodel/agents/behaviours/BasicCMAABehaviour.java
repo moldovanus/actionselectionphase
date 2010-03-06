@@ -35,6 +35,9 @@ public class BasicCMAABehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
 
+        //TODO : BasicCMAABehaviour stopped. No world file interface. added return to onTick
+        return;
+        /*
         if (this.wfp.wasChanged()) {
             WorldElement[] wElements = wfp.getWorld();
             existsIndv.clear();
@@ -119,10 +122,10 @@ public class BasicCMAABehaviour extends TickerBehaviour {
                     
                     owli.delete();
                 }
-            }*/
+            }
         }
 
 
-
+*/
     }
 }
