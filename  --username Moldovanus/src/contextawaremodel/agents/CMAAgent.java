@@ -54,7 +54,8 @@ public class CMAAgent extends Agent implements CMAAExternal {
 
         try {
             //create owlModel from Ontology
-            this.owlModel = ProtegeOWL.createJenaOWLModelFromURI(new File(GlobalVars.ONTOLOGY_FILE).toURI().toString());
+            File ontologyFile = new File(GlobalVars.ONTOLOGY_FILE);
+            this.owlModel = ProtegeOWL.createJenaOWLModelFromURI(ontologyFile.toURI().toString());
             this.factory = new MyFactory(owlModel);
 
 
@@ -101,17 +102,17 @@ public class CMAAgent extends Agent implements CMAAExternal {
             //star the Context Interpreting Agent
             AgentContainer container = (AgentContainer) getContainerController(); // get a container controller for creating new agents
             //createNewAgent(Name, Class name, arguments to the agent)
-            gui = container.createNewAgent(GlobalVars.GUIAGENT_NAME, GUIAgent.class.getName(), new Object[]{this.owlModel});
-            gui.start();
-
             cia = container.createNewAgent(GlobalVars.CIAGENT_NAME, CIAgent.class.getName(), new Object[]{this.owlModel});
             cia.start();
 
-            rl = container.createNewAgent(GlobalVars.RLAGENT_NAME, ReinforcementLearningAgent.class.getName(), new Object[]{this.owlModel, this.policyConversionModel, this.jenaOwlModel});
-            rl.start();
+            gui = container.createNewAgent(GlobalVars.GUIAGENT_NAME, GUIAgent.class.getName(), new Object[]{this.owlModel});
+            gui.start();
 
-            x3d = container.createNewAgent(GlobalVars.X3DAGENT_NAME, X3DAgent.class.getName(), new Object[]{this.policyConversionModel});
-            x3d.start();
+            //rl = container.createNewAgent(GlobalVars.RLAGENT_NAME, ReinforcementLearningAgent.class.getName(), new Object[]{this.owlModel, this.policyConversionModel, this.jenaOwlModel});
+            //rl.start();
+
+           // x3d = container.createNewAgent(GlobalVars.X3DAGENT_NAME, X3DAgent.class.getName(), new Object[]{this.policyConversionModel});
+            //x3d.start();
             //star the Request Processing Agent
 
             //createNewAgent(Name, Class name, arguments to the agent)

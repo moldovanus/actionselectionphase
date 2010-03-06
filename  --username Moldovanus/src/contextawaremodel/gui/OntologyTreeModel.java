@@ -17,7 +17,7 @@ public class OntologyTreeModel extends DefaultTreeModel {
         this.owlModel = owlModel;
 
         System.out.println( "[GUI] Generating ontology class tree.");
-        RDFSNamedClass rootClass = owlModel.getRDFSNamedClass("context-element");
+        RDFSNamedClass rootClass = owlModel.getRDFSNamedClass("ContextElement");
         rootNode.setUserObject(rootClass);
         addChildClasses(rootNode, rootClass);
     }

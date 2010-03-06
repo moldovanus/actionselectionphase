@@ -2,7 +2,6 @@ package contextawaremodel.gui;
 
 public interface GUIAgentExternal {
     public void shutdownPlatform();
-    public void showContextVisualizationWindow();
     public void showMemoryMonitor();
     public void startJADEGUI();
     public void addIndividual(String name);

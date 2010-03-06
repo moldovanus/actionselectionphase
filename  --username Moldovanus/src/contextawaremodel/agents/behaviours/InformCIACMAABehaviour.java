@@ -43,7 +43,7 @@ public class InformCIACMAABehaviour extends OneShotBehaviour {
 
         if (msg != null) {
             msg.addReceiver(new AID(GlobalVars.CIAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
-            msg.addReceiver(new AID(GlobalVars.GUIAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
+           // msg.addReceiver(new AID(GlobalVars.GUIAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
             msg.addReceiver(new AID(GlobalVars.RLAGENT_NAME + "@" + agent.getContainerController().getPlatformName()));
             try {
                 msg.setContentObject(indvName);

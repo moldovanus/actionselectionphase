@@ -72,6 +72,8 @@ public class WorldFileParser {
                         NamedNodeMap pnnm = pceNode.getAttributes();
                         Attr dn = (Attr)pnnm.getNamedItem(GlobalVars.DATA_NAME);
                         Attr dv = (Attr)pnnm.getNamedItem(GlobalVars.DATA_VALUE);
+                        //Attr dn = (Attr)pnnm.getNamedItem(GlobalVars.DATA_NAME);
+                        //Attr dv = (Attr)pnnm.getNamedItem(GlobalVars.DATA_VALUE);
                         //attach attributes
                         res[i].addAttribute(dn.getValue(), dv.getValue());
                     }

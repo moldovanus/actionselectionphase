@@ -51,25 +51,9 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
             } else {
                 newValue = tempValue;
             }
-
-            try {
-                SwingUtilities.invokeLater(new Runnable() {
-
-                    public void run() {
-
-                        cvf.updateText(resource.getName(), newValue);
-                        
-                    }
-                });
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     };
     private OWLModel owlModel;
-    private ContextVisualizationFrame cvf;
     private MainWindow mainWindow;
     private JFrame memoryMonitor;
 
@@ -104,11 +88,6 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
                 mainWindow.setState(JFrame.MAXIMIZED_BOTH);
                 mainWindow.setVisible(true);
 
-                // Start the Context 3D Visualization window, but keep it hidden
-                GUIAgent.this.cvf = new ContextVisualizationFrame(GUIAgent.this);
-                cvf.setLocationRelativeTo(mainWindow);
-                cvf.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                cvf.setVisible(false);
 
                 // Start the Memory Monitor window, but keep it hidden
                 final MemoryMonitor demo = new MemoryMonitor();
@@ -158,11 +137,6 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void showContextVisualizationWindow() {
-        System.out.println("[GUIAgent] Showing the Context Visualization Window.");
-        this.cvf.setVisible(true);
-        startBlinking();
-    }
 
     public void showMemoryMonitor() {
         System.out.println("[GUIAgent] Showing the Memory Monitor.");
@@ -183,47 +157,9 @@ public class GUIAgent extends GuiAgent implements GUIAgentExternal {
 
             public void run() {
                 mainWindow.addIndividual(name);
-                try {
-                    RDFResource individual = owlModel.getRDFResource(name);
-                    if (individual.getProtegeType().getNamedSuperclasses(true).contains(owlModel.getRDFSNamedClass("sensor"))) {
-                        RDFProperty px = owlModel.getRDFProperty("has-position-X");
-                        RDFProperty py = owlModel.getRDFProperty("has-position-Y");
-                        RDFProperty pz = owlModel.getRDFProperty("has-position-Z");
-                        RDFProperty pradius = owlModel.getRDFProperty("has-influence-Radius");
-                        float x = Float.parseFloat(individual.getPropertyValue(px).toString().split(" ")[0]);
-                        float y = Float.parseFloat(individual.getPropertyValue(py).toString().split(" ")[0]);
-                        float z = Float.parseFloat(individual.getPropertyValue(pz).toString().split(" ")[0]);
-                        float radius = Float.parseFloat(individual.getPropertyValue(pradius).toString().split(" ")[0]);
-                        System.out.println("[GUIAgent] " + name + " (" + x + "," + y + "," + z + "," + radius + ") was added to the Visualization Frame.");
-                        cvf.addSensor(name, x, z, y, radius);
-                    }
-                } catch (Exception e) {
-                    System.out.println("[GUIAgent] Could not add sensor to Visualization Frame: " + e.getMessage());
-                    e.printStackTrace(System.err);
-                }
+
             }
         });
-    }
-
-    public void startBlinking() {
-        ActionListener timerTask = new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                alternate = !alternate;
-                for (String brokenResource : GlobalVars.getBrokenResources().values()) {
-                    cvf.setColor(brokenResource, true);
-                    //System.err.println("Broken " + brokenResource.toString());
-                }
-                for (String okResource : GlobalVars.getValidResources().values()) {
-                    cvf.setColor(okResource, false);
-                    //System.err.println("OK " + okResource.toString());
-                }
-
-            }
-        };
-        timer = new Timer(700, timerTask);
-
-        timer.start();
     }
 
     public void startRealTimePlot(long interval) {
