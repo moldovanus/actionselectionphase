@@ -65,7 +65,7 @@ public class LoggerGUI {
 
     public void log(Color messageColor, String header, ArrayList<String> message) {
 
-        String date = "_" +  new java.util.Date().toString();
+        String date = new java.util.Date().toString();
         messages.add(new Object[]{messageColor, header, message, date});
 
 
@@ -82,7 +82,7 @@ public class LoggerGUI {
     public void savePDF() {
         try {
 
-            String logName = logPath + "log" + date + ".pdf";
+            String logName = logPath + "log_" + date + ".pdf";
             Document document = new Document();
             File file = new File(logName);
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(logName));

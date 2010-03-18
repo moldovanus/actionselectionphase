@@ -25,7 +25,7 @@ public class GlobalVars {
     public static final String DATA_NAME = "data-name";
     public static final String DATA_VALUE = "data-value";
     public static final String CONTEXT_ELEMENT = "context-element";
-    public static final String ONTOLOGY_FILE = "ontology/Datacenter.owl";
+    public static final String ONTOLOGY_FILE = "ontology/contextOntology.owl";
     public static final String POLICIES_FILE = "ontology/TestPolicies.xml";
     public static final String MEMORY_FILE = "memory/memory.dat";
     public static final int INDIVIDUAL_DELETED = 0;
