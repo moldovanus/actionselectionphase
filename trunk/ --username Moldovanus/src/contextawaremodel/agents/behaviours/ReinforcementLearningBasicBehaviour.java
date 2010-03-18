@@ -489,13 +489,14 @@ public class ReinforcementLearningBasicBehaviour extends TickerBehaviour {
     }
 
     public boolean getEvaluateProp(Individual policy) {
-        //System.out.println(base + "#EvaluatePolicyP");
+
         Statement property = policy.getProperty(evaluatePolicyProperty);
 
         if (property == null) {
+            System.out.println("false " + policy.getLocalName() );
             return false;
         }
-
+        System.out.println("true"+ policy.getLocalName());
         return property.getBoolean();
     }
 
